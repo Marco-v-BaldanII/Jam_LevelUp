@@ -63,6 +63,13 @@ public class Wolf_AI : MonoBehaviour
             marshmallow.SetActive(has_cotton);
         }
 
+        // Check if wolf has reached the destination
+        if (targetSheep == null && !moving_towards_task && !has_cotton)
+        {
+            // Stop movement
+            rigid.velocity = Vector2.zero;
+        }
+
     }
 
     public void OnMouseDrag()
@@ -91,11 +98,20 @@ public class Wolf_AI : MonoBehaviour
         {
             moving_towards_task = false;
         }
-        if (collision.gameObject.CompareTag("Sheep") == true && _isDragging == false )
+        if (collision.gameObject.CompareTag("Sheep") == true )
         {
             Sheep sheep = collision.GetComponent<Sheep>();
             if (sheep != null)
                 targetSheep = sheep;
+
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Sheep") == true)
+        {
+            Debug.Log("Aa");
         }
     }
 
@@ -104,7 +120,20 @@ public class Wolf_AI : MonoBehaviour
         my_task = task;
         moving_towards_task = true;
       
+    }
 
+    public void TakeDamage(int amount)
+    {
+        life -= amount;
+        if (life <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void StopMovement()
+    {
+        rigid.velocity = Vector2.zero;
     }
 
 }

@@ -11,10 +11,12 @@ public class Sheep : MonoBehaviour
     public int life;
     public bool dead;
 
+    private bool shouldMove = true;
+
     // Start is called before the first frame update
     void Start()
     {
-        destination = new Vector3(10, 0, 10);
+        destination = new Vector2(10, 0);
         dead = false;
         angered = false;
         life = 2;
@@ -24,7 +26,10 @@ public class Sheep : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MoveTowardsDestination();
+        if (shouldMove)
+        {
+            MoveTowardsDestination();
+        }
         
         /*
          * if (angered)
@@ -42,12 +47,29 @@ public class Sheep : MonoBehaviour
     void MoveTowardsDestination()
     {
         // Sheep moves to the designated destination
-        transform.position = Vector3.MoveTowards(transform.position, destination, moveSpeed * Time.deltaTime);
+        //transform.position = Vector3.MoveTowards(transform.position, destination, moveSpeed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, destination, moveSpeed * Time.deltaTime);
 
         // Checks if the sheep has arrived to the destination
-        if (Vector3.Distance(transform.position, destination) < 0.1f)
+        if (Vector2.Distance(transform.position, destination) < 0.1f)
         {
             //Debug.Log("Sheep has arrived the destination");
+            shouldMove = false;
+        }
+
+
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Wolf"))
+        {
+            Wolf_AI wolf = collision.gameObject.GetComponent<Wolf_AI>();
+            if (wolf != null)
+            {
+                TakeDamage(damage);
+                wolf.TakeDamage(damage);
+            }
         }
     }
 

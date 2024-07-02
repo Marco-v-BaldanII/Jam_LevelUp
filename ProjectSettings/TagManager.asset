@@ -3,12 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Wolf
+  - Task
+  - Marshmallow
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Wolf
   - Water
   - UI
   - 

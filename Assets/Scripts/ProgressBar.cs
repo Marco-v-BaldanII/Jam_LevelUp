@@ -34,4 +34,10 @@ public class ProgressBar : MonoBehaviour
     {
         targetProgress = slider.value + newProgress;
     }
+
+    public void Add(int value)
+    {
+        slider.value += value;
+    }
+
 }

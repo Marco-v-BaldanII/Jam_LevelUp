@@ -13,6 +13,7 @@ public class Wolf_AI : MonoBehaviour
     public GameObject marshmallow;
     private Vector3 buffer_pos;
     private Rigidbody2D rigid;
+    private Collider2D collider;
 
     public bool moving_towards_task = false;
     public bool moving_towards_base = false;
@@ -23,6 +24,7 @@ public class Wolf_AI : MonoBehaviour
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
+        collider = GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
@@ -78,5 +80,15 @@ public class Wolf_AI : MonoBehaviour
             moving_towards_task = false;
         }
     }
+
+    public void ChangeTask(wolf_task task)
+    {
+        my_task = task;
+        moving_towards_task = true;
+      
+
+    }
+
+  
 
 }

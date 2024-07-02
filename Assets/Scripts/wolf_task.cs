@@ -35,8 +35,7 @@ public class wolf_task : MonoBehaviour
             if(wolf != null && wolf.has_cotton == false) // Also check if wolf is not already in the list
             {
                 current_wolf = wolf;
-                current_wolf.my_task = this;
-                current_wolf.moving_towards_task = true;
+                current_wolf.ChangeTask(this);
                 if (! my_wolfs.Contains(wolf))
                 {
                     my_wolfs.Add(current_wolf);

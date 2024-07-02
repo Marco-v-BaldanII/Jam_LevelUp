@@ -7,12 +7,18 @@ public class Sheep : MonoBehaviour
     public float moveSpeed = 5;
     public Vector3 destination;
     public int damage;
-    public bool angered = false;
+    public bool angered;
+    public int life;
+    public bool dead;
 
     // Start is called before the first frame update
     void Start()
     {
         destination = new Vector3(10, 0, 10);
+        dead = false;
+        angered = false;
+        life = 2;
+        damage = 1;
     }
 
     // Update is called once per frame
@@ -25,6 +31,12 @@ public class Sheep : MonoBehaviour
          * {
          * }
          */
+
+        if(life==0)
+        {
+            dead = true;
+            isDead();
+        }
     }
 
     void MoveTowardsDestination()
@@ -35,7 +47,21 @@ public class Sheep : MonoBehaviour
         // Checks if the sheep has arrived to the destination
         if (Vector3.Distance(transform.position, destination) < 0.1f)
         {
-            Debug.Log("Sheep has arrived the destination");
+            //Debug.Log("Sheep has arrived the destination");
         }
+    }
+
+    public void TakeDamage(int amount)
+    {
+        life -= amount;
+        if (life <= 0)
+        {
+            isDead();
+        }
+    }
+
+    void isDead()
+    {
+        Destroy(gameObject);
     }
 }

@@ -29,11 +29,6 @@ public class SheepSpawnerScript : MonoBehaviour
     {
         GameObject newSheep = Instantiate(sheepPrefab, transform.position, transform.rotation);
         Sheep sheepScript = newSheep.GetComponent<Sheep>();
-        if (sheepScript != null)
-        {
-            sheepScript.destination = new Vector3(10, 0, 10); // Desired destination
-            sheepScript.moveSpeed = 5f; // Desired velocity
-            sheepScript.angered = false; // Desired state
-        }
+      
     }
 }

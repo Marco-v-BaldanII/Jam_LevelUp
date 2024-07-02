@@ -13,7 +13,7 @@ public class Card : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        InitialiseCard();
     }
 
     // Update is called once per frame

@@ -20,11 +20,19 @@ public class Wolf_AI : MonoBehaviour
 
     public bool has_cotton = false;
 
+    public int life;
+    public int damage;
+
+    private Sheep targetSheep;
+
     // Start is called before the first frame update
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
         collider = GetComponent<Collider2D>();
+        life = 1;
+        damage = 1;
+
     }
 
     // Update is called once per frame
@@ -41,6 +49,10 @@ public class Wolf_AI : MonoBehaviour
         else if (has_cotton && my_task != null)
         {
             direction = wolf_city.transform.position - transform.position;
+        }
+        else if (targetSheep != null)
+        {
+            direction = targetSheep.transform.position - transform.position;
         }
 
         rigid.velocity = direction.normalized * movement_speed;
@@ -79,6 +91,12 @@ public class Wolf_AI : MonoBehaviour
         {
             moving_towards_task = false;
         }
+        if (collision.gameObject.CompareTag("Sheep") == true && _isDragging == false )
+        {
+            Sheep sheep = collision.GetComponent<Sheep>();
+            if (sheep != null)
+                targetSheep = sheep;
+        }
     }
 
     public void ChangeTask(wolf_task task)
@@ -89,6 +107,5 @@ public class Wolf_AI : MonoBehaviour
 
     }
 
-  
-
 }
+ 

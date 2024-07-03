@@ -2,6 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Sheep_State
+{
+    IDLE, 
+    FIGHTING,
+
+}
+
 public class Sheep : MonoBehaviour
 {
     public float moveSpeed = 5;
@@ -12,7 +19,7 @@ public class Sheep : MonoBehaviour
     public bool dead;
 
     private bool shouldMove = true;
-
+    public Sheep_State my_State = Sheep_State.IDLE;
 
     // Start is called before the first frame update
     void Start()
@@ -27,10 +34,23 @@ public class Sheep : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (shouldMove)
+
+        switch (my_State)
         {
-            MoveTowardsDestination();
+            case Sheep_State.IDLE:
+                if(shouldMove)
+                {
+                    MoveTowardsDestination();
+                }
+                break;
+
+            case Sheep_State.FIGHTING:
+                StopMovement();
+                break;
+
+
         }
+       
         
         /*
          * if (angered)
@@ -57,7 +77,7 @@ public class Sheep : MonoBehaviour
             //Debug.Log("Sheep has arrived the destination");
             shouldMove = false;
         }
-
+        
 
     }
 
@@ -65,12 +85,12 @@ public class Sheep : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Wolf"))
         {
-            Wolf_AI wolf = collision.gameObject.GetComponent<Wolf_AI>();
-            if (wolf != null)
-            {
-                TakeDamage(damage);
-                wolf.TakeDamage(damage);
-            }
+            //Wolf_AI wolf = collision.gameObject.GetComponent<Wolf_AI>();
+            //if (wolf != null)
+            //{
+            //    TakeDamage(damage);
+            //    wolf.TakeDamage(damage);
+            //}
         }
     }
 
@@ -86,5 +106,10 @@ public class Sheep : MonoBehaviour
     void isDead()
     {
         Destroy(gameObject);
+    }
+
+    public void StopMovement()
+    {
+        shouldMove = false;
     }
 }

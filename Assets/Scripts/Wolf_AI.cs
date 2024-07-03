@@ -88,6 +88,7 @@ public class Wolf_AI : MonoBehaviour
                 {
                     direction = targetSheep.transform.position - transform.position;
                     rigid.velocity = direction.normalized * movement_speed;
+                    Debug.Log("Targeted sheep");
                 }
                 break;
             case Wolf_State.MINING:
@@ -104,6 +105,9 @@ public class Wolf_AI : MonoBehaviour
                     Debug.Log("back to base");
                 }
                 break;
+            case Wolf_State.FIGHTING:
+                StopMovement();
+                break;
             case Wolf_State.TALKING:
 
                 direction = talking_pos - transform.position;
@@ -117,6 +121,8 @@ public class Wolf_AI : MonoBehaviour
 
                 break;
 
+           
+
 
         }
 
@@ -125,17 +131,10 @@ public class Wolf_AI : MonoBehaviour
 
        
 
-        Debug.Log(has_cotton != marshmallow.activeSelf);
+        //Debug.Log(has_cotton != marshmallow.activeSelf);
         if (has_cotton != marshmallow.activeSelf)
         {
             marshmallow.SetActive(has_cotton);
-        }
-
-        // Check if wolf has reached the destination
-        if (targetSheep == null && !moving_towards_task && !has_cotton)
-        {
-            // Stop movement
-            //rigid.velocity = Vector2.zero;
         }
 
     }
@@ -169,24 +168,33 @@ public class Wolf_AI : MonoBehaviour
             my_state = Wolf_State.MOVING;
             moving_towards_task = false;
         }
-        if (collision.gameObject.CompareTag("Sheep") == true)
-        {
-            Sheep sheep = collision.GetComponent<Sheep>();
-            if (sheep != null)
-            {
-                targetSheep = sheep;
-                my_state = Wolf_State.MOVING;
-            }
-
-        }
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Sheep") == true)
         {
-            Debug.Log("Aa");
+            Sheep sheep = collision.gameObject.GetComponent<Sheep>();
+            if (sheep != null && _isDragging == true)
+            {
+                targetSheep = sheep;
+                my_state = Wolf_State.MOVING;
+                my_task = null;
+                has_cotton = false;
+
+            }
+            else if (sheep != null && !_isDragging)
+            {
+                my_state = Wolf_State.FIGHTING;
+                TakeDamage(sheep.damage);
+                sheep.TakeDamage(damage);
+                sheep.my_State = Sheep_State.FIGHTING;
+            }
+
         }
+
+        
     }
 
     public void ChangeTask(wolf_task task)

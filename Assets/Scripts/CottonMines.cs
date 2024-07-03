@@ -64,4 +64,22 @@ public class CottonMines : wolf_task
         }
     }
 
+    public override void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Wolf") == true)
+        {
+            Wolf_AI wolf = collision.GetComponent<Wolf_AI>();
+            if (wolf != null && wolf.has_cotton == false) // Also check if wolf is not already in the list
+            {
+                current_wolf = wolf;
+                current_wolf.ChangeTask(this, Wolf_State.MINING);
+                if (!my_wolfs.Contains(wolf) && !wolf._isDragging)
+                {
+                    my_wolfs.Add(current_wolf);
+                }
+
+            }
+        }
+    }
+
 }

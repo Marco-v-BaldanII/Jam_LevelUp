@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Card : MonoBehaviour
 {
     public int cardID;
     public Sprite cardImage;
+    private Circle_Timer timer;
+    private Button myButton;
 
     public Card() { }
     ~Card() { }
@@ -13,6 +16,8 @@ public class Card : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        myButton = GetComponent<Button>();
+        timer = GetComponentInChildren<Circle_Timer>();
         InitialiseCard();
     }
 
@@ -33,4 +38,15 @@ public class Card : MonoBehaviour
     {
 
     }
+
+    public void OnDisable()
+    {
+        
+    }
+
+    public void Disable()
+    {
+        myButton.enabled = false;
+    }
+
 }

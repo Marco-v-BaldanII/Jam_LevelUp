@@ -24,6 +24,9 @@ public class SheepSpawnerScript : MonoBehaviour
     private float global_timer = 0f;
 
     private DIFFICULTY sheep_difficulty = DIFFICULTY.HERALD_OF_CHAOS;
+    public Transform[] spawn_positions;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -45,9 +48,12 @@ public class SheepSpawnerScript : MonoBehaviour
 
     void SpawnSheep()
     {
-        GameObject newSheep = Instantiate(sheepPrefab, transform.position, transform.rotation);
-        Sheep sheepScript = newSheep.GetComponent<Sheep>();
-        sheepScript.destination = city_destination;
+        Vector3 spawn = spawn_positions[Random.Range(0, 4)].position;
+
+            GameObject newSheep = Instantiate(sheepPrefab, spawn, Quaternion.identity, transform);
+            Sheep sheepScript = newSheep.GetComponent<Sheep>();
+            sheepScript.destination = city_destination;
+      
       
     }
 
@@ -87,7 +93,7 @@ public class SheepSpawnerScript : MonoBehaviour
             for(int i = 0; i < spawn_amount; ++i)
             {
                 SpawnSheep();
-                yield return new WaitForSecondsRealtime(Random.Range(0.3f, 1.2f));
+                yield return new WaitForSecondsRealtime(Random.Range(1.2f, 3.0f));
 
 
             }

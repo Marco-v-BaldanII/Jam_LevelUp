@@ -11,7 +11,7 @@ public class Wolf_Spawner : MonoBehaviour
     private List<Wolf_AI> active_wolfs = new List<Wolf_AI>();
     public Wolf_City city;
     public int spawn_rate = 800;
-
+    private Animator animator;
     public Transform[] talk_positions;
     private int talk_wait_min = 5;
     private int talk_wait_max = 15;
@@ -19,6 +19,7 @@ public class Wolf_Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         SewWolf();
         StartCoroutine("Spawn_Wolfs");
         StartCoroutine("Get_Wolfs_Talking");

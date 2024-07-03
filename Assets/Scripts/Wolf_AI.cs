@@ -25,6 +25,9 @@ public class Wolf_AI : MonoBehaviour
     public GameObject wolf_city;
     public GameObject marshmallow;
     public GameObject speech_bubble;
+    public GameObject buffer;
+
+    public GameObject cross;
 
     private Vector3 buffer_pos;
     private Vector3 direction = Vector3.zero;
@@ -42,7 +45,7 @@ public class Wolf_AI : MonoBehaviour
 
     private Sheep targetSheep;
 
-
+    bool showingX = false;
    
 
     private Vector3 talking_pos;
@@ -63,11 +66,13 @@ public class Wolf_AI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        buffer.transform.position = buffer_pos;
 
         switch (my_state)
         {
             case Wolf_State.IDLE:
                 rigid.velocity = direction.normalized * (movement_speed/2);
+                has_cotton = false;
 
 
                 break;
@@ -141,24 +146,42 @@ public class Wolf_AI : MonoBehaviour
 
     public void OnMouseDrag()
     {
-        _isDragging = true;
-        Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.position = new Vector3(newPosition.x, newPosition.y, transform.position.z);
+        if (my_state != Wolf_State.TALKING)
+        {
+            if (!_isDragging)
+            {
+                buffer_pos = transform.position;
+            }
+            _isDragging = true;
+            Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            transform.position = new Vector3(newPosition.x, newPosition.y, transform.position.z);
+        }
+        else if(!showingX)
+        {
+            StartCoroutine("RefuseTOMove");
+        }
+
 
     }
 
+
     private void OnMouseUp()
     {
-        transform.position = buffer_pos;
-        _isDragging = false;
-        has_cotton = false;
-        if(my_state == Wolf_State.MINING) { my_state = Wolf_State.IDLE; }
+        if (my_state != Wolf_State.TALKING)
+        {
+            transform.position = buffer_pos;
+            _isDragging = false;
+            has_cotton = false;
+
+        }
+        //if(my_state == Wolf_State.MINING) { my_state = Wolf_State.IDLE; }
     }
 
     public void OnMouseEnter()
     {
         // Check that they are idle
-        buffer_pos = transform.position;
+       
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -168,7 +191,6 @@ public class Wolf_AI : MonoBehaviour
             my_state = Wolf_State.MOVING;
             moving_towards_task = false;
         }
-        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -197,12 +219,12 @@ public class Wolf_AI : MonoBehaviour
         
     }
 
-    public void ChangeTask(wolf_task task)
+    public void ChangeTask(wolf_task task, Wolf_State state = Wolf_State.MOVING )
     {
         ResetVelocity();
         my_task = task;
         moving_towards_task = true;
-        my_state = Wolf_State.MOVING;
+        my_state = state;
     }
 
     public void TakeDamage(int amount)
@@ -279,6 +301,18 @@ public class Wolf_AI : MonoBehaviour
         my_state = Wolf_State.IDLE;
         started_talking = false;
         
+    }
+
+    private IEnumerator RefuseTOMove()
+    {
+        showingX = true;
+        for (int i = 0; i <5; ++i)
+        {
+            cross.SetActive(true);
+            yield return new WaitForSecondsRealtime(0.15f);
+            cross.SetActive(false);
+        }
+        showingX = false;
     }
 
     public void ResetVelocity() { rigid.velocity = Vector3.zero; }

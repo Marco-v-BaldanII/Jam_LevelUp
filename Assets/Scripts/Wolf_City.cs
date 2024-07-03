@@ -4,6 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+public enum INTELIGENCE_LEVEL
+{
+    LOW,
+    MID,
+    HIGH
+}
+
+
 public class Wolf_City : wolf_task
 {
     private int num_cotton = 0;
@@ -11,10 +19,13 @@ public class Wolf_City : wolf_task
     public TextMeshProUGUI cotton_counter;
     public TextMeshProUGUI intelligence_counter;
     public ProgressBar intelligence_bar;
+    private Animator animator;
+    public INTELIGENCE_LEVEL intelligence_level = INTELIGENCE_LEVEL.LOW;
 
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         StartCoroutine("BuildCity");
 
     }
@@ -33,7 +44,7 @@ public class Wolf_City : wolf_task
         if (collision.gameObject.CompareTag("Wolf") == true )
         {
             Wolf_AI wolf = collision.GetComponent<Wolf_AI>();
-            if (wolf != null && wolf.has_cotton ) // when the wolf is transporting cotton
+            if (wolf != null && wolf.my_state == Wolf_State.MINING ) // when the wolf is transporting cotton
             {
                 num_cotton++;
                 cotton_counter.text = num_cotton.ToString();
@@ -70,8 +81,10 @@ public class Wolf_City : wolf_task
     {
         yield return new WaitForSeconds(3);
 
-        while (inteligence < 1001)
+        while (intelligence_bar.Get() < 801)
         {
+            HandleCity_Animaions();
+
 
             yield return new WaitForSecondsRealtime(1);
             if (num_wolves > 0)
@@ -90,5 +103,31 @@ public class Wolf_City : wolf_task
         }
 
     }
-   
+
+    void HandleCity_Animaions()
+    {
+        if (intelligence_bar.Get() > 266 && intelligence_level == INTELIGENCE_LEVEL.LOW)
+        {
+            intelligence_level = INTELIGENCE_LEVEL.MID;
+            animator.SetInteger("level", 2);
+        }
+        if (intelligence_bar.Get() > 533 && intelligence_level == INTELIGENCE_LEVEL.MID)
+        {
+            intelligence_level = INTELIGENCE_LEVEL.HIGH;
+            animator.SetInteger("level", 3);
+        }
+
+        if (intelligence_bar.Get() < 266 && intelligence_level == INTELIGENCE_LEVEL.MID)
+        {
+            intelligence_level = INTELIGENCE_LEVEL.LOW;
+            animator.SetInteger("level", 1);
+        }
+        if (intelligence_bar.Get() < 533 && intelligence_level == INTELIGENCE_LEVEL.HIGH)
+        {
+            intelligence_level = INTELIGENCE_LEVEL.MID;
+            animator.SetInteger("level", 2);
+        }
+
+    }
+
 }

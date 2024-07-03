@@ -18,13 +18,19 @@ public class Wolf_City : wolf_task
     private int inteligence = 0;
     public TextMeshProUGUI cotton_counter;
     public TextMeshProUGUI intelligence_counter;
+    public Wolf_Spawner wolf_spawner;
     public ProgressBar intelligence_bar;
     private Animator animator;
     public INTELIGENCE_LEVEL intelligence_level = INTELIGENCE_LEVEL.LOW;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        if (intelligence_bar == null)
+        {
+            GameObject obj = GameObject.Find("Intelligence_Bar");
+            intelligence_bar = obj.GetComponent<ProgressBar>();
+        }
         animator = GetComponent<Animator>();
         StartCoroutine("BuildCity");
 
@@ -128,6 +134,18 @@ public class Wolf_City : wolf_task
             animator.SetInteger("level", 2);
         }
 
+    }
+
+    public int CheckCotton() { return num_cotton; }
+
+    public void AddCotton(int added)
+    {
+        num_cotton += added;
+    }
+
+    public void AddIntelligence(int decrement)
+    {
+        intelligence_bar.Add(decrement);
     }
 
 }

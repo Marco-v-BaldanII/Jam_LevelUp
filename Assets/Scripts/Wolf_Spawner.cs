@@ -19,6 +19,7 @@ public class Wolf_Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(city == null) city = GameManager.Instance.city;
         animator = GetComponent<Animator>();
         SewWolf();
         StartCoroutine("Spawn_Wolfs");
@@ -83,6 +84,11 @@ public class Wolf_Spawner : MonoBehaviour
 
             }
         }
+    }
+
+    public int GetNumWolves()
+    {
+        return active_wolfs.Count();
     }
 
 }

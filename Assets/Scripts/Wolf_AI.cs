@@ -10,7 +10,12 @@ public enum Wolf_State
     TALKING,
     MINING,
     BUILDING,
-    FIGHTING,
+    FIGHTING
+}
+
+public enum Wolf_Mood
+{
+    NORMAL,
     ENRAGED
 }
 
@@ -37,12 +42,15 @@ public class Wolf_AI : MonoBehaviour
     public bool moving_towards_task = false;
     public bool moving_towards_base = false;
 
+    public Color enragedColor = Color.red;
     public bool has_cotton = false;
 
     public int life = 1;
     public int damage;
     public Wolf_State my_state = Wolf_State.IDLE;
+    public Wolf_Mood my_mood = Wolf_Mood.NORMAL;
 
+    private SpriteRenderer spriteRenderer;
     private Sheep targetSheep;
 
     bool showingX = false;
@@ -57,6 +65,8 @@ public class Wolf_AI : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody2D>();
         collider = GetComponent<Collider2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.color = my_mood == Wolf_Mood.ENRAGED ? enragedColor : spriteRenderer.color;
         life = 1;
         damage = 1;
         StartCoroutine("IdleMovement");
@@ -68,68 +78,96 @@ public class Wolf_AI : MonoBehaviour
     {
         buffer.transform.position = buffer_pos;
 
-        switch (my_state)
+        switch (my_mood)
         {
-            case Wolf_State.IDLE:
-                rigid.velocity = direction.normalized * (movement_speed/2);
-                has_cotton = false;
+            case Wolf_Mood.NORMAL:
+
+                switch (my_state)
+                {
+                    case Wolf_State.IDLE:
+                        rigid.velocity = direction.normalized * (movement_speed / 2);
+                        has_cotton = false;
+                        break;
+                    case Wolf_State.MOVING:
+                        if (moving_towards_task && my_task != null)
+                        {
+                            direction = my_task.transform.position - transform.position;
+                            rigid.velocity = direction.normalized * movement_speed;
+
+                        }
+                        else if (has_cotton && my_task != null)
+                        {
+                            direction = wolf_city.transform.position - transform.position;
+                            rigid.velocity = direction.normalized * movement_speed;
+                            Debug.Log("back to base");
+                        }
+                        else if (targetSheep != null)
+                        {
+                            direction = targetSheep.transform.position - transform.position;
+                            rigid.velocity = direction.normalized * movement_speed;
+                            Debug.Log("Targeted sheep");
+                        }
+                        break;
+                    case Wolf_State.MINING:
+                        if (moving_towards_task && my_task != null)
+                        {
+                            direction = my_task.transform.position - transform.position;
+                            rigid.velocity = direction.normalized * movement_speed;
+
+                        }
+                        else if (has_cotton && my_task != null)
+                        {
+                            direction = wolf_city.transform.position - transform.position;
+                            rigid.velocity = direction.normalized * movement_speed;
+                            Debug.Log("back to base");
+                        }
+                        break;
+                    case Wolf_State.FIGHTING:
+                        StopMovement();
+                        break;
+                    case Wolf_State.TALKING:
+
+                        direction = talking_pos - transform.position;
+                        rigid.velocity = direction.normalized * movement_speed;
+
+                        if (Vector2.Distance(transform.position, talking_pos) <= 2 && started_talking == false)
+                        {
+                            started_talking = true;
+                            StartCoroutine("Talk");
+                        }
+
+                        break;
 
 
+                }
                 break;
-            case Wolf_State.MOVING:
-                if (moving_towards_task && my_task != null)
-                {
-                    direction = my_task.transform.position - transform.position;
-                    rigid.velocity = direction.normalized * movement_speed;
 
-                }
-                else if (has_cotton && my_task != null)
+            case Wolf_Mood.ENRAGED:
+                switch(my_state)
                 {
-                    direction = wolf_city.transform.position - transform.position;
-                    rigid.velocity = direction.normalized * movement_speed;
-                    Debug.Log("back to base");
-                }
-                else if (targetSheep != null)
-                {
-                    direction = targetSheep.transform.position - transform.position;
-                    rigid.velocity = direction.normalized * movement_speed;
-                    Debug.Log("Targeted sheep");
-                }
-                break;
-            case Wolf_State.MINING:
-                if (moving_towards_task && my_task != null)
-                {
-                    direction = my_task.transform.position - transform.position;
-                    rigid.velocity = direction.normalized * movement_speed;
+                    case Wolf_State.IDLE:
+                        rigid.velocity = direction.normalized * (movement_speed / 2);
+                        has_cotton = false;
+                        break;
+                    case Wolf_State.FIGHTING:
+                        StopMovement();
+                        break;
+                    case Wolf_State.TALKING:
+                        direction = talking_pos - transform.position;
+                        rigid.velocity = direction.normalized * movement_speed;
 
-                }
-                else if (has_cotton && my_task != null)
-                {
-                    direction = wolf_city.transform.position - transform.position;
-                    rigid.velocity = direction.normalized * movement_speed;
-                    Debug.Log("back to base");
+                        if (Vector2.Distance(transform.position, talking_pos) <= 2 && started_talking == false)
+                        {
+                            started_talking = true;
+                            StartCoroutine("Talk");
+                        }
+
+                        break;
+
                 }
                 break;
-            case Wolf_State.FIGHTING:
-                StopMovement();
-                break;
-            case Wolf_State.TALKING:
-
-                direction = talking_pos - transform.position;
-                rigid.velocity = direction.normalized * movement_speed;
-
-                if(Vector2.Distance(transform.position, talking_pos) <= 2 && started_talking == false)
-                {
-                    started_talking = true;
-                    StartCoroutine("Talk");
-                }
-
-                break;
-
-           
-
-
         }
+
 
 
 
@@ -146,7 +184,7 @@ public class Wolf_AI : MonoBehaviour
 
     public void OnMouseDrag()
     {
-        if (my_state != Wolf_State.TALKING)
+        if (my_state != Wolf_State.TALKING || my_mood != Wolf_Mood.ENRAGED)
         {
             if (!_isDragging)
             {
@@ -167,7 +205,7 @@ public class Wolf_AI : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (my_state != Wolf_State.TALKING)
+        if (my_state != Wolf_State.TALKING || my_mood != Wolf_Mood.ENRAGED)
         {
             transform.position = buffer_pos;
             _isDragging = false;
@@ -186,7 +224,7 @@ public class Wolf_AI : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Task") == true && _isDragging == false)
+        if ((collision.gameObject.CompareTag("Task") == true && _isDragging == false) || my_mood != Wolf_Mood.ENRAGED)
         {
             my_state = Wolf_State.MOVING;
             moving_towards_task = false;
@@ -221,10 +259,14 @@ public class Wolf_AI : MonoBehaviour
 
     public void ChangeTask(wolf_task task, Wolf_State state = Wolf_State.MOVING )
     {
-        ResetVelocity();
-        my_task = task;
-        moving_towards_task = true;
-        my_state = state;
+        if(my_mood != Wolf_Mood.ENRAGED)
+        {
+            ResetVelocity();
+            my_task = task;
+            moving_towards_task = true;
+            my_state = state;
+        }    
+             
     }
 
     public void TakeDamage(int amount)

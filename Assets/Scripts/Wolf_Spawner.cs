@@ -33,10 +33,16 @@ public class Wolf_Spawner : MonoBehaviour
 
     void SewWolf()
     {
-        // Include probability of spawning enraged wolf
         GameObject wolf = Instantiate(wolf_prefab, spawn_point.position, transform.rotation, transform);
         Wolf_AI w = wolf.GetComponent<Wolf_AI>();
         w.wolf_city = city.gameObject;
+
+        // Set intial state to ENRAGED  with a certain probability
+        if (Random.Range(0,100) < 70)
+        {
+            w.my_mood = Wolf_Mood.ENRAGED;
+            Debug.Log("Generated enraged wolf");
+        }
         active_wolfs.Add(w);
     }
 
@@ -61,14 +67,14 @@ public class Wolf_Spawner : MonoBehaviour
 
             for (int i = 0; i < active_wolfs.Count(); ++i)
             {
-                if (active_wolfs[i].my_state != Wolf_State.ENRAGED && active_wolfs[i].my_state != Wolf_State.FIGHTING)
+                if (active_wolfs[i].my_state != Wolf_State.FIGHTING)
                 {
                     wolf1 = active_wolfs[i];
                 }
             }
             for (int i = 0; i < active_wolfs.Count(); ++i)
             {
-                if (active_wolfs[i].my_state != Wolf_State.ENRAGED && active_wolfs[i].my_state != Wolf_State.FIGHTING && wolf1 != null && wolf1 != active_wolfs[i])
+                if (active_wolfs[i].my_state != Wolf_State.FIGHTING && wolf1 != null && wolf1 != active_wolfs[i])
                 {
                     wolf2 = active_wolfs[i];
                 }

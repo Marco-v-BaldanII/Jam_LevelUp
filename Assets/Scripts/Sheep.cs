@@ -66,7 +66,7 @@ public class Sheep : MonoBehaviour
         if (collision.gameObject.CompareTag("Wolf"))
         {
             Wolf_AI wolf = collision.gameObject.GetComponent<Wolf_AI>();
-            if (wolf != null)
+            if (wolf != null && wolf._isDragging == false)
             {
                 TakeDamage(damage);
                 wolf.TakeDamage(damage);

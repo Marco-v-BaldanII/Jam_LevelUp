@@ -38,7 +38,7 @@ public class Wolf_Spawner : MonoBehaviour
         w.wolf_city = city.gameObject;
 
         // Set intial state to ENRAGED  with a certain probability
-        if (Random.Range(0,100) < 70)
+        if (Random.Range(0,100) < 20)
         {
             w.my_mood = Wolf_Mood.ENRAGED;
             Debug.Log("Generated enraged wolf");

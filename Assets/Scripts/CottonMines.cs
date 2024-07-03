@@ -10,11 +10,12 @@ public class CottonMines : wolf_task
     int num_cotton = 0;
 
     private bool mining = false;
+    public float mine_time = 3.0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -41,9 +42,10 @@ public class CottonMines : wolf_task
             int w_index = 0;
             while (my_wolfs[w_index % num_wolves].has_cotton == true) { w_index++; yield return null; if (num_wolves <= 0) { break; } }
             if (num_wolves <= 0) { break; }
-                my_wolfs[w_index % num_wolves].has_cotton = true; // Give Cotton to cottonless wolf
-            
- 
+            my_wolfs[w_index % num_wolves].has_cotton = true; // Give Cotton to cottonless wolf
+            my_wolfs[w_index % num_wolves].moving_towards_task = false;
+            yield return new WaitForSecondsRealtime(mine_time / num_wolves);
+
 
         }
 
@@ -52,6 +54,14 @@ public class CottonMines : wolf_task
     public override void OnTriggerExit2D(Collider2D collision)
     {
         base.OnTriggerExit2D(collision);
+        if (collision.gameObject.CompareTag("Wolf") == true)
+        {
+            Wolf_AI wolf = collision.GetComponent<Wolf_AI>();
+            if (wolf != null && wolf.has_cotton == true)
+            {
+                wolf.my_state = Wolf_State.MINING;
+            }
+        }
     }
 
 }

@@ -36,7 +36,7 @@ public class wolf_task : MonoBehaviour
             {
                 current_wolf = wolf;
                 current_wolf.ChangeTask(this);
-                if (! my_wolfs.Contains(wolf))
+                if (! my_wolfs.Contains(wolf) && !wolf._isDragging)
                 {
                     my_wolfs.Add(current_wolf);
                 }

@@ -40,4 +40,5 @@ public class ProgressBar : MonoBehaviour
         slider.value += value;
     }
 
+    public float Get() { return slider.value; }
 }

@@ -6,7 +6,6 @@ public enum Sheep_State
 {
     IDLE, 
     FIGHTING,
-
 }
 
 public class Sheep : MonoBehaviour
@@ -45,13 +44,11 @@ public class Sheep : MonoBehaviour
                 break;
 
             case Sheep_State.FIGHTING:
-                StopMovement();
+                StartCoroutine(HandleFightingState());
                 break;
 
-
         }
-       
-        
+             
         /*
          * if (angered)
          * {
@@ -68,7 +65,6 @@ public class Sheep : MonoBehaviour
     void MoveTowardsDestination()
     {
         // Sheep moves to the designated destination
-        //transform.position = Vector3.MoveTowards(transform.position, destination, moveSpeed * Time.deltaTime);
         transform.position = Vector2.MoveTowards(transform.position, destination.position, moveSpeed * Time.deltaTime);
 
         // Checks if the sheep has arrived to the destination
@@ -79,20 +75,6 @@ public class Sheep : MonoBehaviour
         }
         
 
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Wolf"))
-        {
-            //Wolf_AI wolf = collision.gameObject.GetComponent<Wolf_AI>();
-            //if (wolf != null)
-            //{
-            //    TakeDamage(damage);
-            //    wolf.TakeDamage(damage);
-            //}
-
-        }
     }
 
     public void TakeDamage(int amount)
@@ -112,5 +94,18 @@ public class Sheep : MonoBehaviour
     public void StopMovement()
     {
         shouldMove = false;
+    }
+
+    private IEnumerator HandleFightingState()
+    {
+        // Stop movement immendiately
+        StopMovement();
+
+        // Wait for 1 second
+        yield return new WaitForSeconds(1);
+
+        // Change state back to IDLE and resume movement
+        my_State = Sheep_State.IDLE;
+        shouldMove = true;
     }
 }

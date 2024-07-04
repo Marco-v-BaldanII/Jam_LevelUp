@@ -7,9 +7,12 @@ public class Card : MonoBehaviour
 {
     public int cardID;
     public Image cardImage;
-    private Circle_Timer timer;
+    public Circle_Timer timer;
     private Button myButton;
     public int cost = 5;
+    public float wait_time = 15.0f;
+
+
     public Wolf_City city;
     public Building god_event;
 
@@ -19,13 +22,13 @@ public class Card : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(city == null) city = GameManager.Instance.city;
+
         cardImage = GetComponent<Image>();
     
         myButton = GetComponent<Button>();
-        timer = GetComponentInChildren<Circle_Timer>();
+        
         InitialiseCard();
-
+        timer.Init(wait_time);
      
 
     }

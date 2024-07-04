@@ -11,6 +11,7 @@ public enum Wolf_State
     MINING,
     BUILDING,
     FIGHTING,
+    PLAYING,
     ENRAGED
 }
 
@@ -54,12 +55,16 @@ public class Wolf_AI : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Sheep targetSheep;
 
+    private Vector3 library_pos;
+
     bool showingX = false;
    
 
     private Vector3 talking_pos;
     bool right_talk;
     bool started_talking = false;
+
+    private Vector3 task_pos_offset = Vector2.zero;
 
     // Start is called before the first frame update
     void Start()
@@ -71,6 +76,7 @@ public class Wolf_AI : MonoBehaviour
         life = 1;
         damage = 1;
         StartCoroutine("IdleMovement");
+        StartCoroutine("Task_Offset");
 
     }
 
@@ -93,13 +99,13 @@ public class Wolf_AI : MonoBehaviour
                     case Wolf_State.MOVING:
                         if (moving_towards_task && my_task != null)
                         {
-                            direction = my_task.transform.position - transform.position;
+                            direction = my_task.transform.position + task_pos_offset - transform.position;
                             rigid.velocity = direction.normalized * movement_speed;
 
                         }
                         else if (has_cotton && my_task != null)
                         {
-                            direction = wolf_city.transform.position - transform.position;
+                            direction = wolf_city.transform.position + task_pos_offset - transform.position;
                             rigid.velocity = direction.normalized * movement_speed;
                             Debug.Log("back to base");
                         }
@@ -113,13 +119,13 @@ public class Wolf_AI : MonoBehaviour
                     case Wolf_State.MINING:
                         if (moving_towards_task && my_task != null)
                         {
-                            direction = my_task.transform.position - transform.position;
+                            direction = my_task.transform.position + task_pos_offset - transform.position;
                             rigid.velocity = direction.normalized * movement_speed;
 
                         }
                         else if (has_cotton && my_task != null)
                         {
-                            direction = wolf_city.transform.position - transform.position;
+                            direction = wolf_city.transform.position + task_pos_offset - transform.position;
                             rigid.velocity = direction.normalized * movement_speed;
                             Debug.Log("back to base");
                         }
@@ -138,6 +144,11 @@ public class Wolf_AI : MonoBehaviour
                             StartCoroutine("Talk");
                         }
 
+                        break;
+                    case Wolf_State.PLAYING:
+                        direction = library_pos - transform.position;
+                        rigid.velocity = direction.normalized * movement_speed;
+                        spriteRenderer.color = Color.cyan;
                         break;
                 }
                 break;
@@ -165,7 +176,7 @@ public class Wolf_AI : MonoBehaviour
 
     public void OnMouseDrag()
     {
-        if (my_state != Wolf_State.TALKING || my_mood != Wolf_Mood.ENRAGED)
+        if (my_state != Wolf_State.TALKING && my_state != Wolf_State.PLAYING && my_mood != Wolf_Mood.ENRAGED)
         {
             if (!_isDragging)
             {
@@ -186,7 +197,7 @@ public class Wolf_AI : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (my_state != Wolf_State.TALKING || my_mood != Wolf_Mood.ENRAGED)
+        if (my_state != Wolf_State.TALKING && my_state != Wolf_State.PLAYING && my_mood != Wolf_Mood.ENRAGED)
         {
             transform.position = buffer_pos;
             _isDragging = false;
@@ -338,5 +349,29 @@ public class Wolf_AI : MonoBehaviour
     }
 
     public void ResetVelocity() { rigid.velocity = Vector3.zero; }
+
+
+    public void StartPlayTime(Transform library)
+    {
+        library_pos = new Vector3(library.position.x + Random.Range(-2.0f,2.0f), library.position.y + Random.Range(-1.0f, 1.0f), library.position.z);
+        my_state = Wolf_State.PLAYING;
+        my_task = null;
+        has_cotton = false;
+    }
+
+    public void Back_To_Idle()
+    {
+        my_state = Wolf_State.IDLE;
+        spriteRenderer.color = Color.white;
+    }
+
+    private IEnumerator Task_Offset()
+    {
+        while(my_mood == Wolf_Mood.NORMAL)
+        {
+            yield return new WaitForSecondsRealtime(1.0f);
+            task_pos_offset = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f));
+        }
+    }
 
 }

@@ -2,17 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Monument : Building
+public class Blibioteca : Building
 {
     // Start is called before the first frame update
-
-    private void Start()
+    void Start()
     {
         base.Start();
-        StartCoroutine("Raise_Faith");
-
+        StartCoroutine("StartReading");
     }
-
 
     // Update is called once per frame
     void Update()
@@ -21,13 +18,14 @@ public class Monument : Building
     }
 
 
-    private IEnumerator Raise_Faith()
+    private IEnumerator StartReading()
     {
         while (alive_time > 0)
         {
             yield return new WaitForSecondsRealtime(0.5f);
-            civilization.AddIntelligence(-civilization.wolf_spawner.GetNumWolves());
+            civilization.AddIntelligence(civilization.wolf_spawner.GetNumWolves() *5);
         }
+
 
     }
 

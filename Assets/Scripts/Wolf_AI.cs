@@ -72,7 +72,6 @@ public class Wolf_AI : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         collider = GetComponent<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.color = my_mood == Wolf_Mood.ENRAGED ? enragedColor : spriteRenderer.color;
         life = 1;
         damage = 1;
         StartCoroutine("IdleMovement");
@@ -159,6 +158,20 @@ public class Wolf_AI : MonoBehaviour
                         rigid.velocity = direction.normalized * (movement_speed / 2);
                         has_cotton = false;
                         break;
+                    case Wolf_State.TALKING:
+
+                        direction = talking_pos - transform.position;
+                        rigid.velocity = direction.normalized * movement_speed;
+
+                        if (Vector2.Distance(transform.position, talking_pos) <= 2 && started_talking == false)
+                        {
+                            started_talking = true;
+                            StartCoroutine("Talk");
+                        }
+                        break;
+                    case Wolf_State.FIGHTING:
+                        StopMovement();
+                        break;
                 }
                 break;
 
@@ -171,6 +184,8 @@ public class Wolf_AI : MonoBehaviour
         {
             marshmallow.SetActive(has_cotton);
         }
+
+        spriteRenderer.color = my_mood == Wolf_Mood.ENRAGED ? enragedColor : spriteRenderer.color;
 
     }
 

@@ -42,6 +42,7 @@ public class Wolf_Spawner : MonoBehaviour
         Wolf_AI w = wolf.GetComponent<Wolf_AI>();
         w.wolf_city = city.gameObject;
 
+
         if (Random.Range(0,100)< enraged_probability)
         {
             w.my_mood = Wolf_Mood.ENRAGED;
@@ -90,7 +91,19 @@ public class Wolf_Spawner : MonoBehaviour
                 Vector3 dest = talk_positions[Random.Range(0, talk_positions.Length)].position;
                 wolf1.StartTalking(dest, true); wolf2.StartTalking(dest, false);
 
-
+                // Check if wolf1 is normal and wolf2 is enraged
+                if(wolf1.my_mood == Wolf_Mood.NORMAL && wolf2.my_mood == Wolf_Mood.ENRAGED)
+                {
+                    yield return new WaitForSeconds(3);
+                    wolf1.my_mood = Wolf_Mood.ENRAGED;
+                    Debug.Log("Normal wolf became enraged!");
+                }
+                else if (wolf1.my_mood == Wolf_Mood.ENRAGED && wolf2.my_mood==Wolf_Mood.NORMAL)
+                {
+                    yield return new WaitForSeconds(3);
+                    wolf2.my_mood = Wolf_Mood.ENRAGED;
+                    Debug.Log("Normal wolf became enraged!");
+                }
 
             }
         }

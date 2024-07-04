@@ -13,7 +13,6 @@ public enum Wolf_State
     FIGHTING,
     PLAYING,
     WALKING_TO_NOTHING,
-    ENRAGED
 }
 
 public enum Wolf_Mood
@@ -55,6 +54,7 @@ public class Wolf_AI : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
     private Sheep targetSheep;
+    private Wolf_AI targetEnragedWolf;
 
     private Vector3 library_pos;
     private Vector3 nothing_direction;
@@ -74,6 +74,15 @@ public class Wolf_AI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (my_mood == Wolf_Mood.ENRAGED)
+        {
+            gameObject.layer = LayerMask.NameToLayer("EnragedWolf");
+        }
+        else
+        {
+            gameObject.layer = LayerMask.NameToLayer("Wolf");
+        }
+
         rigid = GetComponent<Rigidbody2D>();
         collider = GetComponent<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -120,6 +129,12 @@ public class Wolf_AI : MonoBehaviour
                             direction = targetSheep.transform.position - transform.position;
                             rigid.velocity = direction.normalized * movement_speed;
                             Debug.Log("Targeted sheep");
+                        }
+                        else if (targetEnragedWolf != null)
+                        {
+                            direction = targetEnragedWolf.transform.position - transform.position;
+                            rigid.velocity = direction.normalized * movement_speed;
+                            Debug.Log("Targeted enraged wolf");
                         }
                         break;
                     case Wolf_State.MINING:
@@ -225,6 +240,7 @@ public class Wolf_AI : MonoBehaviour
             _isDragging = true;
             Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             transform.position = new Vector3(newPosition.x, newPosition.y, transform.position.z);
+            collider.isTrigger = true;
         }
         else if(!showingX)
         {
@@ -254,8 +270,11 @@ public class Wolf_AI : MonoBehaviour
             transform.position = buffer_pos;
             _isDragging = false;
             has_cotton = false;
-
+            
         }
+
+        collider.isTrigger = false;
+        //if(my_state == Wolf_State.MINING) { my_state = Wolf_State.IDLE; }
 
     }
 
@@ -296,11 +315,9 @@ public class Wolf_AI : MonoBehaviour
             whistled = false;
 
         }
-    }
+    
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Sheep") == true)
+        if(collision.gameObject.CompareTag("Sheep") == true)
         {
             Sheep sheep = collision.gameObject.GetComponent<Sheep>();
             if (sheep != null && _isDragging == true)
@@ -311,7 +328,28 @@ public class Wolf_AI : MonoBehaviour
                 has_cotton = false;
 
             }
-            else if (sheep != null && !_isDragging)
+        }
+
+        if (collision.gameObject.CompareTag("Wolf") == true)
+        {
+            Wolf_AI wolf = collision.gameObject.GetComponent<Wolf_AI>();
+            if (wolf != null && _isDragging == true && wolf.my_mood == Wolf_Mood.ENRAGED)
+            {
+                targetEnragedWolf = wolf;
+                my_state = Wolf_State.MOVING;
+                my_task = null;
+                has_cotton = false;
+            }
+        }
+
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Sheep") == true)
+        {
+            Sheep sheep = collision.gameObject.GetComponent<Sheep>();
+            if (sheep != null && !_isDragging)
             {
                 my_state = Wolf_State.FIGHTING;
                 TakeDamage(sheep.damage);
@@ -321,7 +359,23 @@ public class Wolf_AI : MonoBehaviour
 
         }
 
-        
+        if(targetEnragedWolf != null)
+        {
+            Debug.Log("Auu");
+            if (collision.gameObject.CompareTag("Wolf") == true)
+            {
+                Wolf_AI wolf = collision.gameObject.GetComponent<Wolf_AI>();
+                if (wolf != null && !_isDragging && wolf.my_mood == Wolf_Mood.ENRAGED)
+                {
+                    my_state = Wolf_State.FIGHTING;
+                    TakeDamage(wolf.damage);
+                    wolf.TakeDamage(damage);
+                    wolf.my_state = Wolf_State.FIGHTING;
+                }
+            }
+        }
+
+
     }
 
     public void ChangeTask(wolf_task task, Wolf_State state = Wolf_State.MOVING )

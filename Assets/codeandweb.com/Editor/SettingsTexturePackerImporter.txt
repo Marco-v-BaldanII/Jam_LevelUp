@@ -14,6 +14,7 @@ tpsheetFileNames:
 - Assets/Sprites/oveja_fea_confusa_run.tpsheet
 - Assets/Sprites/oveja_fea_enojada_run.tpsheet
 - Assets/Sprites/oveja_guapa_run.tpsheet
+- Assets/Sprites/tapete_juegos.tpsheet
 textureFileNames:
 - Assets/Sprites/lobo_bronce_idle.png
 - Assets/Sprites/lobo_bronce_run.png
@@ -29,7 +30,9 @@ textureFileNames:
 - Assets/Sprites/oveja_fea_confusa_run.png
 - Assets/Sprites/oveja_fea_enojada_run.png
 - Assets/Sprites/oveja_guapa_run.png
+- Assets/Sprites/tapete_juegos.png
 normalmapFileNames:
+- 
 - 
 - 
 - 

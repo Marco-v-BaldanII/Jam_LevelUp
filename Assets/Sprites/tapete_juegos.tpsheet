@@ -1,0 +1,40 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:1d695456c3dab8d80769c069a602ef54:39f934ae4798649b2e2f1fb5a08a0401:be4ca452d134fe238f24d5787bf68cb7$
+#
+:format=40300
+:texture=tapete_juegos.png
+:size=2048x2048
+:pivotpoints=enabled
+:borders=disabled
+:alphahandling=ClearTransparentPixels
+
+tapete_stop_01;1;1697;525;350; 0.5;0.5; 0;0;0;0
+tapete_working_01;1;1697;525;350; 0.5;0.5; 0;0;0;0
+tapete_working_02;1;1697;525;350; 0.5;0.5; 0;0;0;0
+tapete_working_03;1;1697;525;350; 0.5;0.5; 0;0;0;0
+tapete_working_04;528;1697;525;350; 0.5;0.5; 0;0;0;0
+tapete_working_05;528;1697;525;350; 0.5;0.5; 0;0;0;0
+tapete_working_06;528;1697;525;350; 0.5;0.5; 0;0;0;0
+tapete_working_07;1055;1697;525;350; 0.5;0.5; 0;0;0;0
+tapete_working_08;1055;1697;525;350; 0.5;0.5; 0;0;0;0
+tapete_working_09;1055;1697;525;350; 0.5;0.5; 0;0;0;0
+tapete_working_10;1;1345;525;350; 0.5;0.5; 0;0;0;0
+tapete_working_11;1;1345;525;350; 0.5;0.5; 0;0;0;0
+tapete_working_12;1;1345;525;350; 0.5;0.5; 0;0;0;0
+tapete_working_13;528;1345;525;350; 0.5;0.5; 0;0;0;0
+tapete_working_14;528;1345;525;350; 0.5;0.5; 0;0;0;0
+tapete_working_15;528;1345;525;350; 0.5;0.5; 0;0;0;0
+tapete_working_16;1055;1345;525;350; 0.5;0.5; 0;0;0;0
+tapete_working_17;1055;1345;525;350; 0.5;0.5; 0;0;0;0
+tapete_working_18;1055;1345;525;350; 0.5;0.5; 0;0;0;0
+tapete_working_19;1;993;525;350; 0.5;0.5; 0;0;0;0
+tapete_working_20;1;993;525;350; 0.5;0.5; 0;0;0;0
+tapete_working_21;1;993;525;350; 0.5;0.5; 0;0;0;0
+tapete_working_22;528;993;525;350; 0.5;0.5; 0;0;0;0
+tapete_working_23;528;993;525;350; 0.5;0.5; 0;0;0;0
+tapete_working_24;528;993;525;350; 0.5;0.5; 0;0;0;0

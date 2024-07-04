@@ -1,0 +1,27 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:da70d46774704e1b54fb4ca8deba7917:91da7648d7776c4ae8fdff4532d973c1:2252be997a343fb3dca845a49922d0af$
+#
+:format=40300
+:texture=oveja_fea_confusa_run.png
+:size=1024x1024
+:pivotpoints=enabled
+:borders=disabled
+:alphahandling=ClearTransparentPixels
+
+oveja_confusa_run_01;1;573;380;450; 0.5;0.09999999999999998; 0;0;0;0
+oveja_confusa_run_02;1;573;380;450; 0.5;0.09999999999999998; 0;0;0;0
+oveja_confusa_run_03;1;573;380;450; 0.5;0.09999999999999998; 0;0;0;0
+oveja_confusa_run_04;383;573;380;450; 0.5;0.09999999999999998; 0;0;0;0
+oveja_confusa_run_05;383;573;380;450; 0.5;0.09999999999999998; 0;0;0;0
+oveja_confusa_run_06;383;573;380;450; 0.5;0.09999999999999998; 0;0;0;0
+oveja_confusa_run_07;1;121;380;450; 0.5;0.09999999999999998; 0;0;0;0
+oveja_confusa_run_08;1;121;380;450; 0.5;0.09999999999999998; 0;0;0;0
+oveja_confusa_run_09;1;121;380;450; 0.5;0.09999999999999998; 0;0;0;0
+oveja_confusa_run_10;383;121;380;450; 0.5;0.09999999999999998; 0;0;0;0
+oveja_confusa_run_11;383;121;380;450; 0.5;0.09999999999999998; 0;0;0;0
+oveja_confusa_run_12;383;121;380;450; 0.5;0.09999999999999998; 0;0;0;0

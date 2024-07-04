@@ -1,0 +1,27 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:74bb0c1ad5db57ac63e4951d5abbaeef:e080fcac91ecc4266aeb0b43b0c6b1ad:aee45483c0c499eb4ab9dbeafe7a5613$
+#
+:format=40300
+:texture=lobo_roto_idle.png
+:size=1024x512
+:pivotpoints=enabled
+:borders=disabled
+:alphahandling=ClearTransparentPixels
+
+lobo_roto_idle_01;1;161;300;350; 0.5;0.09999999999999998; 0;0;0;0
+lobo_roto_idle_02;1;161;300;350; 0.5;0.09999999999999998; 0;0;0;0
+lobo_roto_idle_03;1;161;300;350; 0.5;0.09999999999999998; 0;0;0;0
+lobo_roto_idle_04;303;161;300;350; 0.5;0.09999999999999998; 0;0;0;0
+lobo_roto_idle_05;303;161;300;350; 0.5;0.09999999999999998; 0;0;0;0
+lobo_roto_idle_06;303;161;300;350; 0.5;0.09999999999999998; 0;0;0;0
+lobo_roto_idle_07;605;161;300;350; 0.5;0.09999999999999998; 0;0;0;0
+lobo_roto_idle_08;605;161;300;350; 0.5;0.09999999999999998; 0;0;0;0
+lobo_roto_idle_09;605;161;300;350; 0.5;0.09999999999999998; 0;0;0;0
+lobo_roto_idle_10;303;161;300;350; 0.5;0.09999999999999998; 0;0;0;0
+lobo_roto_idle_11;303;161;300;350; 0.5;0.09999999999999998; 0;0;0;0
+lobo_roto_idle_12;303;161;300;350; 0.5;0.09999999999999998; 0;0;0;0

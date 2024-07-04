@@ -1,0 +1,27 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:58a89bce70575a99c7b30c2269450cb4:d520783b7cfcd58a0d9f2dfe3f4eda70:fa2b26735d299df858670daeb122d964$
+#
+:format=40300
+:texture=lobo_normal.run.png
+:size=1024x2048
+:pivotpoints=enabled
+:borders=disabled
+:alphahandling=ClearTransparentPixels
+
+lobo_normal_run_01;1;1697;300;350; 0.5;0.09999999999999998; 0;0;0;0
+lobo_normal_run_02;303;1697;300;350; 0.5;0.09999999999999998; 0;0;0;0
+lobo_normal_run_03;605;1697;300;350; 0.5;0.09999999999999998; 0;0;0;0
+lobo_normal_run_04;1;1345;300;350; 0.5;0.09999999999999998; 0;0;0;0
+lobo_normal_run_05;303;1345;300;350; 0.5;0.09999999999999998; 0;0;0;0
+lobo_normal_run_06;605;1345;300;350; 0.5;0.09999999999999998; 0;0;0;0
+lobo_normal_run_07;1;993;300;350; 0.5;0.09999999999999998; 0;0;0;0
+lobo_normal_run_08;303;993;300;350; 0.5;0.09999999999999998; 0;0;0;0
+lobo_normal_run_09;605;993;300;350; 0.5;0.09999999999999998; 0;0;0;0
+lobo_normal_run_010;1;641;300;350; 0.5;0.09999999999999998; 0;0;0;0
+lobo_normal_run_11;303;641;300;350; 0.5;0.09999999999999998; 0;0;0;0
+lobo_normal_run_012;605;641;300;350; 0.5;0.09999999999999998; 0;0;0;0

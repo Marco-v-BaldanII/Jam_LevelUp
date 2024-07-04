@@ -1,0 +1,27 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:f0e5e43e824896f5396ef06010f53a92:582a1a2bd7487fa19dc18a48a64ee805:f88acb0fd7326aede7cff45d94961879$
+#
+:format=40300
+:texture=oveja_fea_enojada_run.png
+:size=1024x1024
+:pivotpoints=enabled
+:borders=disabled
+:alphahandling=ClearTransparentPixels
+
+oveja_sucia_run_01;1;573;380;450; 0.5;0.09999999999999998; 0;0;0;0
+oveja_sucia_run_02;1;573;380;450; 0.5;0.09999999999999998; 0;0;0;0
+oveja_sucia_run_03;1;573;380;450; 0.5;0.09999999999999998; 0;0;0;0
+oveja_sucia_run_04;383;573;380;450; 0.5;0.09999999999999998; 0;0;0;0
+oveja_sucia_run_05;383;573;380;450; 0.5;0.09999999999999998; 0;0;0;0
+oveja_sucia_run_06;383;573;380;450; 0.5;0.09999999999999998; 0;0;0;0
+oveja_sucia_run_07;1;121;380;450; 0.5;0.09999999999999998; 0;0;0;0
+oveja_sucia_run_08;1;121;380;450; 0.5;0.09999999999999998; 0;0;0;0
+oveja_sucia_run_09;1;121;380;450; 0.5;0.09999999999999998; 0;0;0;0
+oveja_sucia_run_10;383;121;380;450; 0.5;0.09999999999999998; 0;0;0;0
+oveja_sucia_run_11;383;121;380;450; 0.5;0.09999999999999998; 0;0;0;0
+oveja_sucia_run_12;383;121;380;450; 0.5;0.09999999999999998; 0;0;0;0

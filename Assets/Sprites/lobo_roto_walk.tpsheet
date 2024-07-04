@@ -1,0 +1,27 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:a5d9ce377ede29ac3bc4d728d8d3098e:b593d23a44c547a901bfa163da7f30a8:2df026130ba159e6ff3b5a727e3eac1c$
+#
+:format=40300
+:texture=lobo_roto_walk.png
+:size=1024x1024
+:pivotpoints=enabled
+:borders=disabled
+:alphahandling=ClearTransparentPixels
+
+lobo_roto_walk_01;1;673;300;350; 0.5;0.5; 0;0;0;0
+lobo_roto_walk_02;1;673;300;350; 0.5;0.5; 0;0;0;0
+lobo_roto_walk_03;1;673;300;350; 0.5;0.5; 0;0;0;0
+lobo_roto_walk_04;303;673;300;350; 0.5;0.5; 0;0;0;0
+lobo_roto_walk_05;303;673;300;350; 0.5;0.5; 0;0;0;0
+lobo_roto_walk_06;303;673;300;350; 0.5;0.5; 0;0;0;0
+lobo_roto_walk_07;605;673;300;350; 0.5;0.5; 0;0;0;0
+lobo_roto_walk_08;605;673;300;350; 0.5;0.5; 0;0;0;0
+lobo_roto_walk_09;605;673;300;350; 0.5;0.5; 0;0;0;0
+lobo_roto_walk_10;1;321;300;350; 0.5;0.5; 0;0;0;0
+lobo_roto_walk_11;1;321;300;350; 0.5;0.5; 0;0;0;0
+lobo_roto_walk_12;1;321;300;350; 0.5;0.5; 0;0;0;0

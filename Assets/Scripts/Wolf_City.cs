@@ -26,9 +26,6 @@ public class Wolf_City : wolf_task
     private Animator animator;
     public INTELIGENCE_LEVEL intelligence_level = INTELIGENCE_LEVEL.LOW;
 
-    protected List<Sheep> my_sheep = new List<Sheep>();
-    protected Sheep current_sheep;
-
     // Start is called before the first frame update
     void Awake()
     {
@@ -46,9 +43,7 @@ public class Wolf_City : wolf_task
     void Update()
     {
         base.Update();
-
    
-
     }
 
     public override  void OnTriggerEnter2D(Collider2D collision)
@@ -75,16 +70,17 @@ public class Wolf_City : wolf_task
         }
         if (collision.gameObject.CompareTag("Sheep") == true)
         {
-
-            Sheep sheep = collider.GetComponent<Sheep>();
-            if(sheep != null)
+            Sheep sheep = collision.gameObject.GetComponent<Sheep>();
+            if (sheep != null)
             {
-                my_sheep.Add(sheep);
+                StartCoroutine(sheep.DestroyCity());
                 current_sheep = sheep;
-
+                my_sheep.Add(current_sheep);
+       
             }
 
         }
+
     }
 
     public override void OnTriggerExit2D(Collider2D collision)
@@ -97,9 +93,15 @@ public class Wolf_City : wolf_task
                 my_wolfs.Remove(wolf);
             }
         }
+        if (collision.gameObject.CompareTag("Sheep") == true)
+        {
+            Sheep sheep = collision.GetComponent<Sheep>();
+            if (sheep != null && my_sheep.Contains(sheep) == true)
+            {
+                my_sheep.Remove(sheep);
+            }
+        }
     }
-
-
 
     private IEnumerator BuildCity()
     {
@@ -117,12 +119,20 @@ public class Wolf_City : wolf_task
                 intelligence_bar.Add(2 * num_wolves);
               
             }
+            if (num_sheep > 0)
+            {
+
+                intelligence_bar.Add(-6 * num_sheep);
+
+            }
             else
             {
               
                 intelligence_bar.Add(-1);
                
             }
+            
+
 
         }
 

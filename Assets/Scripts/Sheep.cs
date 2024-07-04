@@ -12,6 +12,8 @@ public class Sheep : MonoBehaviour
 {
     public float moveSpeed = 5;
     public Transform destination;
+    public Vector3 initialPosition;
+    public Vector3 actualDestination;
     public int damage;
     public bool angered;
     public int life;
@@ -23,9 +25,10 @@ public class Sheep : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       // destination = new Vector2(10, 0);
+        // destination = new Vector2(10, 0);
+        actualDestination = new Vector3(destination.position.x, destination.position.y, destination.position.z);
         dead = false;
-        angered = false;
+        angered = true;
         life = 2;
         damage = 1;
     }
@@ -37,7 +40,7 @@ public class Sheep : MonoBehaviour
         switch (my_State)
         {
             case Sheep_State.IDLE:
-                if(shouldMove)
+                if(shouldMove || !angered)
                 {
                     MoveTowardsDestination();
                 }
@@ -48,32 +51,34 @@ public class Sheep : MonoBehaviour
                 break;
 
         }
-             
-        /*
-         * if (angered)
-         * {
-         * }
-         */
 
         if(life==0)
         {
             dead = true;
             isDead();
         }
+
+    
     }
 
     void MoveTowardsDestination()
     {
         // Sheep moves to the designated destination
-        transform.position = Vector2.MoveTowards(transform.position, destination.position, moveSpeed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, actualDestination, moveSpeed * Time.deltaTime);
 
         // Checks if the sheep has arrived to the destination
         if (Vector2.Distance(transform.position, destination.position) < 0.1f)
         {
             //Debug.Log("Sheep has arrived the destination");
             shouldMove = false;
-        }
         
+        }
+
+        // Checks if the sheep have arrived to their initial position again
+        if (!angered && Vector2.Distance(transform.position, initialPosition) < 0.1f)
+        {
+            isDead();
+        }
 
     }
 
@@ -107,5 +112,16 @@ public class Sheep : MonoBehaviour
         // Change state back to IDLE and resume movement
         my_State = Sheep_State.IDLE;
         shouldMove = true;
+    }
+
+    public IEnumerator DestroyCity()
+    {
+        Debug.Log("Attacking city");
+        yield return new WaitForSeconds(10);
+
+        actualDestination = initialPosition;
+        my_State = Sheep_State.IDLE;
+        shouldMove = true;
+        angered = false;
     }
 }

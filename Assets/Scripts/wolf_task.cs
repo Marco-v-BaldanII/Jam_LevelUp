@@ -12,6 +12,11 @@ public class wolf_task : MonoBehaviour
 
     protected int num_wolves = 0;
 
+    protected List<Sheep> my_sheep = new List<Sheep>();
+    protected Sheep current_sheep;
+
+    protected int num_sheep = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,11 +26,10 @@ public class wolf_task : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
-    
         num_wolves = my_wolfs.Count();
+        num_sheep = my_sheep.Count();
     }
 
- 
 
     public virtual void OnTriggerEnter2D(Collider2D collision)
     {

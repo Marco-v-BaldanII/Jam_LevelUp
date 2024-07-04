@@ -39,6 +39,7 @@ public class Wolf_AI : MonoBehaviour
     private Vector3 buffer_pos;
     private Vector3 direction = Vector3.zero;
     private Rigidbody2D rigid;
+    private Animator animator;
     private Collider2D collider;
 
     public bool moving_towards_task = false;
@@ -86,6 +87,7 @@ public class Wolf_AI : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         collider = GetComponent<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
         life = 1;
         damage = 1;
         StartCoroutine("IdleMovement");
@@ -97,6 +99,12 @@ public class Wolf_AI : MonoBehaviour
     void Update()
     {
         buffer.transform.position = buffer_pos;
+
+        float anim_speed = rigid.velocity.magnitude / 4.0f;
+        anim_speed = Mathf.Clamp(anim_speed, 0.4f, 1.2f);
+        animator.speed = anim_speed;
+
+       // Debug.Log(rigid.velocity.magnitude);
 
         switch(my_mood)
         {

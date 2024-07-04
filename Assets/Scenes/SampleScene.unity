@@ -143,6 +143,10 @@ PrefabInstance:
       propertyPath: m_MaxValue
       value: 800
       objectReference: {fileID: 0}
+    - target: {fileID: 1939801197037017089, guid: 05b28ec775faace4186a1d87be25d93f, type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8469221660741267433, guid: 05b28ec775faace4186a1d87be25d93f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -511,6 +515,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wolf
       objectReference: {fileID: 0}
+    - target: {fileID: 1503819798775672529, guid: 3da2719e4da57304cb46ac9a8dd16a43, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6172626715751774291, guid: 3da2719e4da57304cb46ac9a8dd16a43, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -787,7 +795,7 @@ GameObject:
   - component: {fileID: 532560366}
   - component: {fileID: 532560365}
   - component: {fileID: 532560367}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Civilization
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1834,6 +1842,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wolf (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1503819798775672529, guid: 3da2719e4da57304cb46ac9a8dd16a43, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2341009444468495985, guid: 3da2719e4da57304cb46ac9a8dd16a43, type: 3}
       propertyPath: my_mood
       value: 1
@@ -1920,7 +1932,7 @@ MonoBehaviour:
   wolf_prefab: {fileID: 1503819798775672529, guid: 3da2719e4da57304cb46ac9a8dd16a43, type: 3}
   spawn_point: {fileID: 1132720366}
   city: {fileID: 532560366}
-  spawn_rate: 7
+  spawn_rate: 9
   talk_positions:
   - {fileID: 2051686545}
   - {fileID: 78614053}
@@ -1928,7 +1940,7 @@ MonoBehaviour:
   talk_wait_min: 20
   talk_wait_max: 35
   talk_probability: 20
-  enraged_probability: 50
+  enraged_probability: 0
 --- !u!212 &1625386667
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2234,7 +2246,7 @@ GameObject:
   - component: {fileID: 1806400012}
   - component: {fileID: 1806400014}
   - component: {fileID: 1806400013}
-  m_Layer: 5
+  m_Layer: 4
   m_Name: cotton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2747,7 +2759,7 @@ GameObject:
   - component: {fileID: 2054715158}
   - component: {fileID: 2054715157}
   - component: {fileID: 2054715156}
-  m_Layer: 5
+  m_Layer: 4
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

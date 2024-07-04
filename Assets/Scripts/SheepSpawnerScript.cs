@@ -48,6 +48,7 @@ public class SheepSpawnerScript : MonoBehaviour
             GameObject newSheep = Instantiate(sheepPrefab, spawn, Quaternion.identity, transform);
             Sheep sheepScript = newSheep.GetComponent<Sheep>();
             sheepScript.destination = city_destination;
+            sheepScript.initialPosition = spawn;
       
       
     }

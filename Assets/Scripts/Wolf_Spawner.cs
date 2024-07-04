@@ -19,6 +19,8 @@ public class Wolf_Spawner : MonoBehaviour
     public int talk_probability = 30;
     public int enraged_probability = 5;
 
+    private int spawned_wolves = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +34,25 @@ public class Wolf_Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        foreach (Wolf_AI wolf in active_wolfs)
+        {
+            if(wolf.my_mood != Wolf_Mood.ENRAGED) {
+                switch (city.intelligence_level)
+                {
+                    case INTELIGENCE_LEVEL.LOW:
+                        Change_Wolf_Level(1);
+                        break;
+                    case INTELIGENCE_LEVEL.MID:
+               
+                        Change_Wolf_Level(2);
+                        break;
+                    case INTELIGENCE_LEVEL.HIGH:
+                
+                        Change_Wolf_Level(3);
+                        break;
+                }
+            }
+        }
     }
 
     void SewWolf()
@@ -41,12 +61,29 @@ public class Wolf_Spawner : MonoBehaviour
         GameObject wolf = Instantiate(wolf_prefab, spawn_point.position, transform.rotation, transform);
         Wolf_AI w = wolf.GetComponent<Wolf_AI>();
         w.wolf_city = city.gameObject;
+        spawned_wolves++;
+        w.Init();
+        switch (city.intelligence_level)
+        {
+            case INTELIGENCE_LEVEL.LOW:
+                Change_Wolf_Level(1);
+                break;
+            case INTELIGENCE_LEVEL.MID:
+                enraged_probability = 30;
+                Change_Wolf_Level(2);
+                break;
+            case INTELIGENCE_LEVEL.HIGH:
+                enraged_probability = 50;
+                Change_Wolf_Level(3);
+                break;
+        }
 
 
-        if (Random.Range(0,100)< enraged_probability)
+        if (spawned_wolves > 4 &&  Random.Range(0,100)< enraged_probability)
         {
             w.my_mood = Wolf_Mood.ENRAGED;
             w.gameObject.layer = LayerMask.NameToLayer("EnragedWolf");
+           
             Debug.Log("Generated enraged wolf");
         }
         active_wolfs.Add(w);
@@ -96,16 +133,24 @@ public class Wolf_Spawner : MonoBehaviour
                 if(wolf1.my_mood == Wolf_Mood.NORMAL && wolf2.my_mood == Wolf_Mood.ENRAGED)
                 {
                     yield return new WaitForSeconds(3);
-                    wolf1.my_mood = Wolf_Mood.ENRAGED;
-                    wolf1.gameObject.layer = LayerMask.NameToLayer("EnragedWolf");
-                    Debug.Log("Normal wolf became enraged!");
+                    if (wolf1 != null && wolf2 != null)
+                    {
+                        wolf1.my_mood = Wolf_Mood.ENRAGED;
+                        wolf1.gameObject.layer = LayerMask.NameToLayer("EnragedWolf");
+                        wolf1.animator.SetBool("enraged", true);
+                        Debug.Log("Normal wolf became enraged!");
+                    }
                 }
                 else if (wolf1.my_mood == Wolf_Mood.ENRAGED && wolf2.my_mood==Wolf_Mood.NORMAL)
                 {
                     yield return new WaitForSeconds(3);
-                    wolf2.my_mood = Wolf_Mood.ENRAGED;
-                    wolf2.gameObject.layer = LayerMask.NameToLayer("EnragedWolf");
-                    Debug.Log("Normal wolf became enraged!");
+                    if (wolf1 != null && wolf2 != null)
+                    {
+                        wolf2.my_mood = Wolf_Mood.ENRAGED;
+                        wolf2.gameObject.layer = LayerMask.NameToLayer("EnragedWolf");
+                        wolf2.animator.SetBool("enraged", true);
+                        Debug.Log("Normal wolf became enraged!");
+                    }
                 }
 
             }
@@ -140,6 +185,21 @@ public class Wolf_Spawner : MonoBehaviour
             
         }
         playing_wolfs.Clear();
+    }
+
+    public void Change_Wolf_Level(int level)
+    {
+        level = Mathf.Clamp(level, 1, 3);
+        foreach (Wolf_AI wolf in active_wolfs)
+        {
+            if (wolf != null && wolf.animator != null && wolf.my_mood != Wolf_Mood.ENRAGED)
+            {
+                wolf.animator.SetInteger("level", level);
+                wolf.life = level;
+                wolf.damage = level;
+            }
+
+        }
     }
 
 }

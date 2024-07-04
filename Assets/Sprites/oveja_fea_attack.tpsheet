@@ -1,0 +1,24 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:7eac4536fc8bcca2d3d461e01fd7cffd:cf2a076640791dc7253be4de60dd0d6c:b38c431abad6b7f52d7d8cf155fbe13e$
+#
+:format=40300
+:texture=oveja_fea_attack.png
+:size=1024x1024
+:pivotpoints=enabled
+:borders=disabled
+:alphahandling=ClearTransparentPixels
+
+oveja_sucia_attack_01;1;573;380;450; 0.5;0.09999999999999998; 0;0;0;0
+oveja_sucia_attack_02;1;573;380;450; 0.5;0.09999999999999998; 0;0;0;0
+oveja_sucia_attack_03;1;573;380;450; 0.5;0.09999999999999998; 0;0;0;0
+oveja_sucia_attack_04;383;573;380;450; 0.5;0.09999999999999998; 0;0;0;0
+oveja_sucia_attack_05;383;573;380;450; 0.5;0.09999999999999998; 0;0;0;0
+oveja_sucia_attack_06;383;573;380;450; 0.5;0.09999999999999998; 0;0;0;0
+oveja_sucia_attack_07;1;121;380;450; 0.5;0.09999999999999998; 0;0;0;0
+oveja_sucia_attack_08;1;121;380;450; 0.5;0.09999999999999998; 0;0;0;0
+oveja_sucia_attack_09;1;121;380;450; 0.5;0.09999999999999998; 0;0;0;0

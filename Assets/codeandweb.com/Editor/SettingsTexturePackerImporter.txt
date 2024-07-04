@@ -1,0 +1,47 @@
+version: 2
+tpsheetFileNames:
+- Assets/Sprites/lobo_bronce_idle.tpsheet
+- Assets/Sprites/lobo_bronce_run.tpsheet
+- Assets/Sprites/lobo_normal.run.tpsheet
+- Assets/Sprites/lobo_normal_idle.tpsheet
+- Assets/Sprites/lobo_plata_idle.tpsheet
+- Assets/Sprites/lobo_plata_run.tpsheet
+- Assets/Sprites/lobo_roto_idle.tpsheet
+- Assets/Sprites/lobo_roto_walk.tpsheet
+- Assets/Sprites/maquina_bar.tpsheet
+- Assets/Sprites/maquina_coser.tpsheet
+- Assets/Sprites/oveja_fea_attack.tpsheet
+- Assets/Sprites/oveja_fea_confusa_run.tpsheet
+- Assets/Sprites/oveja_fea_enojada_run.tpsheet
+- Assets/Sprites/oveja_guapa_run.tpsheet
+textureFileNames:
+- Assets/Sprites/lobo_bronce_idle.png
+- Assets/Sprites/lobo_bronce_run.png
+- Assets/Sprites/lobo_normal.run.png
+- Assets/Sprites/lobo_normal._idle.png
+- Assets/Sprites/lobo_plata_idle.png
+- Assets/Sprites/lobo_plata_run.png
+- Assets/Sprites/lobo_roto_idle.png
+- Assets/Sprites/lobo_roto_walk.png
+- Assets/Sprites/maquina_bar.png
+- Assets/Sprites/maquina_coser.png
+- Assets/Sprites/oveja_fea_attack.png
+- Assets/Sprites/oveja_fea_confusa_run.png
+- Assets/Sprites/oveja_fea_enojada_run.png
+- Assets/Sprites/oveja_guapa_run.png
+normalmapFileNames:
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+enableDebugOutput: 0

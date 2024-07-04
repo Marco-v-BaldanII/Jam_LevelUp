@@ -1,0 +1,28 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:f80d586dc9f6b92a96d61c54112fc97d:fc9342f9e53eb73814898cf849e145df:de3db2d52ec3eee3a5c9a434346c7f3e$
+#
+:format=40300
+:texture=maquina_coser.png
+:size=2048x4096
+:pivotpoints=enabled
+:borders=disabled
+:alphahandling=ClearTransparentPixels
+
+máquina_stop_00;1;3535;620;560; 0.5;0.5; 0;0;0;0
+máquina_working_01;623;3535;620;560; 0.5;0.5; 0;0;0;0
+máquina_working_02;1245;3535;620;560; 0.5;0.5; 0;0;0;0
+máquina_working_03;1;2973;620;560; 0.5;0.5; 0;0;0;0
+máquina_working_04;623;2973;620;560; 0.5;0.5; 0;0;0;0
+máquina_working_05;1245;2973;620;560; 0.5;0.5; 0;0;0;0
+máquina_working_06;1245;2973;620;560; 0.5;0.5; 0;0;0;0
+máquina_working_07;1;2411;620;560; 0.5;0.5; 0;0;0;0
+máquina_working_08;623;2411;620;560; 0.5;0.5; 0;0;0;0
+máquina_working_09;1245;2411;620;560; 0.5;0.5; 0;0;0;0
+máquina_working_10;1;1849;620;560; 0.5;0.5; 0;0;0;0
+máquina_working_11;623;1849;620;560; 0.5;0.5; 0;0;0;0
+máquina_working_12;623;1849;620;560; 0.5;0.5; 0;0;0;0

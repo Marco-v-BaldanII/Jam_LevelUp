@@ -1,0 +1,18 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:d8a4b3dfa341c09578e19c6272938074:516871ef284d0818b29ecf54aa83acf2:02cb8e6a5cd510cf442e2f778b95363f$
+#
+:format=40300
+:texture=maquina_bar.png
+:size=128x256
+:pivotpoints=enabled
+:borders=enabled
+:alphahandling=ClearTransparentPixels
+
+bar_background;1;57;46;198; 0.5;0.5; 0;0;0;0
+bar_outline;49;55;51;200; 0.5;0.5; 0;0;0;0
+cotton_bar Merged;1;14;49;39; 0.5;0.5; 0;0;15;15

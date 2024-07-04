@@ -1,0 +1,27 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:e937662459ed59e18ca83e1897100b0a:2db8115ae98d32ea8b86618c7a2bbd62:0703d75dab8b713ada8e7c6475979b71$
+#
+:format=40300
+:texture=oveja_guapa_run.png
+:size=1024x1024
+:pivotpoints=enabled
+:borders=disabled
+:alphahandling=ClearTransparentPixels
+
+oveja_guapa_run_01;1;573;380;450; 0.5;0.5; 0;0;0;0
+oveja_guapa_run_02;1;573;380;450; 0.5;0.5; 0;0;0;0
+oveja_guapa_run_03;1;573;380;450; 0.5;0.5; 0;0;0;0
+oveja_guapa_run_04;383;573;380;450; 0.5;0.5; 0;0;0;0
+oveja_guapa_run_05;383;573;380;450; 0.5;0.5; 0;0;0;0
+oveja_guapa_run_06;383;573;380;450; 0.5;0.5; 0;0;0;0
+oveja_guapa_run_07;1;121;380;450; 0.5;0.5; 0;0;0;0
+oveja_guapa_run_08;1;121;380;450; 0.5;0.5; 0;0;0;0
+oveja_guapa_run_09;1;121;380;450; 0.5;0.5; 0;0;0;0
+oveja_guapa_run_10;383;121;380;450; 0.5;0.5; 0;0;0;0
+oveja_guapa_run_11;383;121;380;450; 0.5;0.5; 0;0;0;0
+oveja_guapa_run_12;383;121;380;450; 0.5;0.5; 0;0;0;0

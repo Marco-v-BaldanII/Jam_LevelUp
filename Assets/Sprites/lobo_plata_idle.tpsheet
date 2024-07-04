@@ -1,0 +1,27 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:4cc7c0c17121d58c4509049ca0769dd1:567e0287e1a78a3d755ab9c7e09e460a:46d3f3585035aa0eb5134fc94f460131$
+#
+:format=40300
+:texture=lobo_plata_idle.png
+:size=1024x2048
+:pivotpoints=enabled
+:borders=disabled
+:alphahandling=ClearTransparentPixels
+
+lobo_plata_idle_01;1;1697;300;350; 0.5;0.09999999999999998; 0;0;0;0
+lobo_plata_idle_02;303;1697;300;350; 0.5;0.09999999999999998; 0;0;0;0
+lobo_plata_idle_03;605;1697;300;350; 0.5;0.09999999999999998; 0;0;0;0
+lobo_plata_idle_04;1;1345;300;350; 0.5;0.09999999999999998; 0;0;0;0
+lobo_plata_idle_05;303;1345;300;350; 0.5;0.09999999999999998; 0;0;0;0
+lobo_plata_idle_06;605;1345;300;350; 0.5;0.09999999999999998; 0;0;0;0
+lobo_plata_idle_07;1;993;300;350; 0.5;0.09999999999999998; 0;0;0;0
+lobo_plata_idle_08;303;993;300;350; 0.5;0.09999999999999998; 0;0;0;0
+lobo_plata_idle_09;605;993;300;350; 0.5;0.09999999999999998; 0;0;0;0
+lobo_plata_idle_10;1;1345;300;350; 0.5;0.09999999999999998; 0;0;0;0
+lobo_plata_idle_11;303;1345;300;350; 0.5;0.09999999999999998; 0;0;0;0
+lobo_plata_idle_12;605;1345;300;350; 0.5;0.09999999999999998; 0;0;0;0

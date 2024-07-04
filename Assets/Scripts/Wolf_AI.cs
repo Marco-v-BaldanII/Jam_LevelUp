@@ -39,7 +39,7 @@ public class Wolf_AI : MonoBehaviour
     private Vector3 buffer_pos;
     private Vector3 direction = Vector3.zero;
     private Rigidbody2D rigid;
-    private Animator animator;
+    public Animator animator;
     private Collider2D collider;
 
     public bool moving_towards_task = false;
@@ -49,7 +49,7 @@ public class Wolf_AI : MonoBehaviour
     public bool has_cotton = false;
 
     public int life = 1;
-    public int damage;
+    public int damage = 1;
     public Wolf_State my_state = Wolf_State.IDLE;
     public Wolf_Mood my_mood = Wolf_Mood.NORMAL;
 
@@ -73,25 +73,36 @@ public class Wolf_AI : MonoBehaviour
     bool flipped = false;
 
     private float aimless_walk_time = 0.0f;
+    public int level = 1;
+
+    public void Init()
+    {
+        rigid = GetComponent<Rigidbody2D>();
+        collider = GetComponent<Collider2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
+        if(rigid == null) rigid = GetComponent<Rigidbody2D>();
+        if(collider == null) collider = GetComponent<Collider2D>();
+        if (spriteRenderer == null) spriteRenderer = GetComponent<SpriteRenderer>();
+        if ( animator == null) animator = GetComponent<Animator>();
+        life = 1;
+        damage = 1;
         if (my_mood == Wolf_Mood.ENRAGED)
         {
             gameObject.layer = LayerMask.NameToLayer("EnragedWolf");
+            animator.SetBool("enraged", true);
         }
         else
         {
             gameObject.layer = LayerMask.NameToLayer("Wolf");
         }
 
-        rigid = GetComponent<Rigidbody2D>();
-        collider = GetComponent<Collider2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        animator = GetComponent<Animator>();
-        life = 1;
-        damage = 1;
+        
         StartCoroutine("IdleMovement");
         StartCoroutine("Task_Offset");
 
@@ -268,9 +279,10 @@ public class Wolf_AI : MonoBehaviour
     private void OnMouseUp()
     {
         bool isColliding = Physics2D.OverlapPoint(transform.position, LayerMask.GetMask("Default")) != null;
-        isColliding = Physics2D.OverlapPoint(transform.position, LayerMask.GetMask("EnragedWolf")) != null;
+        bool isColliding2 = Physics2D.OverlapPoint(transform.position, LayerMask.GetMask("EnragedWolf")) != null;
+        bool isColliding3 = Physics2D.OverlapPoint(transform.position, LayerMask.GetMask("Water")) != null;
 
-        if (!isColliding)
+        if (!isColliding && !isColliding2 && !isColliding3)
         {
             my_state = Wolf_State.WALKING_TO_NOTHING;
             spriteRenderer.color = Color.green;

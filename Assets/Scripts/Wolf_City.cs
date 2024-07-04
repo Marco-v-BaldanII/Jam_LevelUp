@@ -16,6 +16,9 @@ public class Wolf_City : wolf_task
 {
     private int num_cotton = 0;
     private int inteligence = 0;
+
+    uint intelligence_state = 1;
+
     public TextMeshProUGUI cotton_counter;
     public TextMeshProUGUI intelligence_counter;
     public Wolf_Spawner wolf_spawner;
@@ -67,6 +70,10 @@ public class Wolf_City : wolf_task
 
             }
         }
+        if (collision.gameObject.CompareTag("Sheep") == true)
+        {
+            Debug.Log("sdfekfsefjbñsoefbeoifheihf");
+        }
     }
 
     public override void OnTriggerExit2D(Collider2D collision)
@@ -116,22 +123,26 @@ public class Wolf_City : wolf_task
         {
             intelligence_level = INTELIGENCE_LEVEL.MID;
             animator.SetInteger("level", 2);
+            wolf_spawner.Change_Wolf_Level(2);
         }
         if (intelligence_bar.Get() > 533 && intelligence_level == INTELIGENCE_LEVEL.MID)
         {
             intelligence_level = INTELIGENCE_LEVEL.HIGH;
             animator.SetInteger("level", 3);
+            wolf_spawner.Change_Wolf_Level(3);
         }
 
         if (intelligence_bar.Get() < 266 && intelligence_level == INTELIGENCE_LEVEL.MID)
         {
             intelligence_level = INTELIGENCE_LEVEL.LOW;
             animator.SetInteger("level", 1);
+            wolf_spawner.Change_Wolf_Level(1);
         }
         if (intelligence_bar.Get() < 533 && intelligence_level == INTELIGENCE_LEVEL.HIGH)
         {
             intelligence_level = INTELIGENCE_LEVEL.MID;
             animator.SetInteger("level", 2);
+            wolf_spawner.Change_Wolf_Level(2);
         }
 
     }

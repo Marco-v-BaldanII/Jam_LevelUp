@@ -8,6 +8,7 @@ TagManager:
   - Task
   - Marshmallow
   - Sheep
+  - Whistle
   layers:
   - Default
   - TransparentFX

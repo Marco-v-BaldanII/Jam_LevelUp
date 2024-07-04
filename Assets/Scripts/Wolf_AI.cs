@@ -12,6 +12,7 @@ public enum Wolf_State
     BUILDING,
     FIGHTING,
     PLAYING,
+    WALKING_TO_NOTHING,
     ENRAGED
 }
 
@@ -56,6 +57,7 @@ public class Wolf_AI : MonoBehaviour
     private Sheep targetSheep;
 
     private Vector3 library_pos;
+    private Vector3 nothing_direction;
 
     bool showingX = false;
    
@@ -65,6 +67,9 @@ public class Wolf_AI : MonoBehaviour
     bool started_talking = false;
 
     private Vector3 task_pos_offset = Vector2.zero;
+
+    bool whistled = false;
+    bool flipped = false;
 
     // Start is called before the first frame update
     void Start()
@@ -91,9 +96,11 @@ public class Wolf_AI : MonoBehaviour
                 switch (my_state)
                 {
                     case Wolf_State.IDLE:
-                        rigid.velocity = direction.normalized * (movement_speed / 2);
-                        has_cotton = false;
-
+                        if (!whistled)
+                        {
+                            rigid.velocity = direction.normalized * (movement_speed / 2);
+                            has_cotton = false;
+                        }
 
                         break;
                     case Wolf_State.MOVING:
@@ -150,6 +157,17 @@ public class Wolf_AI : MonoBehaviour
                         rigid.velocity = direction.normalized * movement_speed;
                         spriteRenderer.color = Color.cyan;
                         break;
+                    case Wolf_State.WALKING_TO_NOTHING:
+                        direction = nothing_direction - transform.position;
+                        rigid.velocity = direction.normalized * movement_speed;
+                        
+                        if(Vector2.Distance(transform.position, nothing_direction) < 0.5f)
+                        {
+                            Back_To_Idle();
+                            rigid.velocity = Vector2.zero;
+                        }
+
+                        break;
                 }
                 break;
             case Wolf_Mood.ENRAGED:
@@ -163,7 +181,12 @@ public class Wolf_AI : MonoBehaviour
                 break;
 
         }
+        
+        if((rigid.velocity.x > 0 && transform.localScale.x < 0) || (rigid.velocity.x < 0 && transform.localScale.x > 0) && my_state != Wolf_State.TALKING)
+        {
 
+            transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+        }
         
 
         //Debug.Log(has_cotton != marshmallow.activeSelf);
@@ -172,6 +195,7 @@ public class Wolf_AI : MonoBehaviour
             marshmallow.SetActive(has_cotton);
         }
 
+      
     }
 
     public void OnMouseDrag()
@@ -180,6 +204,7 @@ public class Wolf_AI : MonoBehaviour
         {
             if (!_isDragging)
             {
+                Back_To_Idle();
                 buffer_pos = transform.position;
             }
             _isDragging = true;
@@ -197,6 +222,18 @@ public class Wolf_AI : MonoBehaviour
 
     private void OnMouseUp()
     {
+        bool isColliding = Physics2D.OverlapPoint(transform.position, LayerMask.GetMask("Default")) != null;
+
+        if (!isColliding)
+        {
+            my_state = Wolf_State.WALKING_TO_NOTHING;
+            nothing_direction = transform.position;
+            my_task = null; moving_towards_base = false; moving_towards_task = false;
+
+
+            Debug.Log("Not colliding with anything.");
+        }
+
         if (my_state != Wolf_State.TALKING && my_state != Wolf_State.PLAYING && my_mood != Wolf_Mood.ENRAGED)
         {
             transform.position = buffer_pos;
@@ -204,7 +241,7 @@ public class Wolf_AI : MonoBehaviour
             has_cotton = false;
 
         }
-        //if(my_state == Wolf_State.MINING) { my_state = Wolf_State.IDLE; }
+
     }
 
     public void OnMouseEnter()
@@ -220,6 +257,29 @@ public class Wolf_AI : MonoBehaviour
         {
             my_state = Wolf_State.MOVING;
             moving_towards_task = false;
+        }
+        else if (collision.gameObject.CompareTag("Whistle") == true && my_mood != Wolf_Mood.ENRAGED && my_state != Wolf_State.PLAYING)
+        {
+            Back_To_Idle();
+            
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Whistle") == true && my_mood != Wolf_Mood.ENRAGED && my_state != Wolf_State.PLAYING)
+        {
+            whistled = true;
+
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Whistle") == true && my_mood != Wolf_Mood.ENRAGED && my_state != Wolf_State.PLAYING)
+        {
+            whistled = false;
+
         }
     }
 
@@ -362,7 +422,9 @@ public class Wolf_AI : MonoBehaviour
     public void Back_To_Idle()
     {
         my_state = Wolf_State.IDLE;
-        spriteRenderer.color = Color.white;
+        my_task = null;
+        moving_towards_base = false; moving_towards_task = false;
+        if(spriteRenderer != null) spriteRenderer.color = Color.white;
     }
 
     private IEnumerator Task_Offset()

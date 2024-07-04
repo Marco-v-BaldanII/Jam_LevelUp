@@ -53,13 +53,13 @@ public class Wolf_City : wolf_task
             if (wolf != null && wolf.my_state == Wolf_State.MINING ) // when the wolf is transporting cotton
             {
                 num_cotton++;
-                cotton_counter.text = num_cotton.ToString();
+                cotton_counter.text = "Available cotton : " + num_cotton.ToString();
                 current_wolf = wolf;
                 wolf.has_cotton = false;
                 wolf.moving_towards_task = true;
 
             }
-            else if (wolf != null) // When the wolf gets assigned to build city
+            else if (wolf != null && wolf.my_state != Wolf_State.PLAYING) // When the wolf gets assigned to build city
             {
                 my_wolfs.Add(wolf);
                 current_wolf = wolf;

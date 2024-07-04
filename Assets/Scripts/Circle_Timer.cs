@@ -18,14 +18,22 @@ public class Circle_Timer : MonoBehaviour
     public float duration;
 
     private float elapsedTime = 0.0f;
+    bool finished = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        max_wait = wait_time;
+     
         my_image = GetComponent<Image>();
-        duration = wait_time;
+   
         my_card = GetComponentInParent<Card>();
+        gameObject.SetActive(false);
+    }
+
+    public void Init(float time)
+    {
+        wait_time = time;
+        duration = time;
     }
 
     // Update is called once per frame
@@ -44,9 +52,9 @@ public class Circle_Timer : MonoBehaviour
         Fill.fillAmount = wait_time / max_wait;
 
 
-        if (wait_time < 0) {
+        if (wait_time < 0 && !finished) {
             wait_time = 0;
-
+            finished = true;
             my_card.EnableCard();
 
             this.gameObject.SetActive(false);
@@ -59,6 +67,7 @@ public class Circle_Timer : MonoBehaviour
     {
         wait_time = max_wait;
         elapsedTime = 0;
+        finished = false;
     }
 
 }

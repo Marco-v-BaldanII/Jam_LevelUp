@@ -69,7 +69,7 @@ public class CottonMines : wolf_task
         if (collision.gameObject.CompareTag("Wolf") == true)
         {
             Wolf_AI wolf = collision.GetComponent<Wolf_AI>();
-            if (wolf != null && wolf.has_cotton == false) // Also check if wolf is not already in the list
+            if (wolf != null && wolf.has_cotton == false && wolf.my_mood == Wolf_Mood.NORMAL && wolf.my_state != Wolf_State.PLAYING && wolf.my_mood != Wolf_Mood.ENRAGED) // Also check if wolf is not already in the list
             {
                 current_wolf = wolf;
                 current_wolf.ChangeTask(this, Wolf_State.MINING);

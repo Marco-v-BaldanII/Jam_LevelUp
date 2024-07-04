@@ -26,6 +26,9 @@ public class Wolf_City : wolf_task
     private Animator animator;
     public INTELIGENCE_LEVEL intelligence_level = INTELIGENCE_LEVEL.LOW;
 
+    protected List<Sheep> my_sheep = new List<Sheep>();
+    protected Sheep current_sheep;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -72,7 +75,15 @@ public class Wolf_City : wolf_task
         }
         if (collision.gameObject.CompareTag("Sheep") == true)
         {
-            Debug.Log("sdfekfsefjbñsoefbeoifheihf");
+
+            Sheep sheep = collider.GetComponent<Sheep>();
+            if(sheep != null)
+            {
+                my_sheep.Add(sheep);
+                current_sheep = sheep;
+
+            }
+
         }
     }
 

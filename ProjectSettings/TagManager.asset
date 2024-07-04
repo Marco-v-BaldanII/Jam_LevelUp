@@ -8,6 +8,7 @@ TagManager:
   - Task
   - Marshmallow
   - Sheep
+  - Whistle
   layers:
   - Default
   - TransparentFX
@@ -16,9 +17,9 @@ TagManager:
   - Water
   - UI
   - Walls
-  - 
-  - 
-  - 
+  - EnragedWolf
+  - YappingWolf
+  - PlayingWolf
   - 
   - 
   - 

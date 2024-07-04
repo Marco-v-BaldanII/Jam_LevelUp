@@ -46,6 +46,7 @@ public class Wolf_Spawner : MonoBehaviour
         if (Random.Range(0,100)< enraged_probability)
         {
             w.my_mood = Wolf_Mood.ENRAGED;
+            w.gameObject.layer = LayerMask.NameToLayer("EnragedWolf");
             Debug.Log("Generated enraged wolf");
         }
         active_wolfs.Add(w);
@@ -96,12 +97,14 @@ public class Wolf_Spawner : MonoBehaviour
                 {
                     yield return new WaitForSeconds(3);
                     wolf1.my_mood = Wolf_Mood.ENRAGED;
+                    wolf1.gameObject.layer = LayerMask.NameToLayer("EnragedWolf");
                     Debug.Log("Normal wolf became enraged!");
                 }
                 else if (wolf1.my_mood == Wolf_Mood.ENRAGED && wolf2.my_mood==Wolf_Mood.NORMAL)
                 {
                     yield return new WaitForSeconds(3);
                     wolf2.my_mood = Wolf_Mood.ENRAGED;
+                    wolf2.gameObject.layer = LayerMask.NameToLayer("EnragedWolf");
                     Debug.Log("Normal wolf became enraged!");
                 }
 

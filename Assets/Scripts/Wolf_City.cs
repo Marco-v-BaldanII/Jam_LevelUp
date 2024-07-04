@@ -59,7 +59,7 @@ public class Wolf_City : wolf_task
                 wolf.moving_towards_task = true;
 
             }
-            else if (wolf != null && wolf.my_state != Wolf_State.PLAYING) // When the wolf gets assigned to build city
+            else if (wolf != null && wolf.my_state != Wolf_State.PLAYING && wolf.my_state != Wolf_State.WALKING_TO_NOTHING) // When the wolf gets assigned to build city
             {
                 my_wolfs.Add(wolf);
                 current_wolf = wolf;

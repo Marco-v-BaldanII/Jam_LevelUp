@@ -22,10 +22,15 @@ public class SheepSpawnerScript : MonoBehaviour
     private float timer = 0f;
     private float global_timer = 0f;
 
+    public MODE tutorial = MODE.NORMAL;
     public DIFFICULTY sheep_difficulty = DIFFICULTY.HERALD_OF_CHAOS;
     public Transform[] spawn_positions;
 
+    public bool inminent_spawn = false;
+    public bool spawned = false;
+    public List<Sheep> active_sheep;
 
+    public int sheeps;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +38,7 @@ public class SheepSpawnerScript : MonoBehaviour
         StartCoroutine("Spawning_Sheep_Horde");
         StartCoroutine("HandleHordeStregth");
       
+        active_sheep =  new List<Sheep>();
     }
 
     // Update is called once per frame
@@ -49,7 +55,9 @@ public class SheepSpawnerScript : MonoBehaviour
             Sheep sheepScript = newSheep.GetComponent<Sheep>();
             sheepScript.destination = city_destination;
             sheepScript.initialPosition = spawn;
-      
+            if(tutorial == MODE.TUTORIAL) active_sheep.Add(sheepScript);
+        spawned = true;
+        sheeps++;
       
     }
 
@@ -57,29 +65,35 @@ public class SheepSpawnerScript : MonoBehaviour
     {
         while(city.intelligence_bar.Get() > -1)
         {
+           
             float wait_time = 0.0f;
             int spawn_amount = 1;
-            switch (sheep_difficulty)
+            if (!inminent_spawn)
             {
-                case DIFFICULTY.EASY:
-                    wait_time = Random.Range(30.0f, 45.0f);
-                    spawn_amount = Random.Range(1, 3);
-                    break;
-                case DIFFICULTY.MEDIUM:
-                    wait_time = Random.Range(25.0f, 35.0f);
-                    spawn_amount = Random.Range(1, 6);
-                    break;
-                case DIFFICULTY.HARD:
-                    wait_time = Random.Range(18.0f, 28.0f);
-                    spawn_amount = Random.Range(1, 8);
-                    break;
-                case DIFFICULTY.HERALD_OF_CHAOS:
-                    wait_time = Random.Range(12.0f, 22.0f);
-                    spawn_amount = Random.Range(1, 10);
-                    break;
+
+                switch (sheep_difficulty)
+                {
+                    case DIFFICULTY.EASY:
+                        wait_time = Random.Range(30.0f, 45.0f);
+                        spawn_amount = Random.Range(1, 3);
+                        break;
+                    case DIFFICULTY.MEDIUM:
+                        wait_time = Random.Range(25.0f, 35.0f);
+                        spawn_amount = Random.Range(1, 6);
+                        break;
+                    case DIFFICULTY.HARD:
+                        wait_time = Random.Range(18.0f, 28.0f);
+                        spawn_amount = Random.Range(1, 8);
+                        break;
+                    case DIFFICULTY.HERALD_OF_CHAOS:
+                        wait_time = Random.Range(12.0f, 22.0f);
+                        spawn_amount = Random.Range(1, 10);
+                        break;
 
 
+                }
             }
+            else { spawn_amount = 1; wait_time = 4; SpawnSheep(); }
 
 
             yield return new WaitForSecondsRealtime(wait_time-3);
@@ -89,7 +103,7 @@ public class SheepSpawnerScript : MonoBehaviour
             yield return new WaitForSecondsRealtime(3);
 
             sheep_warning.gameObject.SetActive(false);
-
+            inminent_spawn = false;
            
             for(int i = 0; i < spawn_amount; ++i)
             {

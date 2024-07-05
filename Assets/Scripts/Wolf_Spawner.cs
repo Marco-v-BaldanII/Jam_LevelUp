@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+public enum MODE
+{
+    NORMAL,
+    TUTORIAL
+}
+
+
 public class Wolf_Spawner : MonoBehaviour
 {
 
@@ -23,15 +30,23 @@ public class Wolf_Spawner : MonoBehaviour
     private bool[] occupied_buildings;
     private int spawned_wolves = 0;
 
+    public Collider2D collider;
+
+    public MODE my_mode = MODE.NORMAL;
+
     // Start is called before the first frame update
     void Start()
     {
         if(city == null) city = GameManager.Instance.city;
         animator = GetComponent<Animator>();
         SewWolf();
-        StartCoroutine("Spawn_Wolfs");
-        StartCoroutine("Get_Wolfs_Talking");
+        if (my_mode == MODE.NORMAL)
+        {
+            StartCoroutine("Spawn_Wolfs");
+            StartCoroutine("Get_Wolfs_Talking");
+        }
         occupied_buildings = new bool[3];
+        collider = GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
@@ -85,7 +100,7 @@ public class Wolf_Spawner : MonoBehaviour
 
     }
 
-    void SewWolf()
+    public void SewWolf()
     {
         // Include probability of spawning enraged wolf
         GameObject wolf = Instantiate(wolf_prefab, spawn_point.position, transform.rotation, transform);
@@ -99,11 +114,11 @@ public class Wolf_Spawner : MonoBehaviour
                 Change_Wolf_Level(1);
                 break;
             case INTELIGENCE_LEVEL.MID:
-                enraged_probability = 30;
+                if(enraged_probability != 100) enraged_probability = 30;
                 Change_Wolf_Level(2);
                 break;
             case INTELIGENCE_LEVEL.HIGH:
-                enraged_probability = 90;
+                if (enraged_probability != 100) enraged_probability = 90;
                 Change_Wolf_Level(3);
                 break;
         }

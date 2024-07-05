@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+
 public class ProgressBar : MonoBehaviour
 {
     private Slider slider;
@@ -12,6 +14,8 @@ public class ProgressBar : MonoBehaviour
 
     public float fillDuration = 6.0f;
     bool is_full = false;
+
+    public MODE my_mode = MODE.NORMAL;
 
     private void Awake()
     {
@@ -39,6 +43,14 @@ public class ProgressBar : MonoBehaviour
             {
                 slider.value = 0;
                 is_full = false;
+            }
+        }
+
+        if(my_mode == MODE.TUTORIAL)
+        {
+            if(slider.value > 200)
+            {
+                slider.value = 200;
             }
         }
 

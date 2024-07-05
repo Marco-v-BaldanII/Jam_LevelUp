@@ -24,6 +24,7 @@ public class Sheep : MonoBehaviour
 
     private bool shouldMove = true;
     public Sheep_State my_State = Sheep_State.IDLE;
+    public SheepSpawnerScript spawner;
 
     private Vector3 previousPosition;
     private Coroutine sprintCoroutine;
@@ -34,6 +35,7 @@ public class Sheep : MonoBehaviour
         // destination = new Vector2(10, 0);
         actualDestination = new Vector3(destination.position.x, destination.position.y, destination.position.z);
         animator = GetComponent<Animator>();
+        spawner = GetComponentInParent<SheepSpawnerScript>();
         dead = false;
         angered = true;
         life = 2;
@@ -130,6 +132,8 @@ public class Sheep : MonoBehaviour
 
     void isDead()
     {
+        if (spawner != null) spawner.active_sheep.Remove(this);
+        spawner.sheeps--;
         Destroy(gameObject);
   
     }

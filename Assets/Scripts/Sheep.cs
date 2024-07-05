@@ -12,6 +12,7 @@ public class Sheep : MonoBehaviour
 {
     public float moveSpeed = 5;
     public Transform destination;
+    public Animator animator;
     public Vector3 initialPosition;
     public Vector3 actualDestination;
     public int damage;
@@ -22,15 +23,18 @@ public class Sheep : MonoBehaviour
     private bool shouldMove = true;
     public Sheep_State my_State = Sheep_State.IDLE;
 
+    private Vector3 previousPosition;
     // Start is called before the first frame update
     void Start()
     {
         // destination = new Vector2(10, 0);
         actualDestination = new Vector3(destination.position.x, destination.position.y, destination.position.z);
+        animator = GetComponent<Animator>();
         dead = false;
         angered = true;
         life = 2;
         damage = 1;
+        previousPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -52,13 +56,12 @@ public class Sheep : MonoBehaviour
 
         }
 
-        if(life==0)
+        if (life == 0)
         {
             dead = true;
             isDead();
         }
 
-    
     }
 
     void MoveTowardsDestination()
@@ -81,6 +84,7 @@ public class Sheep : MonoBehaviour
         }
 
     }
+
 
     public void TakeDamage(int amount)
     {
@@ -123,5 +127,6 @@ public class Sheep : MonoBehaviour
         my_State = Sheep_State.IDLE;
         shouldMove = true;
         angered = false;
+        if (animator != null) { animator.SetBool("Enraged", false); }
     }
 }

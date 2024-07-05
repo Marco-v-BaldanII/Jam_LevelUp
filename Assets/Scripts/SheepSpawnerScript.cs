@@ -86,7 +86,7 @@ public class SheepSpawnerScript : MonoBehaviour
                     spawn_amount = Random.Range(3, 8);
                     break;
                 case DIFFICULTY.HERALD_OF_CHAOS:
-                    wait_time = Random.Range(12.0f, 22.0f);
+                    wait_time = Random.Range(10.0f, 18.0f);
                     spawn_amount = Random.Range(4, 10);
                     break;
 

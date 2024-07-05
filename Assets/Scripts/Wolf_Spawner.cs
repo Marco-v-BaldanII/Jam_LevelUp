@@ -14,9 +14,9 @@ public class Wolf_Spawner : MonoBehaviour
     public int spawn_rate = 800;
     private Animator animator;
     public Transform[] talk_positions;
-    public int talk_wait_min = 12;
-    public int talk_wait_max = 30;
-    public int talk_probability = 30;
+    public int talk_wait_min = 0;
+    public int talk_wait_max = 1;
+    public int talk_probability = 50;
     public int enraged_probability = 5;
     [SerializeField] private ProgressBar cotton_bar;
     public Transform[] spawn_positions;
@@ -162,9 +162,13 @@ public class Wolf_Spawner : MonoBehaviour
                     wolf2 = active_wolfs[i];
                 }
             }
+
+            float progress = city.intelligence_bar.Get();
+            int scaled_talk_probability = talk_probability + ((int)progress / 100) * 12;
+
             int talk = Random.Range(0, 101);
 
-            if (wolf1 != null && wolf2 != null && talk > talk_probability)
+            if (wolf1 != null && wolf2 != null && talk < scaled_talk_probability)
             {
                 Vector3 dest = talk_positions[Random.Range(0, talk_positions.Length)].position;
                 wolf1.StartTalking(dest, true); wolf2.StartTalking(dest, false);

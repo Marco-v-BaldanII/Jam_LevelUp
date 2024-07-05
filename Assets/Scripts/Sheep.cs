@@ -155,6 +155,8 @@ public class Sheep : MonoBehaviour
     public IEnumerator DestroyCity()
     {
         Debug.Log("Attacking city");
+        if(animator != null) { animator.SetBool("Attacking", true); }
+
         yield return new WaitForSeconds(10);
 
         if (dead) yield break;
@@ -163,7 +165,8 @@ public class Sheep : MonoBehaviour
         my_State = Sheep_State.IDLE;
         shouldMove = true;
         angered = false;
-        if (animator != null) { animator.SetBool("Enraged", false); animator.SetBool("Sprinting", false); }
+        if (animator != null) { animator.SetBool("Enraged", false); animator.SetBool("Sprinting", false);
+        animator.SetBool("Attacking", false);}
 
 
        

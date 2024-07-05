@@ -73,23 +73,22 @@ public class SheepSpawnerScript : MonoBehaviour
 
                 switch (sheep_difficulty)
                 {
-                    case DIFFICULTY.EASY:
-                        wait_time = Random.Range(30.0f, 45.0f);
-                        spawn_amount = Random.Range(1, 3);
-                        break;
-                    case DIFFICULTY.MEDIUM:
-                        wait_time = Random.Range(25.0f, 35.0f);
-                        spawn_amount = Random.Range(1, 6);
-                        break;
-                    case DIFFICULTY.HARD:
-                        wait_time = Random.Range(18.0f, 28.0f);
-                        spawn_amount = Random.Range(1, 8);
-                        break;
-                    case DIFFICULTY.HERALD_OF_CHAOS:
-                        wait_time = Random.Range(12.0f, 22.0f);
-                        spawn_amount = Random.Range(1, 10);
-                        break;
-
+                case DIFFICULTY.EASY:
+                    wait_time = Random.Range(30.0f, 45.0f);
+                    spawn_amount = Random.Range(1, 3);
+                    break;
+                case DIFFICULTY.MEDIUM:
+                    wait_time = Random.Range(25.0f, 35.0f);
+                    spawn_amount = Random.Range(2, 6);
+                    break;
+                case DIFFICULTY.HARD:
+                    wait_time = Random.Range(18.0f, 28.0f);
+                    spawn_amount = Random.Range(3, 8);
+                    break;
+                case DIFFICULTY.HERALD_OF_CHAOS:
+                    wait_time = Random.Range(12.0f, 22.0f);
+                    spawn_amount = Random.Range(4, 10);
+                    break;
 
                 }
             }

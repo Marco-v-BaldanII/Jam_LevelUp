@@ -2470,9 +2470,9 @@ MonoBehaviour:
   - {fileID: 78614053}
   - {fileID: 1986634911}
   talk_wait_min: 5
-  talk_wait_max: 15
-  talk_probability: 99
-  enraged_probability: 50
+  talk_wait_max: 10
+  talk_probability: 10
+  enraged_probability: 5
   cotton_bar: {fileID: 1741777260}
   spawn_positions:
   - {fileID: 1481467362}

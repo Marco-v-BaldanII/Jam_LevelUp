@@ -8,7 +8,7 @@ public class Circle_Timer : MonoBehaviour
 
     public float wait_time = 15;
     public Image Fill;
-    private Image my_image;
+    public Image color_changing_image;
     private float max_wait;
     private Card my_card;
 
@@ -24,15 +24,16 @@ public class Circle_Timer : MonoBehaviour
     void Start()
     {
      
-        my_image = GetComponent<Image>();
+     
    
         my_card = GetComponentInParent<Card>();
-        gameObject.SetActive(false);
+      
     }
 
     public void Init(float time)
     {
         wait_time = time;
+        max_wait = wait_time;
         duration = time;
     }
 
@@ -46,10 +47,11 @@ public class Circle_Timer : MonoBehaviour
 
         // Lerp between the start and end colors
         Color lerpedColor = Color.Lerp(startColor, endColor, t);
-        my_image.color = lerpedColor;
+        color_changing_image.color = lerpedColor;
 
 
         Fill.fillAmount = wait_time / max_wait;
+       // Debug.Log("Fillamount" + Fill.fillAmount.ToString());
 
 
         if (wait_time < 0 && !finished) {
@@ -58,8 +60,9 @@ public class Circle_Timer : MonoBehaviour
             my_card.EnableCard();
 
             this.gameObject.SetActive(false);
+            color_changing_image.gameObject.SetActive(false);
 
-
+            
         }
     }
 
@@ -68,6 +71,12 @@ public class Circle_Timer : MonoBehaviour
         wait_time = max_wait;
         elapsedTime = 0;
         finished = false;
+
+    }
+
+    public int Get_Time()
+    {
+        return (int)wait_time;
     }
 
 }

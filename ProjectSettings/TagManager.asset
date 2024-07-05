@@ -9,6 +9,7 @@ TagManager:
   - Marshmallow
   - Sheep
   - Whistle
+  - Wall
   layers:
   - Default
   - TransparentFX

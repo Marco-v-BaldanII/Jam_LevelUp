@@ -102,6 +102,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 1.5
   destination: {fileID: 0}
+  animator: {fileID: 0}
+  initialPosition: {x: 0, y: 0, z: 0}
+  actualDestination: {x: 0, y: 0, z: 0}
   damage: 0
   angered: 0
   life: 0

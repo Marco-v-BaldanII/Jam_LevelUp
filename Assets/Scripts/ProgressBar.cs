@@ -10,6 +10,9 @@ public class ProgressBar : MonoBehaviour
     private float targetProgress = 0;
     public float fillSpeed = 0.5f;
 
+    public float fillDuration = 6.0f;
+    bool is_full = false;
+
     private void Awake()
     {
         slider = gameObject.GetComponent<Slider>();
@@ -24,10 +27,41 @@ public class ProgressBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (slider.value < targetProgress)
+        //if (slider.value < targetProgress)
+        //{
+        //    slider.value += fillSpeed * Time.deltaTime;
+        //}
+
+        if(is_full)
         {
-            slider.value += fillSpeed * Time.deltaTime;
+            slider.value -= 0.005f;
+            if(slider.value <= 0.03f)
+            {
+                slider.value = 0;
+                is_full = false;
+            }
         }
+
+    }
+
+    IEnumerator FillSlider()
+    {
+        float elapsedTime = 0f;
+        while (elapsedTime < fillDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            slider.value = Mathf.Clamp01(elapsedTime / fillDuration);
+            yield return null; // Wait for the next frame
+        }
+        // Ensure the slider is completely filled at the end
+        slider.value = 1;
+        is_full = true;
+    }
+
+    public void Fill_With_Time(float seconds)
+    {
+        fillDuration = seconds;
+        StartCoroutine(FillSlider());
     }
 
     public void IncrementProgress(float newProgress)

@@ -30,6 +30,7 @@ public class Wolf_AI : MonoBehaviour
 
     public wolf_task my_task;
     public GameObject wolf_city;
+    private Wolf_City city_object;
     public GameObject marshmallow;
     public GameObject speech_bubble;
     public GameObject buffer;
@@ -72,6 +73,8 @@ public class Wolf_AI : MonoBehaviour
     bool whistled = false;
     bool flipped = false;
 
+    public bool hurt = false;
+
     private float aimless_walk_time = 0.0f;
     public int level = 1;
 
@@ -102,7 +105,8 @@ public class Wolf_AI : MonoBehaviour
             gameObject.layer = LayerMask.NameToLayer("Wolf");
         }
 
-        
+        city_object = wolf_city.gameObject.GetComponent<Wolf_City>();
+
         StartCoroutine("IdleMovement");
         StartCoroutine("Task_Offset");
 
@@ -428,8 +432,10 @@ public class Wolf_AI : MonoBehaviour
     public void TakeDamage(int amount)
     {
         life -= amount;
+        hurt = true;
         if (life <= 0)
         {
+            city_object.wolf_spawner.RemoveWolves(this);
             Destroy(gameObject);
         }
     }

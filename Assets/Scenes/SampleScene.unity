@@ -1121,7 +1121,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 609128584}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.902002, y: -5.23, z: 0.02011819}
+  m_LocalPosition: {x: 1.902002, y: -5.06, z: 0.02011819}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2464,15 +2464,15 @@ MonoBehaviour:
   wolf_prefab: {fileID: 1503819798775672529, guid: 3da2719e4da57304cb46ac9a8dd16a43, type: 3}
   spawn_point: {fileID: 1132720366}
   city: {fileID: 532560366}
-  spawn_rate: 9
+  spawn_rate: 7
   talk_positions:
   - {fileID: 2051686545}
   - {fileID: 78614053}
   - {fileID: 1986634911}
-  talk_wait_min: 20
-  talk_wait_max: 35
-  talk_probability: 20
-  enraged_probability: 0
+  talk_wait_min: 5
+  talk_wait_max: 15
+  talk_probability: 99
+  enraged_probability: 50
   cotton_bar: {fileID: 1741777260}
   spawn_positions:
   - {fileID: 1481467362}

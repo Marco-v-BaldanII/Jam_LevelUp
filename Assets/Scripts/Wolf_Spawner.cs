@@ -37,6 +37,8 @@ public class Wolf_Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        int altered_wolves = 0;
+
         foreach (Wolf_AI wolf in active_wolfs)
         {
             if(wolf.my_mood != Wolf_Mood.ENRAGED) {
@@ -55,7 +57,32 @@ public class Wolf_Spawner : MonoBehaviour
                         break;
                 }
             }
+            else
+            {
+                switch (city.intelligence_level)
+                {
+                    case INTELIGENCE_LEVEL.LOW:
+                        Change_Wolf_Level(1);
+                        break;
+                    case INTELIGENCE_LEVEL.MID:
+
+                        Change_Wolf_Level(2);
+                        break;
+                    case INTELIGENCE_LEVEL.HIGH:
+
+                        Change_Wolf_Level(3);
+                        break;
+                }
+                altered_wolves++;
+            }
         }
+
+        if(spawned_wolves >= 1 && active_wolfs.Count() == 0 || active_wolfs.Count() == altered_wolves)
+        {
+            StopAllCoroutines();
+            city.Game_Over();
+        }
+
     }
 
     void SewWolf()
@@ -76,7 +103,7 @@ public class Wolf_Spawner : MonoBehaviour
                 Change_Wolf_Level(2);
                 break;
             case INTELIGENCE_LEVEL.HIGH:
-                enraged_probability = 50;
+                enraged_probability = 90;
                 Change_Wolf_Level(3);
                 break;
         }
@@ -91,6 +118,12 @@ public class Wolf_Spawner : MonoBehaviour
         }
         active_wolfs.Add(w);
     }
+
+    public void RemoveWolves(Wolf_AI wolf)
+    {
+        active_wolfs.Remove(wolf);
+    }
+       
 
     private IEnumerator Spawn_Wolfs()
     {
@@ -202,9 +235,11 @@ public class Wolf_Spawner : MonoBehaviour
             if (wolf != null && wolf.animator != null && wolf.my_mood != Wolf_Mood.ENRAGED)
             {
                 wolf.animator.SetInteger("level", level);
-                wolf.life = level;
-                wolf.damage = level;
+               
             }
+            if (wolf.hurt == false) { wolf.life = level; }
+
+            wolf.damage = level;
 
         }
     }

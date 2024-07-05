@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public enum INTELIGENCE_LEVEL
 {
@@ -43,6 +44,9 @@ public class Wolf_City : wolf_task
     void Update()
     {
         base.Update();
+
+        
+
    
     }
 
@@ -178,6 +182,22 @@ public class Wolf_City : wolf_task
     public void AddIntelligence(int decrement)
     {
         intelligence_bar.Add(decrement);
+    }
+
+
+    public void Game_Over()
+    {
+        if(intelligence_bar.Get() > 400)
+        {
+            // Intelligence defeat
+            PlayerPrefs.SetInt("death", 1);
+        }
+        else
+        {
+            // Ignorance defeat
+            PlayerPrefs.SetInt("death", 0);
+        }
+        SceneManager.LoadScene("Game_Over");
     }
 
 }

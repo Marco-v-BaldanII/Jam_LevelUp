@@ -18,7 +18,9 @@ public class Wolf_Spawner : MonoBehaviour
     public int talk_wait_max = 30;
     public int talk_probability = 30;
     public int enraged_probability = 5;
-
+    [SerializeField] private ProgressBar cotton_bar;
+    public Transform[] spawn_positions;
+    private bool[] occupied_buildings;
     private int spawned_wolves = 0;
 
     // Start is called before the first frame update
@@ -29,6 +31,7 @@ public class Wolf_Spawner : MonoBehaviour
         SewWolf();
         StartCoroutine("Spawn_Wolfs");
         StartCoroutine("Get_Wolfs_Talking");
+        occupied_buildings = new bool[3];
     }
 
     // Update is called once per frame
@@ -93,13 +96,17 @@ public class Wolf_Spawner : MonoBehaviour
     {
         while (city.intelligence_bar.Get() < 1001)
         {
-            yield return new WaitForSecondsRealtime(spawn_rate);
+            cotton_bar.Fill_With_Time(spawn_rate - 2);
+            yield return new WaitForSecondsRealtime(spawn_rate-2);
+            animator.SetTrigger("sew");
+            yield return new WaitForSecondsRealtime(2);
             if (active_wolfs.Count() < 20)
             {
                 SewWolf();
             }
         }
     }
+    
 
     private IEnumerator Get_Wolfs_Talking()
     {
@@ -200,6 +207,26 @@ public class Wolf_Spawner : MonoBehaviour
             }
 
         }
+    }
+
+    public Vector3 Spawn_Buildings(float time_alive)
+    {
+        for(int i = 0; i < 3; ++i)
+        {
+            if(occupied_buildings[i] == false)
+            {
+                occupied_buildings[i] = true;
+                StartCoroutine(Free_UP_Building_Space(time_alive, i));
+                return spawn_positions[i].position;
+            }
+        }
+        return Vector3.zero;
+    }
+
+    private IEnumerator Free_UP_Building_Space(float wait, int index_building)
+    {
+        yield return new WaitForSecondsRealtime(wait);
+        occupied_buildings[index_building] = false;
     }
 
 }

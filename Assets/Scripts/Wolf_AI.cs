@@ -403,7 +403,12 @@ public class Wolf_AI : MonoBehaviour
                 }
             }
         }
+        if (collision.gameObject.CompareTag("Wall") == true)
+        {
+            direction *= -1;
+            Back_To_Idle();
 
+        }
 
     }
 

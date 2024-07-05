@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Card : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class Card : MonoBehaviour
     private Button myButton;
     public int cost = 5;
     public float wait_time = 15.0f;
-
+    public TextMeshProUGUI second_counter;
 
     public Wolf_City city;
     public Building god_event;
@@ -29,6 +30,7 @@ public class Card : MonoBehaviour
         
         InitialiseCard();
         timer.Init(wait_time);
+        DisableCard();
      
 
     }
@@ -36,7 +38,7 @@ public class Card : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        second_counter.text = timer.Get_Time().ToString();
     }
 
     // Set the values of the desired card
@@ -48,15 +50,21 @@ public class Card : MonoBehaviour
     // Set the effect of the card
     public virtual void PlayCard()
     {
-        if (city.CheckCotton() > -1)
+        Vector3 spawn = city.wolf_spawner.Spawn_Buildings(god_event.alive_time);
+
+        if (city.CheckCotton() >= cost)
         {
             city.AddCotton(-cost);
 
-            Building building = Instantiate(god_event, city.wolf_spawner.transform);
-
+            Building building = Instantiate(god_event, spawn, Quaternion.identity, city.wolf_spawner.transform);
+            Debug.Log("Spawning Building");
             timer.gameObject.SetActive(true);
             timer.ReStart();
             DisableCard();
+        }
+        else
+        {
+            Debug.Log("not enough cotton");
         }
     }
 
@@ -68,6 +76,7 @@ public class Card : MonoBehaviour
     public void DisableCard()
     {
         myButton.interactable = false;
+        second_counter.gameObject.SetActive(true);
         cardImage.color = new Color(71.0f/255.0f, 74.0f/255.0f, 97.0f/255.0f);
         
     }
@@ -75,6 +84,7 @@ public class Card : MonoBehaviour
     public void EnableCard()
     {
         myButton.interactable = true;
+        second_counter.gameObject.SetActive(false);
         cardImage.color = new Color(255/255.0f,255 / 255.0f, 255 / 255.0f);
     }
 

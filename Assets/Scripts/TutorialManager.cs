@@ -13,7 +13,12 @@ public class TutorialManager : MonoBehaviour
 
     public TextMeshProUGUI textComponent;
 
+    private string[] current_lines;
+
     public string[] lines;
+
+    public string[] lines_catalan;
+
     public float textSpeed = 0.1f;
 
     private int index = 0;
@@ -43,13 +48,15 @@ public class TutorialManager : MonoBehaviour
 
     void Awake()
     {
+        current_lines = lines_catalan;
+
         if (textComponent == null)
         {
             Debug.LogError("Text Component is not assigned.");
         }
 
 
-        if (lines == null || lines.Length == 0)
+        if (current_lines == null || current_lines.Length == 0)
         {
             Debug.LogError("Lines array is empty or not assigned.");
         }
@@ -57,7 +64,7 @@ public class TutorialManager : MonoBehaviour
 
     void Start()
     {
-        if (lines.Length > 0)
+        if (current_lines.Length > 0)
         {
             StartCoroutine(TypeLine());
         }
@@ -67,21 +74,21 @@ public class TutorialManager : MonoBehaviour
     {
         if (index != 4 && index != 9 && index != 13 && index != 14 && index != 22 && index != 21)
         {
-            if (textComponent.text == lines[index])
+            if (textComponent.text == current_lines[index])
             {
                 NextLine(); // if current line has finished write the next
             }
             else
             {
                 StopAllCoroutines();
-                textComponent.text = lines[index]; // Directly fills out the line
+                textComponent.text = current_lines[index]; // Directly fills out the line
             }
         }
     }
 
     private IEnumerator TypeLine()
     {
-        foreach (char c in lines[index].ToCharArray())
+        foreach (char c in current_lines[index].ToCharArray())
         {
             textComponent.text += c;
             yield return new WaitForSecondsRealtime(textSpeed);
@@ -90,7 +97,7 @@ public class TutorialManager : MonoBehaviour
 
     void NextLine()
     {
-        if (index < lines.Length - 1)
+        if (index < current_lines.Length - 1)
         {
             index++;
             textComponent.text = string.Empty;
@@ -110,14 +117,14 @@ public class TutorialManager : MonoBehaviour
 
     void Special_Advance_Line()
     {
-        if (textComponent.text == lines[index])
+        if (textComponent.text == current_lines[index])
         {
             NextLine(); // if current line has finished write the next
         }
         else
         {
             StopAllCoroutines();
-            textComponent.text = lines[index]; // Directly fills out the line
+            textComponent.text = current_lines[index]; // Directly fills out the line
             NextLine();
         }
     }

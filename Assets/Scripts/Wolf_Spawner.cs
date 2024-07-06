@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+public enum MODE
+{
+    NORMAL,
+    TUTORIAL
+}
+
+
 public class Wolf_Spawner : MonoBehaviour
 {
 
@@ -14,14 +21,18 @@ public class Wolf_Spawner : MonoBehaviour
     public int spawn_rate = 800;
     private Animator animator;
     public Transform[] talk_positions;
-    public int talk_wait_min = 12;
-    public int talk_wait_max = 30;
-    public int talk_probability = 30;
+    public int talk_wait_min = 0;
+    public int talk_wait_max = 1;
+    public int talk_probability = 50;
     public int enraged_probability = 5;
     [SerializeField] private ProgressBar cotton_bar;
     public Transform[] spawn_positions;
     private bool[] occupied_buildings;
     private int spawned_wolves = 0;
+
+    public Collider2D collider;
+
+    public MODE my_mode = MODE.NORMAL;
 
     // Start is called before the first frame update
     void Start()
@@ -29,14 +40,20 @@ public class Wolf_Spawner : MonoBehaviour
         if(city == null) city = GameManager.Instance.city;
         animator = GetComponent<Animator>();
         SewWolf();
-        StartCoroutine("Spawn_Wolfs");
-        StartCoroutine("Get_Wolfs_Talking");
+        if (my_mode == MODE.NORMAL)
+        {
+            StartCoroutine("Spawn_Wolfs");
+            StartCoroutine(Get_Wolfs_Talking(null));
+        }
         occupied_buildings = new bool[3];
+        collider = GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        int altered_wolves = 0;
+
         foreach (Wolf_AI wolf in active_wolfs)
         {
             if(wolf.my_mood != Wolf_Mood.ENRAGED) {
@@ -55,10 +72,35 @@ public class Wolf_Spawner : MonoBehaviour
                         break;
                 }
             }
+            else
+            {
+                switch (city.intelligence_level)
+                {
+                    case INTELIGENCE_LEVEL.LOW:
+                        Change_Wolf_Level(1);
+                        break;
+                    case INTELIGENCE_LEVEL.MID:
+
+                        Change_Wolf_Level(2);
+                        break;
+                    case INTELIGENCE_LEVEL.HIGH:
+
+                        Change_Wolf_Level(3);
+                        break;
+                }
+                altered_wolves++;
+            }
         }
+
+        if(spawned_wolves >= 1 && active_wolfs.Count() == 0 || active_wolfs.Count() == altered_wolves)
+        {
+            StopAllCoroutines();
+            city.Game_Over();
+        }
+
     }
 
-    void SewWolf()
+    public void SewWolf()
     {
         // Include probability of spawning enraged wolf
         GameObject wolf = Instantiate(wolf_prefab, spawn_point.position, transform.rotation, transform);
@@ -72,11 +114,11 @@ public class Wolf_Spawner : MonoBehaviour
                 Change_Wolf_Level(1);
                 break;
             case INTELIGENCE_LEVEL.MID:
-                enraged_probability = 30;
+                if(my_mode != MODE.TUTORIAL) enraged_probability = 30;
                 Change_Wolf_Level(2);
                 break;
             case INTELIGENCE_LEVEL.HIGH:
-                enraged_probability = 50;
+                if (my_mode != MODE.TUTORIAL) enraged_probability = 50;
                 Change_Wolf_Level(3);
                 break;
         }
@@ -92,35 +134,64 @@ public class Wolf_Spawner : MonoBehaviour
         active_wolfs.Add(w);
     }
 
+    public void RemoveWolves(Wolf_AI wolf)
+    {
+        active_wolfs.Remove(wolf);
+    }
+       
+
     private IEnumerator Spawn_Wolfs()
     {
         while (city.intelligence_bar.Get() < 1001)
         {
-            cotton_bar.Fill_With_Time(spawn_rate - 2);
-            yield return new WaitForSecondsRealtime(spawn_rate-2);
-            animator.SetTrigger("sew");
-            yield return new WaitForSecondsRealtime(2);
             if (active_wolfs.Count() < 20)
             {
+                cotton_bar.Fill_With_Time(spawn_rate - 2);
+                 yield return new WaitForSecondsRealtime(spawn_rate-2);
+                  animator.SetTrigger("sew");
+                yield return new WaitForSecondsRealtime(2);
+            
                 SewWolf();
             }
+            yield return null;
         }
     }
     
+    public void Specific_Conversation(Wolf_Mood mood)
+    {
 
-    private IEnumerator Get_Wolfs_Talking()
+        foreach (Wolf_AI wolf in active_wolfs)
+        {
+            if(wolf.my_mood == mood)
+            {
+                StartCoroutine(Get_Wolfs_Talking(wolf));
+                break;
+            }
+        }
+
+       
+    }
+
+    private IEnumerator Get_Wolfs_Talking(Wolf_AI wolf)
     {
         while (city.intelligence_bar.Get() < 1001)
         {
             yield return new WaitForSecondsRealtime(Random.Range(talk_wait_min, talk_wait_max));
             Wolf_AI wolf1 = null; Wolf_AI wolf2 = null;
 
-            for (int i = 0; i < active_wolfs.Count(); ++i)
+            if (wolf == null)
             {
-                if (active_wolfs[i].my_state != Wolf_State.FIGHTING && active_wolfs[i].my_state != Wolf_State.PLAYING)
+                for (int i = 0; i < active_wolfs.Count(); ++i)
                 {
-                    wolf1 = active_wolfs[i];
+                    if (active_wolfs[i].my_state != Wolf_State.FIGHTING && active_wolfs[i].my_state != Wolf_State.PLAYING)
+                    {
+                        wolf1 = active_wolfs[i];
+                    }
                 }
+            }
+            else
+            {
+                wolf1 = wolf; //Predefined wolf
             }
             for (int i = 0; i < active_wolfs.Count(); ++i)
             {
@@ -129,9 +200,13 @@ public class Wolf_Spawner : MonoBehaviour
                     wolf2 = active_wolfs[i];
                 }
             }
+
+            float progress = city.intelligence_bar.Get();
+            int scaled_talk_probability = talk_probability + ((int)progress / 100) * 12;
+
             int talk = Random.Range(0, 101);
 
-            if (wolf1 != null && wolf2 != null && talk > talk_probability)
+            if (wolf1 != null && wolf2 != null && talk < scaled_talk_probability)
             {
                 Vector3 dest = talk_positions[Random.Range(0, talk_positions.Length)].position;
                 wolf1.StartTalking(dest, true); wolf2.StartTalking(dest, false);
@@ -160,6 +235,10 @@ public class Wolf_Spawner : MonoBehaviour
                     }
                 }
 
+            }
+            if(wolf != null)
+            {
+                break; // when the corroutine is called with a specific wolf it only executes once
             }
         }
     }
@@ -202,9 +281,11 @@ public class Wolf_Spawner : MonoBehaviour
             if (wolf != null && wolf.animator != null && wolf.my_mood != Wolf_Mood.ENRAGED)
             {
                 wolf.animator.SetInteger("level", level);
-                wolf.life = level;
-                wolf.damage = level;
+               
             }
+            if (wolf.hurt == false) { wolf.life = level; }
+
+            wolf.damage = level;
 
         }
     }

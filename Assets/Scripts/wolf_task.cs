@@ -18,7 +18,7 @@ public class wolf_task : MonoBehaviour
     protected int num_sheep = 0;
 
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
         collider = GetComponent<Collider2D>();
     }

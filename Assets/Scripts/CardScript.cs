@@ -17,6 +17,8 @@ public class Card : MonoBehaviour
     public Wolf_City city;
     public Building god_event;
 
+    public bool played_once = false;
+
     public Card() { }
     ~Card() { }
 
@@ -51,7 +53,7 @@ public class Card : MonoBehaviour
     public virtual void PlayCard()
     {
         Vector3 spawn = city.wolf_spawner.Spawn_Buildings(god_event.alive_time);
-
+        played_once = true;
         if (city.CheckCotton() >= cost)
         {
             city.AddCotton(-cost);

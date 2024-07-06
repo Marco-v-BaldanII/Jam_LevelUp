@@ -30,6 +30,7 @@ public class Wolf_AI : MonoBehaviour
 
     public wolf_task my_task;
     public GameObject wolf_city;
+    private Wolf_City city_object;
     public GameObject marshmallow;
     public GameObject speech_bubble;
     public GameObject buffer;
@@ -72,6 +73,8 @@ public class Wolf_AI : MonoBehaviour
     bool whistled = false;
     bool flipped = false;
 
+    public bool hurt = false;
+
     private float aimless_walk_time = 0.0f;
     public int level = 1;
 
@@ -102,7 +105,8 @@ public class Wolf_AI : MonoBehaviour
             gameObject.layer = LayerMask.NameToLayer("Wolf");
         }
 
-        
+        city_object = wolf_city.gameObject.GetComponent<Wolf_City>();
+
         StartCoroutine("IdleMovement");
         StartCoroutine("Task_Offset");
 
@@ -248,7 +252,7 @@ public class Wolf_AI : MonoBehaviour
             marshmallow.SetActive(has_cotton);
         }
 
-        spriteRenderer.color = my_mood == Wolf_Mood.ENRAGED ? enragedColor : spriteRenderer.color;
+        //spriteRenderer.color = my_mood == Wolf_Mood.ENRAGED ? enragedColor : spriteRenderer.color;
 
 
     }
@@ -285,7 +289,7 @@ public class Wolf_AI : MonoBehaviour
         if (!isColliding && !isColliding2 && !isColliding3)
         {
             my_state = Wolf_State.WALKING_TO_NOTHING;
-            spriteRenderer.color = Color.green;
+            //spriteRenderer.color = Color.green;
             nothing_direction = transform.position;
             my_task = null; moving_towards_base = false; moving_towards_task = false;
 
@@ -388,14 +392,15 @@ public class Wolf_AI : MonoBehaviour
 
         }
 
-        if(targetEnragedWolf != null && my_mood != Wolf_Mood.ENRAGED)
+        if (targetEnragedWolf != null && my_mood != Wolf_Mood.ENRAGED)
         {
             Debug.Log("Auu");
             if (collision.gameObject.CompareTag("Wolf") == true)
             {
                 Wolf_AI wolf = collision.gameObject.GetComponent<Wolf_AI>();
-                if (wolf != null && !_isDragging && wolf.my_mood == Wolf_Mood.ENRAGED && my_state != Wolf_State.WALKING_TO_NOTHING )
+                if (wolf != null && !_isDragging && wolf.my_mood == Wolf_Mood.ENRAGED && my_state != Wolf_State.WALKING_TO_NOTHING)
                 {
+                    has_cotton = false;
                     my_state = Wolf_State.FIGHTING;
                     TakeDamage(wolf.damage);
                     wolf.TakeDamage(damage);
@@ -403,15 +408,24 @@ public class Wolf_AI : MonoBehaviour
                 }
             }
         }
+
         if (collision.gameObject.CompareTag("Wall") == true)
         {
             direction *= -1;
             Back_To_Idle();
 
         }
+        if (collision.gameObject.CompareTag("Wolf") == true)
+        {
+            Wolf_AI wolf = collision.gameObject.GetComponent<Wolf_AI>();
+            if (wolf != null && !_isDragging && wolf.my_mood == Wolf_Mood.ENRAGED && my_state != Wolf_State.WALKING_TO_NOTHING)
+            {
+                has_cotton = false;
+                Back_To_Idle();
 
+            }
+        }
     }
-
  
 
     public void ChangeTask(wolf_task task, Wolf_State state = Wolf_State.MOVING )
@@ -428,8 +442,10 @@ public class Wolf_AI : MonoBehaviour
     public void TakeDamage(int amount)
     {
         life -= amount;
+        hurt = true;
         if (life <= 0)
         {
+            city_object.wolf_spawner.RemoveWolves(this);
             Destroy(gameObject);
         }
     }
@@ -537,7 +553,7 @@ public class Wolf_AI : MonoBehaviour
         while(my_mood == Wolf_Mood.NORMAL)
         {
             yield return new WaitForSecondsRealtime(1.0f);
-            task_pos_offset = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f));
+            task_pos_offset = new Vector2(Random.Range(-1.0f, 1.0f), 0);
         }
     }
 

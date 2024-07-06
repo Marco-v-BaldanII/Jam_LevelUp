@@ -6,11 +6,13 @@ public enum Sheep_State
 {
     IDLE, 
     FIGHTING,
+    SPRINTING,
 }
 
 public class Sheep : MonoBehaviour
 {
-    public float moveSpeed = 5;
+    public float moveSpeed = 1;
+    public float sprintSpeed = 2;
     public Transform destination;
     public Animator animator;
     public Vector3 initialPosition;
@@ -22,24 +24,34 @@ public class Sheep : MonoBehaviour
 
     private bool shouldMove = true;
     public Sheep_State my_State = Sheep_State.IDLE;
+    public SheepSpawnerScript spawner;
 
     private Vector3 previousPosition;
+    private Coroutine sprintCoroutine;
+
     // Start is called before the first frame update
     void Start()
     {
         // destination = new Vector2(10, 0);
         actualDestination = new Vector3(destination.position.x, destination.position.y, destination.position.z);
         animator = GetComponent<Animator>();
+        spawner = GetComponentInParent<SheepSpawnerScript>();
         dead = false;
         angered = true;
         life = 2;
         damage = 1;
         previousPosition = transform.position;
+
+        if (angered)
+        {
+            sprintCoroutine = StartCoroutine(SprintRandomly());
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (dead) return;
 
         switch (my_State)
         {
@@ -54,6 +66,11 @@ public class Sheep : MonoBehaviour
                 StartCoroutine(HandleFightingState());
                 break;
 
+            case Sheep_State.SPRINTING:
+                MoveTowardsDestination(sprintSpeed);
+                break;
+
+
         }
 
         if (life == 0)
@@ -62,22 +79,24 @@ public class Sheep : MonoBehaviour
             isDead();
         }
 
+        FlipSpriteBasedOnMovement();
+        previousPosition = transform.position;
     }
 
-    void MoveTowardsDestination()
+    void MoveTowardsDestination(float speed = -1)
     {
-        // Sheep moves to the designated destination
-        transform.position = Vector2.MoveTowards(transform.position, actualDestination, moveSpeed * Time.deltaTime);
-
-        // Checks if the sheep has arrived to the destination
-        if (Vector2.Distance(transform.position, destination.position) < 0.1f)
+        if (speed < 0)
         {
-            //Debug.Log("Sheep has arrived the destination");
-            shouldMove = false;
-        
+            speed = moveSpeed;
         }
 
-        // Checks if the sheep have arrived to their initial position again
+        transform.position = Vector2.MoveTowards(transform.position, actualDestination, speed * Time.deltaTime);
+
+        if (Vector2.Distance(transform.position, destination.position) < 0.1f)
+        {
+            shouldMove = false;
+        }
+
         if (!angered && Vector2.Distance(transform.position, initialPosition) < 0.1f)
         {
             isDead();
@@ -85,6 +104,22 @@ public class Sheep : MonoBehaviour
 
     }
 
+    void FlipSpriteBasedOnMovement()
+    {
+        Vector3 currentPosition = transform.position;
+        float movementDirectionX = currentPosition.x - previousPosition.x;
+
+        if (movementDirectionX < 0)
+        {
+            // Moving right
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+        else if (movementDirectionX > 0)
+        {
+            // Moving left
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+    }
 
     public void TakeDamage(int amount)
     {
@@ -97,7 +132,10 @@ public class Sheep : MonoBehaviour
 
     void isDead()
     {
+        if (spawner != null) spawner.active_sheep.Remove(this);
+        spawner.sheeps--;
         Destroy(gameObject);
+  
     }
 
     public void StopMovement()
@@ -121,12 +159,40 @@ public class Sheep : MonoBehaviour
     public IEnumerator DestroyCity()
     {
         Debug.Log("Attacking city");
+        if(animator != null) { animator.SetBool("Attacking", true); }
+
         yield return new WaitForSeconds(10);
+
+        if (dead) yield break;
 
         actualDestination = initialPosition;
         my_State = Sheep_State.IDLE;
         shouldMove = true;
         angered = false;
-        if (animator != null) { animator.SetBool("Enraged", false); }
+        if (animator != null) { animator.SetBool("Enraged", false); animator.SetBool("Sprinting", false);
+        animator.SetBool("Attacking", false);}
+
+
+       
+    }
+
+    public IEnumerator SprintRandomly()
+    {
+       while (angered && !dead)
+        {
+            yield return new WaitForSeconds(Random.Range(2, 10));
+            if (dead) yield break;
+
+            my_State = Sheep_State.SPRINTING;
+            if (animator != null) { animator.SetBool("Sprinting", true); }
+
+            yield return new WaitForSeconds(1);
+            if (dead) yield break;
+
+            my_State = Sheep_State.IDLE;
+            if (animator != null) { animator.SetBool("Sprinting", false); }
+  
+        }
+
     }
 }

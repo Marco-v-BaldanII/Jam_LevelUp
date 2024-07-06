@@ -12,10 +12,12 @@ public class CottonMines : wolf_task
     private bool mining = false;
     public float mine_time = 3.0f;
 
+  
+
     // Start is called before the first frame update
     void Start()
     {
-
+        base.Start();
     }
 
     // Update is called once per frame

@@ -1,0 +1,48 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:7dce0aaf0ce64de20f65944e054eb854:2a7e946bb382548ff30d2f7a40e1212d:0468195115ed5bbbcf55e2ca0092fcfa$
+#
+:format=40300
+:texture=ui.png
+:size=4096x2048
+:pivotpoints=enabled
+:borders=enabled
+:alphahandling=ClearTransparentPixels
+
+bar_background;3582;1390;72;50; 0.5;0.5; 25;25;13;12
+bar_fill;3582;1334;72;50; 0.5;0.5; 25;25;13;12
+bocadillo_alterado;1523;787;134;134; 0.5;0.5; 0;0;0;0
+bocadillo_normal;1663;787;134;134; 0.5;0.5; 0;0;0;0
+button_fast_off;609;775;302;298; 0.5;0.5; 0;0;0;0
+button_fast_on;917;775;302;298; 0.5;0.5; 0;0;0;0
+button_home_off;3710;1466;370;364; 0.5;0.5; 0;0;0;0
+button_home_on;2969;584;370;364; 0.5;0.5; 0;0;0;0
+button_replay_off;3582;740;466;458; 0.5;0.5; 0;0;0;0
+button_replay_on;920;276;466;458; 0.5;0.5; 0;0;0;0
+card_cult;1392;284;339;450; 0.5;0.5; 0;0;0;0
+card_deck;428;1079;1833;96; 0.5;0.5; 0;0;0;0
+card_library;1737;284;339;450; 0.5;0.5; 0;0;0;0
+card_toys;2082;284;339;450; 0.5;0.5; 0;0;0;0
+colldown_fill;1381;785;136;136; 0.5;0.5; 0;0;0;0
+cooldown_outline;428;773;175;175; 0.5;0.5; 0;0;0;0
+cotton_counter;3684;1204;408;256; 0.5;0.5; 0;0;0;0
+fade_overlay;1225;927;283;146; 0.5;0.5; 71;71;0;0
+gameover_note;2298;954;1278;588; 0.5;0.5; 0;0;0;0
+gameover_overlay;1225;771;150;150; 0.5;0.5; 38;37;38;37
+gameover_panel;3;1181;2289;864; 0.5;0.5; 0;0;0;0
+gameover_title;2298;1548;1406;282; 0.5;0.5; 0;0;0;0
+pointer;1514;939;140;134; 0.5;0.5; 0;0;0;0
+smart_bar;2298;1836;1772;209; 0.5;0.5; 0;0;0;0
+tape_01;1737;927;552;146; 0.5;0.5; 0;0;0;0
+tape_02;3;964;298;109; 0.5;0.5; 0;0;0;0
+tip_box;3;752;419;196; 0.5;0.5; 105;105;49;49
+warning_box;3;52;283;682; 0.5;0.5; 100;100;0;0
+warning_icon;2427;322;536;412; 0.5;0.5; 0;0;0;0
+whistle;292;112;622;622; 0.5;0.5; 0;0;0;0
+wolf couinter;920;15;560;255; 0.5;0.5; 0;0;0;0
+wolf_coutner;1486;23;408;255; 0.5;0.5; 0;0;0;0
+wolf_x;3582;1446;96;96; 0.5;0.5; 0;0;0;0

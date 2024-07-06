@@ -38,6 +38,6 @@ public class Whistle : MonoBehaviour
         }
         transform.localScale = new Vector2(transform.localScale.x - 0.2f, transform.localScale.y - 0.2f);
 
-        transform.localScale = new Vector2(Mathf.Clamp(transform.localScale.x, 1, 5), Mathf.Clamp(transform.localScale.x, 1, 5));
+        transform.localScale = new Vector2(Mathf.Clamp(transform.localScale.x, 0.2f, 1f), Mathf.Clamp(transform.localScale.x, 0.2f, 1f));
     }
 }

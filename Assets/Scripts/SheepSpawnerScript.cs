@@ -18,7 +18,7 @@ public class SheepSpawnerScript : MonoBehaviour
     public GameObject sheepPrefab;
     public Transform city_destination;
     public Wolf_City city;
-    public TextMeshProUGUI sheep_warning;
+    public Image sheep_warning;
     private float timer = 0f;
     private float global_timer = 0f;
 

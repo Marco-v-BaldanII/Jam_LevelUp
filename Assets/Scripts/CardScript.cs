@@ -77,7 +77,7 @@ public class Card : MonoBehaviour
     {
         myButton.interactable = false;
         second_counter.gameObject.SetActive(true);
-        cardImage.color = new Color(71.0f/255.0f, 74.0f/255.0f, 97.0f/255.0f);
+        cardImage.color = new Color(100f/255.0f, 103f/255.0f, 132f/255.0f);
         
     }
 

@@ -392,14 +392,15 @@ public class Wolf_AI : MonoBehaviour
 
         }
 
-        if(targetEnragedWolf != null && my_mood != Wolf_Mood.ENRAGED)
+        if (targetEnragedWolf != null && my_mood != Wolf_Mood.ENRAGED)
         {
             Debug.Log("Auu");
             if (collision.gameObject.CompareTag("Wolf") == true)
             {
                 Wolf_AI wolf = collision.gameObject.GetComponent<Wolf_AI>();
-                if (wolf != null && !_isDragging && wolf.my_mood == Wolf_Mood.ENRAGED && my_state != Wolf_State.WALKING_TO_NOTHING )
+                if (wolf != null && !_isDragging && wolf.my_mood == Wolf_Mood.ENRAGED && my_state != Wolf_State.WALKING_TO_NOTHING)
                 {
+                    has_cotton = false;
                     my_state = Wolf_State.FIGHTING;
                     TakeDamage(wolf.damage);
                     wolf.TakeDamage(damage);
@@ -407,15 +408,24 @@ public class Wolf_AI : MonoBehaviour
                 }
             }
         }
+
         if (collision.gameObject.CompareTag("Wall") == true)
         {
             direction *= -1;
             Back_To_Idle();
 
         }
+        if (collision.gameObject.CompareTag("Wolf") == true)
+        {
+            Wolf_AI wolf = collision.gameObject.GetComponent<Wolf_AI>();
+            if (wolf != null && !_isDragging && wolf.my_mood == Wolf_Mood.ENRAGED && my_state != Wolf_State.WALKING_TO_NOTHING)
+            {
+                has_cotton = false;
+                Back_To_Idle();
 
+            }
+        }
     }
-
  
 
     public void ChangeTask(wolf_task task, Wolf_State state = Wolf_State.MOVING )
@@ -543,7 +553,7 @@ public class Wolf_AI : MonoBehaviour
         while(my_mood == Wolf_Mood.NORMAL)
         {
             yield return new WaitForSecondsRealtime(1.0f);
-            task_pos_offset = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f));
+            task_pos_offset = new Vector2(Random.Range(-1.0f, 1.0f), 0);
         }
     }
 

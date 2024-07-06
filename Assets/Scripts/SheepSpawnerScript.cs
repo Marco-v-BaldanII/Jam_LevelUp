@@ -47,7 +47,7 @@ public class SheepSpawnerScript : MonoBehaviour
         
     }
 
-    void SpawnSheep()
+    public void SpawnSheep()
     {
         Vector3 spawn = spawn_positions[Random.Range(0, 4)].position;
 

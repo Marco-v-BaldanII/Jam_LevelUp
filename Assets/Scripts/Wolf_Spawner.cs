@@ -43,7 +43,7 @@ public class Wolf_Spawner : MonoBehaviour
         if (my_mode == MODE.NORMAL)
         {
             StartCoroutine("Spawn_Wolfs");
-            StartCoroutine("Get_Wolfs_Talking");
+            StartCoroutine(Get_Wolfs_Talking(null));
         }
         occupied_buildings = new bool[3];
         collider = GetComponent<Collider2D>();
@@ -155,20 +155,41 @@ public class Wolf_Spawner : MonoBehaviour
         }
     }
     
+    public void Specific_Conversation(Wolf_Mood mood)
+    {
 
-    private IEnumerator Get_Wolfs_Talking()
+        foreach (Wolf_AI wolf in active_wolfs)
+        {
+            if(wolf.my_mood == mood)
+            {
+                StartCoroutine(Get_Wolfs_Talking(wolf));
+                break;
+            }
+        }
+
+       
+    }
+
+    private IEnumerator Get_Wolfs_Talking(Wolf_AI wolf)
     {
         while (city.intelligence_bar.Get() < 1001)
         {
             yield return new WaitForSecondsRealtime(Random.Range(talk_wait_min, talk_wait_max));
             Wolf_AI wolf1 = null; Wolf_AI wolf2 = null;
 
-            for (int i = 0; i < active_wolfs.Count(); ++i)
+            if (wolf == null)
             {
-                if (active_wolfs[i].my_state != Wolf_State.FIGHTING && active_wolfs[i].my_state != Wolf_State.PLAYING)
+                for (int i = 0; i < active_wolfs.Count(); ++i)
                 {
-                    wolf1 = active_wolfs[i];
+                    if (active_wolfs[i].my_state != Wolf_State.FIGHTING && active_wolfs[i].my_state != Wolf_State.PLAYING)
+                    {
+                        wolf1 = active_wolfs[i];
+                    }
                 }
+            }
+            else
+            {
+                wolf1 = wolf; //Predefined wolf
             }
             for (int i = 0; i < active_wolfs.Count(); ++i)
             {
@@ -212,6 +233,10 @@ public class Wolf_Spawner : MonoBehaviour
                     }
                 }
 
+            }
+            if(wolf != null)
+            {
+                break; // when the corroutine is called with a specific wolf it only executes once
             }
         }
     }

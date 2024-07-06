@@ -1036,7 +1036,7 @@ RectTransform:
   m_GameObject: {fileID: 546422184}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.7496, y: 1.775, z: 1}
+  m_LocalScale: {x: 19.82958, y: 4.0825, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1191101713}
@@ -1044,7 +1044,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 946.9998, y: 777}
+  m_AnchoredPosition: {x: 946.9998, y: 884}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &546422186
@@ -1060,7 +1060,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.3137255}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1140,14 +1140,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 609128584}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.902002, y: -5.06, z: 0.02011819}
+  m_LocalRotation: {x: -0, y: -0, z: -0.032844257, w: 0.9994605}
+  m_LocalPosition: {x: 1.85, y: -5.83, z: 0.02011819}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 884742411}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -3.764}
 --- !u!61 &609128586
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1985,7 +1985,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 947, y: 835}
+  m_AnchoredPosition: {x: 947, y: 964}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1030354137
@@ -2017,8 +2017,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281545523
-  m_fontColor: {r: 0.1981132, g: 0.1981132, b: 0.1981132, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2035,14 +2035,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -2071,7 +2071,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -120.68907, y: 0, z: -113.44786, w: -48.116573}
+  m_margin: {x: -809.2421, y: 0, z: -832.3909, w: -155.98888}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2084,6 +2084,141 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1030354135}
+  m_CullTransparentMesh: 1
+--- !u!1 &1057156281
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1057156282}
+  - component: {fileID: 1057156284}
+  - component: {fileID: 1057156283}
+  m_Layer: 0
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1057156282
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057156281}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1191101713}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 778, y: 696}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1057156283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057156281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Press Space Bar to Continue
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 28
+  m_fontSizeBase: 28
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: -306.2712, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1057156284
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057156281}
   m_CullTransparentMesh: 1
 --- !u!1 &1132720365
 GameObject:
@@ -2145,9 +2280,9 @@ Transform:
   m_LocalScale: {x: 0.41666663, y: 0.41666663, z: 0.41666663}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1924979933}
   - {fileID: 546422185}
   - {fileID: 1030354136}
+  - {fileID: 1057156282}
   m_Father: {fileID: 1405297691}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2165,64 +2300,72 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   e: 5
   textComponent: {fileID: 1030354137}
-  myButton: {fileID: 1924979934}
   lines:
-  - Though want to create life ? Foolish human behind a computer screen, if you so
-    badly want to play god I'll satisfy your wish.
+  - "You want to create life? Foolish human behind a computer screen! If you so badly
+    want to play god I\u2019ll satisfy your wish."
   - If play is what you want, then play we shall.
-  - I've curated a little toy for your "playtime".
-  - This magic doll, is the first kin of a brand new life form, very much how your
+  - "I\u2019ve curated a little toy for your \u201Cplaytime\u201D. "
+  - This magic doll is the first kin of a brand new life form, very much how your
     species once came to be.
-  - You can grab it, if you let go in a point of the playground it'll follow your
-    comands and move towards that position.
-  - As you can see it's pretty dumb and stupid. So yes, very much like early humans.
-  - But a new life form is a precious opportunity to grow, evolve. You are its god
-    now, it's faith is in your hands.
+  - "You can grab it, if you let go of it in a point on the playground it\u2019ll
+    follow your instructions and move towards that position."
+  - "As you can see it\u2019s pretty dumb and stupid. So yes, very much like early
+    humans."
+  - But a new life form is a precious opportunity to grow, evolve. You are its master
+    now, its fate is in your hands.
   - And clueless as it may be, there is a certain bliss to be had about being ignorant.
-  - But happiness is not enough to survive in the wilderness and, out in nature it's
-    a rutheless competittion for survival.
+  - "But happiness is not enough to survive in the wilderness, out there in nature,
+    it\u2019s a ruthless competition for survival."
   - We'll need to increase it's intelligence, you can do this by sending it over
     to it's home. With in it it will fortify itself and become smarter.
-  - Observe the bar at the top of your screen, as you build up your home the species'
-    intelligence bar increases.
-  - By its lonesome this will take a while, fortunately this magical sewing machine
-    will help your species expand
-  - I'll show you a faster way to increase your intelligence, but first we'll need
-    to gather up some cotton. I've created a suply of resources you can gather.
+  - "Observe the bar at the top of your screen, as you build up your home the species\u2019
+    intelligence bar will increase. If no one is at base, it will slowly decrease."
+  - By its lonesome it will take a while for the civilization to develop, luckily
+    this magic sewing machine will curate new specimens for your population.
+  - "As the puppeteer you\u2019ve got some cards up your sleeve to control your population,
+    literally. I\u2019ll show you a faster way to increase intelligence but first
+    you\u2019ll need to gather some resources."
   - Gather 5 blocks of cotton.
-  - Great! With these gathered materials you can create structures for your civilization
-    to thrive. Use this library card to increase your population's intelligence.
-  - Wow, that's some progress! You just entered the Silver Age. Your wolves will
-    now be stronger. Which will be helpful when dealing againts their natural predators
-    Altered Ravenous Giant Sheep!
-  - Yeah! I've been holding them off till now but it's time your wolves learn a thing
-    or 2 about survival of the fittest!
-  - Sheeps come in horde, they will try to attack your base stealing cotton for their
-    fancy outfits.
-  - If a Altered Ravenous Giant Sheep manages to steal cotton from wolves it stops
-    itching and matures into it's final form the Evervescent Beautous Sheep.
-  - It's every Altered Ravenbous Sheep's desire.
-  - Ah yes how to beat them , just send your wolves add them, you reached the Silver
-    Ages so you should beat them with relatve ease.
+  - "Great! With these gathered materials you can create structures for your civilization
+    to thrive. Use this library card to increase the population\u2019s intelligence."
+  - "Wow, that\u2019s some progress ! With enough intelligence your civilization
+    can enter the silver or even gold age. This will make your pack much stronger
+    allowing them to more easily defend against their natural predators the \u201CAltered
+    Ravenous Giant Sheep\u201D!"
+  - "Yeah! I\u2019ve been holding them off until now but it\u2019s time for your
+    wolves to learn a thing or 3 about survival of the fittest."
+  - Sheeps come in hordes, they will try to attack your base, stealing cotton for
+    their fancy outfits.
+  - "If an Altered Ravenous Giant Sheep manages to steal cotton from wolves it stops
+    itching and matures into its final form: the \u201CEffervescent Beauteous Sheeplet\u201D."
+  - "It\u2019s every Altered Ravenous Sheep\u2019s desire."
+  - Ah yes, how to beat them? Grab your wolves and send them at them, you reached
+    the Silver Ages so you should triumph with relative ease.
+  - "It\u2019s a good time to mention that with your \u201Cright mouse button\u201D
+    you can gather around your wolves in a pack for easier group control. What\u2019s
+    a  \u201Cright mouse button\u201D, this information eludes even me, it must be
+    some extra dimensional control device."
   - Get ready to Baaaaahtle !
-  - Great, you've succesfully defeated the sheep
-  - Here's some more wolves as a reward!
-  - Woah! A rebellious altered wolf, that's no good
-  - I mean it's to be expected when civilization grows, weapons develop and conflict
-    will always ensure
-  - Not so easy to mantain a peaceful race, if the sheep weren't enough of a problem
-    now you're own wolves are turning againts themselves
-  - Not so easy to mantain a peaceful race, if the sheep weren't enough of a problem
-    now you're own wolves are turning againts themselves
-  - Just like sheeps, you can target them with your wlves to get rid of it
-  - I highly  recomend you do so at least. Altered wolves can persuade other wolves
-    to become problematic, they won't respond to orders either.
-  - As the population grows more intelligent more of these chaotic wolves are prone
-    to appear, and yet you must maintain your population smart so they can defend
-    againts the sheep.
-  - Oh what a conundrum, not so easy mantaining life is it. Are all living beings
-    faded to perish or eventually destroy themselves? I'll let you prove me wrong
-    on that one...
+  - "Great! You\u2019ve successfully defeated the sheep!"
+  - "Here\u2019s some more wolves as a reward ! "
+  - "Woah! A rebellious \u201CAltered Wolf\u201D that\u2019s no good. "
+  - "It\u2019s to be expected, when civilization grows, weapons develop and conflict
+    will always ensue."
+  - "Not so easy to maintain a peaceful race, if the sheep weren\u2019t enough of
+    a problem, now you\u2019re own wolves are turning against themselves."
+  - Just like with sheeps, you can target them with your wolves to get rid of it.
+  - "I highly recommend you to do so at least. \u201CAltered Wolves\u201D can persuade
+    other wolves to become problematic, they won\u2019t respond to commands either."
+  - As the population grows more intelligent, more chaotic wolves are prone to appear,
+    and yet you must maintain your population smart so they can defend against the
+    sheep.
+  - "Decrease your intelligence to avoid the appearance of these \u201CAltered Wolves\u201D,
+    they\u2019ll even steal the cotton from your regular wolves. It\u2019s fascinating
+    how quickly one can lose control over the life forms oneself has created, I should
+    know."
+  - "Oh, what a conundrum ! not so easy to maintain life is it ? Are all living beings
+    faded to perish or eventually destroy themselves ? I\u2019ll let you prove me
+    wrong on that one\u2026"
   textSpeed: 0.04
   tutorial_wolf: {fileID: 1366346593}
   city: {fileID: 532560366}
@@ -2231,6 +2374,7 @@ MonoBehaviour:
   sheep_spawner: {fileID: 1251001574}
   library_card: {fileID: 1966335332}
   intelligence_bar: {fileID: 13221740}
+  spacebar_message: {fileID: 1057156281}
 --- !u!1 &1205955004
 GameObject:
   m_ObjectHideFlags: 0
@@ -3420,128 +3564,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3e7cba1b5bdbaa42aea2dbfbae92aa7, type: 3}
---- !u!1 &1924979932
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1924979933}
-  - component: {fileID: 1924979936}
-  - component: {fileID: 1924979935}
-  - component: {fileID: 1924979934}
-  m_Layer: 0
-  m_Name: Button
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1924979933
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1924979932}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1960084135}
-  m_Father: {fileID: 1191101713}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 925, y: 556}
-  m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1924979934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1924979932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1924979935}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1924979935
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1924979932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1924979936
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1924979932}
-  m_CullTransparentMesh: 1
 --- !u!1001 &1956990536
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3689,141 +3711,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7744299667239803532, guid: c3e7cba1b5bdbaa42aea2dbfbae92aa7, type: 3}
   m_PrefabInstance: {fileID: 1956990536}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1960084134
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1960084135}
-  - component: {fileID: 1960084137}
-  - component: {fileID: 1960084136}
-  m_Layer: 0
-  m_Name: Text (TMP)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1960084135
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1960084134}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1924979933}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1960084136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1960084134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: Button
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 1
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &1960084137
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1960084134}
-  m_CullTransparentMesh: 1
 --- !u!114 &1966335332 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5157512593874867425, guid: c3e7cba1b5bdbaa42aea2dbfbae92aa7, type: 3}

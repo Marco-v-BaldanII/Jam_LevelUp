@@ -2582,7 +2582,7 @@ MonoBehaviour:
   sheep_spawner: {fileID: 1251001574}
   library_card: {fileID: 1966335332}
   intelligence_bar: {fileID: 13221740}
-  spacebar_message: {fileID: 1057156281}
+  spacebar_message: {fileID: 1057156283}
 --- !u!1 &1205955004
 GameObject:
   m_ObjectHideFlags: 0

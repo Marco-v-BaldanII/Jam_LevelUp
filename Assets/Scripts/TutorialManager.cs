@@ -44,11 +44,23 @@ public class TutorialManager : MonoBehaviour
 
     bool third_wolves_spawned = false;
 
-    public GameObject spacebar_message;
+    public TextMeshProUGUI spacebar_message;
+    
 
     void Awake()
     {
-        current_lines = lines_catalan;
+
+        string idoma = PlayerPrefs.GetString("language");
+
+        if (idoma == "english")
+        {
+            current_lines = lines;
+        }
+        else
+        {
+            spacebar_message.text = "Pressiona espai per continuar";
+            current_lines = lines_catalan;
+        }
 
         if (textComponent == null)
         {
@@ -136,11 +148,11 @@ public class TutorialManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)) { AdvanceText(); }
         if (index == 4 || index == 9 || index == 13 || index == 14 || index == 22 || index == 21)
         {
-            if(spacebar_message.gameObject.activeSelf == true) { spacebar_message.SetActive(false); }
+            //if(spacebar_message.gameObject.activeSelf == true) { spacebar_message.gameObject.SetActive(false); }
         }
         else
         {
-            if (spacebar_message.gameObject.activeSelf == false) { spacebar_message.SetActive(true); }
+            //if (spacebar_message.gameObject.activeSelf == false) { spacebar_message.gameObject.SetActive(true); }
         }
 
 

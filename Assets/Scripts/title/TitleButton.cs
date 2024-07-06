@@ -26,7 +26,7 @@ public class TitleButton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        PlayerPrefs.SetString("language", "catalan");
     }
 
     // Update is called once per frame
@@ -50,12 +50,12 @@ public class TitleButton : MonoBehaviour
         if (languageIndex == 0)
         {
             languageIndex++;
-            myLanguage.text = "Español";
-
+            myLanguage.text = "English";
+            PlayerPrefs.SetString("language", "english");
 
 
         }
-        else { languageIndex = 0; myLanguage.text = "English"; }
+        else { languageIndex = 0; myLanguage.text = "Català"; PlayerPrefs.SetString("language", "catalan"); }
 
         //title.language = myLanguage.text;
     }

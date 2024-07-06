@@ -5323,7 +5323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a888a200a2045842bc43ef7de70b0b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collider: {fileID: 0}
+  collider: {fileID: 1783512950}
   mining_time: 5
   mine_time: 3
 --- !u!1 &1836810998

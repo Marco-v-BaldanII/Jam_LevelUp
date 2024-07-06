@@ -1,0 +1,19 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:08a35f8f0e538109bba97aaf35b22147:b092c01062a48ec2505c39c370915f32:0a89ee64b7ca94f42e44720512e33f79$
+#
+:format=40300
+:texture=edificaciones.png
+:size=1024x2048
+:pivotpoints=enabled
+:borders=disabled
+:alphahandling=ClearTransparentPixels
+
+biblioteca;1;1347;525;700; 0.5;0.5; 0;0;0;0
+casa_03;1;820;525;525; 0.5;0.5; 0;0;0;0
+event_culto;528;845;350;500; 0.5;0.5; 0;0;0;0
+mina_algodon;1;118;875;700; 0.5;0.5; 0;0;0;0

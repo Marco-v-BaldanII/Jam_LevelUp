@@ -1,0 +1,31 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:8a533dc44a90b1f1d82c3f791db395a8:bd9b15c8d3b2518310a0721a210ef90b:60ba30cd251b5af748c841551f19d5c9$
+#
+:format=40300
+:texture=loading.png
+:size=1024x2048
+:pivotpoints=enabled
+:borders=disabled
+:alphahandling=ClearTransparentPixels
+
+screen_animation_00;1;1747;300;300; 0.5;0.5; 0;0;0;0
+screen_animation_01;303;1747;300;300; 0.5;0.5; 0;0;0;0
+screen_animation_02;605;1747;300;300; 0.5;0.5; 0;0;0;0
+screen_animation_03;1;1445;300;300; 0.5;0.5; 0;0;0;0
+screen_animation_04;303;1445;300;300; 0.5;0.5; 0;0;0;0
+screen_animation_05;605;1445;300;300; 0.5;0.5; 0;0;0;0
+screen_animation_06;1;1143;300;300; 0.5;0.5; 0;0;0;0
+screen_animation_07;303;1143;300;300; 0.5;0.5; 0;0;0;0
+screen_animation_08;605;1143;300;300; 0.5;0.5; 0;0;0;0
+screen_animation_09;1;841;300;300; 0.5;0.5; 0;0;0;0
+screen_animation_10;303;841;300;300; 0.5;0.5; 0;0;0;0
+screen_animation_11;605;841;300;300; 0.5;0.5; 0;0;0;0
+screen_animation_12;1;539;300;300; 0.5;0.5; 0;0;0;0
+screen_animation_13;303;539;300;300; 0.5;0.5; 0;0;0;0
+screen_animation_14;605;539;300;300; 0.5;0.5; 0;0;0;0
+screen_animation_15;1;237;300;300; 0.5;0.5; 0;0;0;0

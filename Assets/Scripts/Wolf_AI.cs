@@ -33,6 +33,7 @@ public class Wolf_AI : MonoBehaviour
     private Wolf_City city_object;
     public GameObject marshmallow;
     public GameObject speech_bubble;
+    public GameObject speech_bubble2;
     public GameObject buffer;
 
     public GameObject cross;
@@ -508,10 +509,12 @@ public class Wolf_AI : MonoBehaviour
     //-----------------Talking corroutine----------------//
     private IEnumerator Talk()
     {
-        speech_bubble.SetActive(true);
+        if (my_mood == Wolf_Mood.NORMAL) { speech_bubble.SetActive(true); }
+        else { speech_bubble2.SetActive(true); }
         if (!right_talk) { transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z); }
         yield return new WaitForSeconds(3);
         speech_bubble.SetActive(false);
+        speech_bubble2.SetActive(false);
         my_state = Wolf_State.IDLE;
         started_talking = false;
         

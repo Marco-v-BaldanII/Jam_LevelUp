@@ -3290,7 +3290,7 @@ MonoBehaviour:
   - {fileID: 1986634911}
   talk_wait_min: 5
   talk_wait_max: 10
-  talk_probability: 100
+  talk_probability: 10
   enraged_probability: 5
   cotton_bar: {fileID: 1741777260}
   spawn_positions:
@@ -3421,7 +3421,7 @@ RectTransform:
   m_GameObject: {fileID: 1678940189}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 15.313025, y: 1, z: 1}
+  m_LocalScale: {x: 15.313025, y: 1.125, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1405297691}
@@ -3429,7 +3429,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -1024}
+  m_AnchoredPosition: {x: 0, y: -1030}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1678940191

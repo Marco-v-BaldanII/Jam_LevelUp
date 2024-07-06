@@ -24,7 +24,6 @@ public class Wolf_City : wolf_task
     public TextMeshProUGUI intelligence_counter;
     public Wolf_Spawner wolf_spawner;
     public ProgressBar intelligence_bar;
-    private Animator animator;
     public INTELIGENCE_LEVEL intelligence_level = INTELIGENCE_LEVEL.LOW;
 
     public int num_wolves2;
@@ -37,7 +36,6 @@ public class Wolf_City : wolf_task
             GameObject obj = GameObject.Find("Intelligence_Bar");
             intelligence_bar = obj.GetComponent<ProgressBar>();
         }
-        animator = GetComponent<Animator>();
         StartCoroutine("BuildCity");
 
     }
@@ -155,26 +153,22 @@ public class Wolf_City : wolf_task
         if (intelligence_bar.Get() > 266 && intelligence_level == INTELIGENCE_LEVEL.LOW)
         {
             intelligence_level = INTELIGENCE_LEVEL.MID;
-            animator.SetInteger("level", 2);
             wolf_spawner.Change_Wolf_Level(2);
         }
         if (intelligence_bar.Get() > 533 && intelligence_level == INTELIGENCE_LEVEL.MID)
         {
             intelligence_level = INTELIGENCE_LEVEL.HIGH;
-            animator.SetInteger("level", 3);
             wolf_spawner.Change_Wolf_Level(3);
         }
 
         if (intelligence_bar.Get() < 266 && intelligence_level == INTELIGENCE_LEVEL.MID)
         {
             intelligence_level = INTELIGENCE_LEVEL.LOW;
-            animator.SetInteger("level", 1);
             wolf_spawner.Change_Wolf_Level(1);
         }
         if (intelligence_bar.Get() < 533 && intelligence_level == INTELIGENCE_LEVEL.HIGH)
         {
             intelligence_level = INTELIGENCE_LEVEL.MID;
-            animator.SetInteger("level", 2);
             wolf_spawner.Change_Wolf_Level(2);
         }
 

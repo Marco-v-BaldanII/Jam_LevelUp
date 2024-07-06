@@ -1,5 +1,7 @@
 version: 2
 tpsheetFileNames:
+- Assets/Sprites/edificaciones.tpsheet
+- Assets/Sprites/loading.tpsheet
 - Assets/Sprites/lobo_bronce_idle.tpsheet
 - Assets/Sprites/lobo_bronce_run.tpsheet
 - Assets/Sprites/lobo_normal.run.tpsheet
@@ -15,7 +17,10 @@ tpsheetFileNames:
 - Assets/Sprites/oveja_fea_enojada_run.tpsheet
 - Assets/Sprites/oveja_guapa_run.tpsheet
 - Assets/Sprites/tapete_juegos.tpsheet
+- Assets/Sprites/ui.tpsheet
 textureFileNames:
+- Assets/Sprites/edificaciones.png
+- Assets/Sprites/loading.png
 - Assets/Sprites/lobo_bronce_idle.png
 - Assets/Sprites/lobo_bronce_run.png
 - Assets/Sprites/lobo_normal.run.png
@@ -31,7 +36,11 @@ textureFileNames:
 - Assets/Sprites/oveja_fea_enojada_run.png
 - Assets/Sprites/oveja_guapa_run.png
 - Assets/Sprites/tapete_juegos.png
+- Assets/Sprites/ui.png
 normalmapFileNames:
+- 
+- 
+- 
 - 
 - 
 - 

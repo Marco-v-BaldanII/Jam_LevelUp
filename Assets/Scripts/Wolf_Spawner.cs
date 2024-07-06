@@ -114,11 +114,11 @@ public class Wolf_Spawner : MonoBehaviour
                 Change_Wolf_Level(1);
                 break;
             case INTELIGENCE_LEVEL.MID:
-                if(enraged_probability != 100) enraged_probability = 30;
+                if(my_mode != MODE.TUTORIAL) enraged_probability = 30;
                 Change_Wolf_Level(2);
                 break;
             case INTELIGENCE_LEVEL.HIGH:
-                if (enraged_probability != 100) enraged_probability = 90;
+                if (my_mode != MODE.TUTORIAL) enraged_probability = 50;
                 Change_Wolf_Level(3);
                 break;
         }
@@ -144,14 +144,16 @@ public class Wolf_Spawner : MonoBehaviour
     {
         while (city.intelligence_bar.Get() < 1001)
         {
-            cotton_bar.Fill_With_Time(spawn_rate - 2);
-            yield return new WaitForSecondsRealtime(spawn_rate-2);
-            animator.SetTrigger("sew");
-            yield return new WaitForSecondsRealtime(2);
             if (active_wolfs.Count() < 20)
             {
+                cotton_bar.Fill_With_Time(spawn_rate - 2);
+                 yield return new WaitForSecondsRealtime(spawn_rate-2);
+                  animator.SetTrigger("sew");
+                yield return new WaitForSecondsRealtime(2);
+            
                 SewWolf();
             }
+            yield return null;
         }
     }
     

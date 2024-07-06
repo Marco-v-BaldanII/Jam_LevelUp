@@ -98,9 +98,14 @@ public class TutorialManager : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("MainMenu");
+            Back_To_Menu();
             gameObject.SetActive(false);
         }
+    }
+
+    public void Back_To_Menu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 
     void Special_Advance_Line()
@@ -229,7 +234,7 @@ public class TutorialManager : MonoBehaviour
             sheep_spawner.gameObject.SetActive(true);
            
         }
-        if(index == 29 && !conversation)
+        if(index == 28 && !conversation)
         {
             wolf_spawner.talk_wait_min = 0; wolf_spawner.talk_wait_max = 1;
             wolf_spawner.talk_probability = 10000;

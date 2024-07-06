@@ -252,7 +252,7 @@ public class Wolf_AI : MonoBehaviour
             marshmallow.SetActive(has_cotton);
         }
 
-        spriteRenderer.color = my_mood == Wolf_Mood.ENRAGED ? enragedColor : spriteRenderer.color;
+        //spriteRenderer.color = my_mood == Wolf_Mood.ENRAGED ? enragedColor : spriteRenderer.color;
 
 
     }
@@ -289,7 +289,7 @@ public class Wolf_AI : MonoBehaviour
         if (!isColliding && !isColliding2 && !isColliding3)
         {
             my_state = Wolf_State.WALKING_TO_NOTHING;
-            spriteRenderer.color = Color.green;
+            //spriteRenderer.color = Color.green;
             nothing_direction = transform.position;
             my_task = null; moving_towards_base = false; moving_towards_task = false;
 

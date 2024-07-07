@@ -245,7 +245,7 @@ public class Wolf_City : wolf_task
             PlayerPrefs.SetInt("death", 0);
         }
         GameManager.Instance.ScreenShot();
-        PlayerPrefs.SetFloat("current_time", timer);
+        PlayerPrefs.SetInt("current_time", (int) timer);
 
         StartCoroutine("Game_Over2");
     }

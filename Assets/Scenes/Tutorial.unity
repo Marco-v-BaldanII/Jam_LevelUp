@@ -411,7 +411,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5157512593874867425, guid: c3e7cba1b5bdbaa42aea2dbfbae92aa7, type: 3}
   m_PrefabInstance: {fileID: 1427757635}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1427757640}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b46557d1cf8ef374a8e879303cf1464a, type: 3}
@@ -3819,7 +3819,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5873830454738848326, guid: c3e7cba1b5bdbaa42aea2dbfbae92aa7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5885572008194765621, guid: c3e7cba1b5bdbaa42aea2dbfbae92aa7, type: 3}
       propertyPath: m_text
@@ -3994,13 +3994,78 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5873830454738848326, guid: c3e7cba1b5bdbaa42aea2dbfbae92aa7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1427757641}
   m_SourcePrefab: {fileID: 100100000, guid: c3e7cba1b5bdbaa42aea2dbfbae92aa7, type: 3}
 --- !u!1 &1427757636 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1292781784049188432, guid: c3e7cba1b5bdbaa42aea2dbfbae92aa7, type: 3}
   m_PrefabInstance: {fileID: 1427757635}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1427757637 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5885572008194765621, guid: c3e7cba1b5bdbaa42aea2dbfbae92aa7, type: 3}
+  m_PrefabInstance: {fileID: 1427757635}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1427757638 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2320291521911257101, guid: c3e7cba1b5bdbaa42aea2dbfbae92aa7, type: 3}
+  m_PrefabInstance: {fileID: 1427757635}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1427757639 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8023505076643458568, guid: c3e7cba1b5bdbaa42aea2dbfbae92aa7, type: 3}
+  m_PrefabInstance: {fileID: 1427757635}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1427757640 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5873830454738848326, guid: c3e7cba1b5bdbaa42aea2dbfbae92aa7, type: 3}
+  m_PrefabInstance: {fileID: 1427757635}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1427757641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427757640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 245d527e89f1920488f2c3ae7bd27a48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: {fileID: 1427757638}
+  description: {fileID: 1427757637}
+  full_description: {fileID: 1427757639}
+  en_name: Library
+  en_description: + Intelligence
+  en_full_des: Generates a library. Books are able to pass down knowledge over generations.
+    Use this card to raise your pack's intelligence.
+  cat_name: Biblioteca
+  cat_description: "+ Intel\xB7lig\xE8ncia"
+  cat_full_des: "Genera una biblioteca. Els libres poden passar el coneixement d'una
+    esp\xE8cie durant generacions. Utilitza-la per augmentar la intel\xB7lig\xE8ncia
+    de la civilitzaci\xF3."
 --- !u!1 &1481467361
 GameObject:
   m_ObjectHideFlags: 0

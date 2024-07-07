@@ -59,7 +59,7 @@ public class Circle_Timer : MonoBehaviour
             wait_time = 0;
             finished = true;
             my_card.EnableCard();
-
+            background_circle.SetActive(false);
             this.gameObject.SetActive(false);
             color_changing_image.gameObject.SetActive(false);
 

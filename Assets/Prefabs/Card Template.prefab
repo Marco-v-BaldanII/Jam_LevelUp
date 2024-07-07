@@ -66,7 +66,83 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1257467018, guid: 4b5c714436251dd4abffa3d3e626a56c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e627a01886b54d74eaa795f1c0ad1b58, type: 3}
+  m_Type: 3
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 0
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!1 &1292781784049188432
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9186822753986095101}
+  - component: {fileID: 7468738925291999905}
+  - component: {fileID: 5543094055195065859}
+  m_Layer: 5
+  m_Name: Fill (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &9186822753986095101
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1292781784049188432}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 2.233}
+  m_LocalScale: {x: 0.2334276, y: 0.2334276, z: 0.2334276}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7744299667239803532}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.68501, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &7468738925291999905
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1292781784049188432}
+  m_CullTransparentMesh: 1
+--- !u!114 &5543094055195065859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1292781784049188432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.20754719, g: 0.1262905, b: 0.1262905, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: e627a01886b54d74eaa795f1c0ad1b58, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -221,8 +297,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 15
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: efa9a35f5400d5c4ea0fb64d85f4084e, type: 2}
-  m_sharedMaterial: {fileID: 6946317013024155630, guid: efa9a35f5400d5c4ea0fb64d85f4084e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -356,8 +432,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Monument
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: efa9a35f5400d5c4ea0fb64d85f4084e, type: 2}
-  m_sharedMaterial: {fileID: 6946317013024155630, guid: efa9a35f5400d5c4ea0fb64d85f4084e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -491,8 +567,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Creates a Monument. Faith makes wolves ignorant, use this to decrease intelligence
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: efa9a35f5400d5c4ea0fb64d85f4084e, type: 2}
-  m_sharedMaterial: {fileID: 6946317013024155630, guid: efa9a35f5400d5c4ea0fb64d85f4084e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -592,6 +668,7 @@ RectTransform:
   m_LocalScale: {x: 1.5055751, y: 1.5055751, z: 1.5055751}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 9186822753986095101}
   - {fileID: 2927697057030135205}
   - {fileID: 5054238013873259330}
   - {fileID: 1637372537383498192}
@@ -907,8 +984,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: + Intelligence
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: efa9a35f5400d5c4ea0fb64d85f4084e, type: 2}
-  m_sharedMaterial: {fileID: 6946317013024155630, guid: efa9a35f5400d5c4ea0fb64d85f4084e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1028,7 +1105,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6454551980959609295}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -1041,7 +1118,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -904761994, guid: 4b5c714436251dd4abffa3d3e626a56c, type: 3}
+  m_Sprite: {fileID: -1557162489, guid: 4b5c714436251dd4abffa3d3e626a56c, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1064,7 +1141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wait_time: 15
-  Fill: {fileID: 5702471508340973098}
+  Fill: {fileID: 3416805734903176971}
   color_changing_image: {fileID: 3416805734903176971}
   startColor: {r: 1, g: 0.18057786, b: 0, a: 1}
   endColor: {r: 0.5707547, g: 1, b: 0.65792334, a: 1}
@@ -1139,8 +1216,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: efa9a35f5400d5c4ea0fb64d85f4084e, type: 2}
-  m_sharedMaterial: {fileID: 6946317013024155630, guid: efa9a35f5400d5c4ea0fb64d85f4084e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

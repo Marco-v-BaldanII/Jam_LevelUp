@@ -9,7 +9,8 @@ public enum DIFFICULTY
     EASY,
     MEDIUM,
     HARD,
-    HERALD_OF_CHAOS
+    HERALD_OF_CHAOS,
+    INSANITY
 
 }
 
@@ -74,21 +75,22 @@ public class SheepSpawnerScript : MonoBehaviour
                 switch (sheep_difficulty)
                 {
                 case DIFFICULTY.EASY:
-                    wait_time = Random.Range(30.0f, 45.0f);
+                    wait_time = Random.Range(48.0f, 60.0f);
                     spawn_amount = Random.Range(1, 3);
                     break;
                 case DIFFICULTY.MEDIUM:
-                    wait_time = Random.Range(25.0f, 35.0f);
-                    spawn_amount = Random.Range(2, 6);
+                    wait_time = Random.Range(30.0f, 40.0f);
+                    spawn_amount = Random.Range(3, 5);
                     break;
                 case DIFFICULTY.HARD:
-                    wait_time = Random.Range(18.0f, 28.0f);
-                    spawn_amount = Random.Range(3, 8);
+                    wait_time = Random.Range(23.0f, 33.0f);
+                    spawn_amount = Random.Range(4, 7);
                     break;
                 case DIFFICULTY.HERALD_OF_CHAOS:
-                    wait_time = Random.Range(10.0f, 18.0f);
-                    spawn_amount = Random.Range(4, 10);
+                    wait_time = Random.Range(15.0f, 23.0f);
+                    spawn_amount = Random.Range(7, 10);
                     break;
+                
 
                 }
             }
@@ -121,10 +123,12 @@ public class SheepSpawnerScript : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(50);
         sheep_difficulty = DIFFICULTY.MEDIUM;
-        yield return new WaitForSecondsRealtime(70);
+        yield return new WaitForSecondsRealtime(80);
         sheep_difficulty = DIFFICULTY.HARD;
         yield return new WaitForSecondsRealtime(60);
         sheep_difficulty = DIFFICULTY.HERALD_OF_CHAOS;
+        //yield return new WaitForSecondsRealtime(60);
+        //sheep_difficulty = DIFFICULTY.INSANITY;
 
 
     }

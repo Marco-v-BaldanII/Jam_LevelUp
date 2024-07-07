@@ -28,6 +28,9 @@ public class Sheep : MonoBehaviour
 
     private Vector3 previousPosition;
     private Coroutine sprintCoroutine;
+    private AudioSource audio;
+    [SerializeField] AudioClip charge_sound;
+    [SerializeField] AudioClip attack_sound;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +39,7 @@ public class Sheep : MonoBehaviour
         actualDestination = new Vector3(destination.position.x, destination.position.y, destination.position.z);
         animator = GetComponent<Animator>();
         spawner = GetComponentInParent<SheepSpawnerScript>();
+        audio = GetComponent<AudioSource>();
         dead = false;
         angered = true;
         life = 2;
@@ -159,7 +163,7 @@ public class Sheep : MonoBehaviour
     public IEnumerator DestroyCity()
     {
         Debug.Log("Attacking city");
-        if(animator != null) { animator.SetBool("Attacking", true); }
+        if(animator != null) { animator.SetBool("Attacking", true); audio.clip = attack_sound; audio.Play(); }
 
         yield return new WaitForSeconds(10);
 
@@ -184,7 +188,7 @@ public class Sheep : MonoBehaviour
             if (dead) yield break;
 
             my_State = Sheep_State.SPRINTING;
-            if (animator != null) { animator.SetBool("Sprinting", true); }
+            if (animator != null) { animator.SetBool("Sprinting", true); audio.clip = charge_sound; audio.Play(); }
 
             yield return new WaitForSeconds(1);
             if (dead) yield break;

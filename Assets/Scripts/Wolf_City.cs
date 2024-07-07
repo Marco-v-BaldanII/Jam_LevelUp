@@ -15,18 +15,26 @@ public enum INTELIGENCE_LEVEL
 
 public class Wolf_City : wolf_task
 {
-    private int num_cotton = 0;
+    [SerializeField] int num_cotton = 0;
     private int inteligence = 0;
 
     uint intelligence_state = 1;
 
     public TextMeshProUGUI cotton_counter;
     public TextMeshProUGUI intelligence_counter;
+    [SerializeField] TextMeshProUGUI time_counter;
     public Wolf_Spawner wolf_spawner;
     public ProgressBar intelligence_bar;
     public INTELIGENCE_LEVEL intelligence_level = INTELIGENCE_LEVEL.LOW;
 
+    [SerializeField] TextMeshProUGUI current_message;
+    [SerializeField] TextMeshProUGUI bronze_ages;
+    [SerializeField] TextMeshProUGUI silver_ages;
+    [SerializeField] TextMeshProUGUI gold_ages;
+
     public int num_wolves2;
+
+    float timer = 0;
 
     // Start is called before the first frame update
     void Awake()
@@ -38,6 +46,15 @@ public class Wolf_City : wolf_task
         }
         StartCoroutine("BuildCity");
 
+        current_message = bronze_ages;
+        current_message.gameObject.SetActive(true);
+
+        if(GameManager.Instance.game_language == Language.CATALAN){
+            bronze_ages.text = "Edat de Bronze";
+            silver_ages.text = "Edat de Plata";
+            gold_ages.text = "Edat d'Or";
+        }
+
     }
 
     // Update is called once per frame
@@ -47,8 +64,14 @@ public class Wolf_City : wolf_task
 
         num_wolves2 = num_wolves;
 
+        timer += Time.deltaTime;
 
+    
+        int minutes = (int)timer / 60;
+        int seconds = (int)timer % 60;
 
+        time_counter.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        cotton_counter.text = num_cotton.ToString();
     }
 
     public int Get_Cotton()
@@ -64,7 +87,7 @@ public class Wolf_City : wolf_task
             if (wolf != null && wolf.my_state == Wolf_State.MINING ) // when the wolf is transporting cotton
             {
                 num_cotton++;
-                cotton_counter.text = "Available cotton : " + num_cotton.ToString();
+                
                 current_wolf = wolf;
                 wolf.has_cotton = false;
                 wolf.moving_towards_task = true;
@@ -171,7 +194,7 @@ public class Wolf_City : wolf_task
             intelligence_level = INTELIGENCE_LEVEL.MID;
             wolf_spawner.Change_Wolf_Level(2);
         }
-
+        Change_Age_Message(intelligence_level);
     }
 
     public int CheckCotton() { return num_cotton; }
@@ -186,6 +209,28 @@ public class Wolf_City : wolf_task
         intelligence_bar.Add(decrement);
     }
 
+    void Change_Age_Message(INTELIGENCE_LEVEL level)
+    {
+        switch (level)
+        {
+            case INTELIGENCE_LEVEL.LOW:
+                current_message.gameObject.SetActive(false);
+                current_message = bronze_ages;
+                
+                break;
+            case INTELIGENCE_LEVEL.MID:
+                current_message.gameObject.SetActive(false);
+                current_message = silver_ages;
+                
+                break;
+            case INTELIGENCE_LEVEL.HIGH:
+                current_message.gameObject.SetActive(false);
+                current_message = gold_ages;
+                
+                break;
+        }
+        current_message.gameObject.SetActive(true);
+    }
 
     public void Game_Over()
     {
@@ -199,6 +244,15 @@ public class Wolf_City : wolf_task
             // Ignorance defeat
             PlayerPrefs.SetInt("death", 0);
         }
+        GameManager.Instance.ScreenShot();
+        PlayerPrefs.SetFloat("current_time", timer);
+
+        StartCoroutine("Game_Over2");
+    }
+
+    private IEnumerator Game_Over2()
+    {
+        yield return new WaitForSecondsRealtime(0.5f);
         SceneManager.LoadScene("Game_Over");
     }
 

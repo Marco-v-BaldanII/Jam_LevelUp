@@ -23,7 +23,7 @@ public class Blibioteca : Building
         while (alive_time > 0)
         {
             yield return new WaitForSecondsRealtime(0.5f);
-            civilization.AddIntelligence(civilization.wolf_spawner.GetNumWolves() *5);
+            civilization.AddIntelligence(civilization.wolf_spawner.GetNumWolves() *2);
         }
 
 

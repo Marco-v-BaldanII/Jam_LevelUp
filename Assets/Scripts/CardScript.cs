@@ -13,6 +13,7 @@ public class Card : MonoBehaviour
     public int cost = 5;
     public float wait_time = 15.0f;
     public TextMeshProUGUI second_counter;
+    private Animator animator;
 
     public Wolf_City city;
     public Building god_event;
@@ -27,6 +28,7 @@ public class Card : MonoBehaviour
     {
 
         cardImage = GetComponent<Image>();
+        animator = GetComponent<Animator>();
     
         myButton = GetComponent<Button>();
         
@@ -62,6 +64,7 @@ public class Card : MonoBehaviour
             Debug.Log("Spawning Building");
             timer.gameObject.SetActive(true);
             timer.ReStart();
+            animator.SetTrigger("Normal");
             DisableCard();
         }
         else

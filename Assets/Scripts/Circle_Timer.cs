@@ -50,7 +50,7 @@ public class Circle_Timer : MonoBehaviour
         color_changing_image.color = lerpedColor;
 
 
-        Fill.fillAmount = wait_time / max_wait;
+        Fill.fillAmount =  (max_wait - wait_time) / max_wait;
        // Debug.Log("Fillamount" + Fill.fillAmount.ToString());
 
 
@@ -68,6 +68,7 @@ public class Circle_Timer : MonoBehaviour
 
     public void ReStart()
     {
+        Fill.gameObject.SetActive(true);
         wait_time = max_wait;
         elapsedTime = 0;
         finished = false;

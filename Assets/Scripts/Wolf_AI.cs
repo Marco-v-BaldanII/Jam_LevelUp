@@ -58,6 +58,9 @@ public class Wolf_AI : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Sheep targetSheep;
     private Wolf_AI targetEnragedWolf;
+    private AudioSource audio;
+    [SerializeField] private AudioClip start_sound;
+    [SerializeField] private AudioClip cotton_sound;
 
     private Vector3 library_pos;
     private Vector3 nothing_direction;
@@ -71,7 +74,7 @@ public class Wolf_AI : MonoBehaviour
 
     private Vector3 task_pos_offset = Vector2.zero;
 
-    bool whistled = false;
+    public bool whistled = false;
     bool flipped = false;
 
     public bool hurt = false;
@@ -85,6 +88,7 @@ public class Wolf_AI : MonoBehaviour
         collider = GetComponent<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        audio = GetComponent<AudioSource>();
     }
 
     // Start is called before the first frame update
@@ -94,7 +98,9 @@ public class Wolf_AI : MonoBehaviour
         if(collider == null) collider = GetComponent<Collider2D>();
         if (spriteRenderer == null) spriteRenderer = GetComponent<SpriteRenderer>();
         if ( animator == null) animator = GetComponent<Animator>();
+        if (audio == null) audio = GetComponent<AudioSource>();
         life = 1;
+       
         damage = 1;
         if (my_mood == Wolf_Mood.ENRAGED)
         {
@@ -130,6 +136,7 @@ public class Wolf_AI : MonoBehaviour
                 switch (my_state)
                 {
                     case Wolf_State.IDLE:
+                        if (collider.enabled == false) { collider.enabled = true; }
                         if (!whistled)
                         {
                             rigid.velocity = direction.normalized * (movement_speed / 2);
@@ -181,7 +188,7 @@ public class Wolf_AI : MonoBehaviour
                         StopMovement();
                         break;
                     case Wolf_State.TALKING:
-
+                        if(collider.enabled == true) { collider.enabled = false; }
                         direction = talking_pos - transform.position;
                         rigid.velocity = direction.normalized * movement_speed;
 
@@ -305,6 +312,8 @@ public class Wolf_AI : MonoBehaviour
             has_cotton = false;
             
         }
+        audio.clip = start_sound;
+        audio.Play();
 
         collider.isTrigger = false;
         //if(my_state == Wolf_State.MINING) { my_state = Wolf_State.IDLE; }
@@ -324,6 +333,8 @@ public class Wolf_AI : MonoBehaviour
         {
             my_state = Wolf_State.MOVING;
             moving_towards_task = false;
+            audio.clip = cotton_sound;
+            audio.Play();
         }
         else if (collision.gameObject.CompareTag("Whistle") == true && my_mood != Wolf_Mood.ENRAGED && my_state != Wolf_State.PLAYING)
         {

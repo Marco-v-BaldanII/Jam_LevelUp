@@ -27,6 +27,7 @@ public class TitleButton : MonoBehaviour
     void Start()
     {
         PlayerPrefs.SetString("language", "catalan");
+        GameManager.Instance.game_language = Language.CATALAN;
     }
 
     // Update is called once per frame
@@ -52,10 +53,10 @@ public class TitleButton : MonoBehaviour
             languageIndex++;
             myLanguage.text = "English";
             PlayerPrefs.SetString("language", "english");
-
+            GameManager.Instance.game_language = Language.ENGLISH;
 
         }
-        else { languageIndex = 0; myLanguage.text = "Català"; PlayerPrefs.SetString("language", "catalan"); }
+        else { languageIndex = 0; myLanguage.text = "Català"; PlayerPrefs.SetString("language", "catalan"); GameManager.Instance.game_language = Language.CATALAN; }
 
         //title.language = myLanguage.text;
     }

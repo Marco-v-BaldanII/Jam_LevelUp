@@ -9,6 +9,8 @@ public class GameOverMessage : MonoBehaviour
 {
     public GameObject[] intelligence_quotes;
     public GameObject[] ignorance_quotes;
+    public GameObject[] cat_intelligence_quotes;
+    public GameObject[] cat_ignorance_quotes;
 
     private TextMeshProUGUI selected_quote;
 
@@ -29,15 +31,29 @@ public class GameOverMessage : MonoBehaviour
             {
                 intelligence = true;
             }
-            int index = Random.Range(0, 3);
+            int index = Random.Range(0, 4);
 
             if (intelligence)
             {
-                intelligence_quotes[index].gameObject.SetActive(true);
+                if (GameManager.Instance.game_language == Language.ENGLISH)
+                {
+                    intelligence_quotes[index].gameObject.SetActive(true);
+                }
+                else
+                {
+                    cat_intelligence_quotes[index].gameObject.SetActive(true);
+                }
             }
             else
             {
-                ignorance_quotes[index].gameObject.SetActive(true);
+                if (GameManager.Instance.game_language == Language.ENGLISH)
+                {
+                    ignorance_quotes[index].gameObject.SetActive(true);
+                }
+                else
+                {
+                    cat_ignorance_quotes[index].gameObject.SetActive(true);
+                }
             }
 
         }

@@ -64,6 +64,7 @@ public class Card : MonoBehaviour
             Debug.Log("Spawning Building");
             timer.gameObject.SetActive(true);
             timer.ReStart();
+            timer.background_circle.SetActive(false);
             animator.SetTrigger("Normal");
             DisableCard();
         }

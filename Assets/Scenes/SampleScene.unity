@@ -1658,6 +1658,7 @@ GameObject:
   - component: {fileID: 777216487}
   - component: {fileID: 777216489}
   - component: {fileID: 777216488}
+  - component: {fileID: 777216490}
   m_Layer: 5
   m_Name: Sheep_Warning
   m_TagString: Untagged
@@ -1785,6 +1786,102 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 777216486}
   m_CullTransparentMesh: 1
+--- !u!82 &777216490
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777216486}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 5e12ca823dc8831488a44eb63eeee839, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.509
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 85
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &802548563
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3403,6 +3500,7 @@ GameObject:
   - component: {fileID: 1625386667}
   - component: {fileID: 1625386666}
   - component: {fileID: 1625386669}
+  - component: {fileID: 1625386670}
   m_Layer: 5
   m_Name: Wolf_Spawner
   m_TagString: Untagged
@@ -3536,6 +3634,102 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!82 &1625386670
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1625386665}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: b9df208cfae76c64083797d7b4f0ba63, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1678940189
 GameObject:
   m_ObjectHideFlags: 0
@@ -4198,6 +4392,10 @@ PrefabInstance:
       propertyPath: startColor.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5861721348933698179, guid: c3e7cba1b5bdbaa42aea2dbfbae92aa7, type: 3}
+      propertyPath: background_circle
+      value: 
+      objectReference: {fileID: 1915353586}
     - target: {fileID: 5873830454738848326, guid: c3e7cba1b5bdbaa42aea2dbfbae92aa7, type: 3}
       propertyPath: m_Name
       value: LibraryCard
@@ -4365,6 +4563,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3e7cba1b5bdbaa42aea2dbfbae92aa7, type: 3}
+--- !u!1 &1915353586 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1292781784049188432, guid: c3e7cba1b5bdbaa42aea2dbfbae92aa7, type: 3}
+  m_PrefabInstance: {fileID: 1915353585}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1956990536
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4429,6 +4632,10 @@ PrefabInstance:
       propertyPath: wait_time
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 5861721348933698179, guid: c3e7cba1b5bdbaa42aea2dbfbae92aa7, type: 3}
+      propertyPath: background_circle
+      value: 
+      objectReference: {fileID: 1956990538}
     - target: {fileID: 5873830454738848326, guid: c3e7cba1b5bdbaa42aea2dbfbae92aa7, type: 3}
       propertyPath: m_Name
       value: 'CarpetCard '
@@ -4602,6 +4809,11 @@ PrefabInstance:
 --- !u!224 &1956990537 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7744299667239803532, guid: c3e7cba1b5bdbaa42aea2dbfbae92aa7, type: 3}
+  m_PrefabInstance: {fileID: 1956990536}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1956990538 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1292781784049188432, guid: c3e7cba1b5bdbaa42aea2dbfbae92aa7, type: 3}
   m_PrefabInstance: {fileID: 1956990536}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1984371879
@@ -5108,6 +5320,10 @@ PrefabInstance:
       propertyPath: m_FillAmount
       value: 0.383
       objectReference: {fileID: 0}
+    - target: {fileID: 5861721348933698179, guid: c3e7cba1b5bdbaa42aea2dbfbae92aa7, type: 3}
+      propertyPath: background_circle
+      value: 
+      objectReference: {fileID: 1442107053138279695}
     - target: {fileID: 5873830454738848326, guid: c3e7cba1b5bdbaa42aea2dbfbae92aa7, type: 3}
       propertyPath: m_Name
       value: MonumentCard
@@ -5270,6 +5486,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3e7cba1b5bdbaa42aea2dbfbae92aa7, type: 3}
+--- !u!1 &1442107053138279695 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1292781784049188432, guid: c3e7cba1b5bdbaa42aea2dbfbae92aa7, type: 3}
+  m_PrefabInstance: {fileID: 1442107053138279694}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &4683943589074194920 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7744299667239803532, guid: c3e7cba1b5bdbaa42aea2dbfbae92aa7, type: 3}

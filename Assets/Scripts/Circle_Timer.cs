@@ -20,6 +20,7 @@ public class Circle_Timer : MonoBehaviour
     private float elapsedTime = 0.0f;
     bool finished = false;
 
+    public GameObject background_circle;
     // Start is called before the first frame update
     void Start()
     {
@@ -72,7 +73,7 @@ public class Circle_Timer : MonoBehaviour
         wait_time = max_wait;
         elapsedTime = 0;
         finished = false;
-
+        background_circle.SetActive(true);
     }
 
     public int Get_Time()

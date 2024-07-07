@@ -139,6 +139,8 @@ public class Wolf_Spawner : MonoBehaviour
                 break;
             case INTELIGENCE_LEVEL.HIGH:
                 if (my_mode != MODE.TUTORIAL) enraged_probability = 40;
+                talk_wait_min = 15; talk_wait_max = 20;
+                if(city.intelligence_bar.Get() > 680) { enraged_probability = 80; talk_wait_min = 5; talk_wait_max = 10; }
                 Change_Wolf_Level(3);
                 break;
         }
@@ -207,9 +209,15 @@ public class Wolf_Spawner : MonoBehaviour
             {
                 for (int i = 0; i < active_wolfs.Count(); ++i)
                 {
-                    if (active_wolfs[i].my_state != Wolf_State.FIGHTING && active_wolfs[i].my_state != Wolf_State.PLAYING && active_wolfs[i].whistled == false)
+                    if (active_wolfs[i].my_state != Wolf_State.FIGHTING && active_wolfs[i].my_state != Wolf_State.PLAYING && active_wolfs[i].whistled == false && active_wolfs[i].my_mood == Wolf_Mood.ENRAGED)
                     {
                         wolf1 = active_wolfs[i];
+                        break;
+                    }
+                    else if (active_wolfs[i].my_state != Wolf_State.FIGHTING && active_wolfs[i].my_state != Wolf_State.PLAYING && active_wolfs[i].whistled == false)
+                    {
+                        wolf1 = active_wolfs[i];
+                        
                     }
                 }
             }
@@ -219,9 +227,15 @@ public class Wolf_Spawner : MonoBehaviour
             }
             for (int i = 0; i < active_wolfs.Count(); ++i)
             {
-                if (active_wolfs[i].my_state != Wolf_State.FIGHTING && active_wolfs[i].my_state != Wolf_State.PLAYING && wolf1 != null && wolf1 != active_wolfs[i] && active_wolfs[i].whistled == false)
+                if (active_wolfs[i].my_state != Wolf_State.FIGHTING && active_wolfs[i].my_state != Wolf_State.PLAYING && wolf1 != null && wolf1 != active_wolfs[i] && active_wolfs[i].whistled == false && active_wolfs[i].my_mood == Wolf_Mood.NORMAL)
                 {
                     wolf2 = active_wolfs[i];
+                    break;
+                }
+                else if (active_wolfs[i].my_state != Wolf_State.FIGHTING && active_wolfs[i].my_state != Wolf_State.PLAYING && wolf1 != null && wolf1 != active_wolfs[i] && active_wolfs[i].whistled == false && active_wolfs[i].my_mood == Wolf_Mood.ENRAGED)
+                {
+                    wolf2 = active_wolfs[i];
+                    
                 }
             }
 

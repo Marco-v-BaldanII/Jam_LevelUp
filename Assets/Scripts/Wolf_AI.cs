@@ -138,6 +138,7 @@ public class Wolf_AI : MonoBehaviour
                 switch (my_state)
                 {
                     case Wolf_State.IDLE:
+
                         if (collider.enabled == false) { collider.enabled = true; }
                         if (!whistled)
                         {
@@ -147,6 +148,7 @@ public class Wolf_AI : MonoBehaviour
 
                         break;
                     case Wolf_State.MOVING:
+                        
                         if (moving_towards_task && my_task != null)
                         {
                             direction = my_task.transform.position + task_pos_offset - transform.position;
@@ -227,6 +229,7 @@ public class Wolf_AI : MonoBehaviour
                 switch(my_state)
                 {
                     case Wolf_State.IDLE:
+                        if (collider.enabled == false) { collider.enabled = true; }
                         rigid.velocity = direction.normalized * (movement_speed / 2);
                         has_cotton = false;
                         break;

@@ -26,6 +26,7 @@ public class Sheep : MonoBehaviour
     public Sheep_State my_State = Sheep_State.IDLE;
     public SheepSpawnerScript spawner;
 
+    private SpriteRenderer spriteRenderer;
     private Vector3 previousPosition;
     private Coroutine sprintCoroutine;
     private AudioSource audio;
@@ -40,6 +41,7 @@ public class Sheep : MonoBehaviour
         animator = GetComponent<Animator>();
         spawner = GetComponentInParent<SheepSpawnerScript>();
         audio = GetComponent<AudioSource>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         dead = false;
         angered = true;
         life = 2;
@@ -132,6 +134,10 @@ public class Sheep : MonoBehaviour
         {
             isDead();
         }
+        else
+        {
+            StartCoroutine(LerpColorToRedAndBack());
+        }
     }
 
     void isDead()
@@ -198,5 +204,22 @@ public class Sheep : MonoBehaviour
   
         }
 
+    }
+
+    private IEnumerator LerpColorToRedAndBack()
+    {
+        float elapsedTime = 0f;
+        float duration = 1f;
+        Color startColor = spriteRenderer.color;
+        Color targetColor = Color.red;
+
+        while (elapsedTime < duration)
+        {
+            spriteRenderer.color = Color.Lerp(startColor, targetColor, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        spriteRenderer.color = Color.white; // Change back to white after 1 second
     }
 }

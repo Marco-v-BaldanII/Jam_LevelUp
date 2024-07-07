@@ -460,6 +460,10 @@ public class Wolf_AI : MonoBehaviour
             city_object.wolf_spawner.RemoveWolves(this);
             Destroy(gameObject);
         }
+        else
+        {
+            StartCoroutine(LerpColorToRedAndBack());
+        }
     }
 
     private void StopMovement()
@@ -569,6 +573,23 @@ public class Wolf_AI : MonoBehaviour
             yield return new WaitForSecondsRealtime(1.0f);
             task_pos_offset = new Vector2(Random.Range(-1.0f, 1.0f), 0);
         }
+    }
+
+    private IEnumerator LerpColorToRedAndBack()
+    {
+        float elapsedTime = 0f;
+        float duration = 1f;
+        Color startColor = spriteRenderer.color;
+        Color targetColor = Color.red;
+
+        while (elapsedTime < duration)
+        {
+            spriteRenderer.color = Color.Lerp(startColor, targetColor, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        spriteRenderer.color = Color.white; // Change back to white after 1 second
     }
 
 }

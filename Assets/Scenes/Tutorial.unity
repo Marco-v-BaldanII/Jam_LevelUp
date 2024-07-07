@@ -5285,12 +5285,16 @@ PrefabInstance:
       objectReference: {fileID: 532560366}
     - target: {fileID: 5157512593874867425, guid: c3e7cba1b5bdbaa42aea2dbfbae92aa7, type: 3}
       propertyPath: cost
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5157512593874867425, guid: c3e7cba1b5bdbaa42aea2dbfbae92aa7, type: 3}
       propertyPath: god_event
       value: 
       objectReference: {fileID: 6394040009672437769, guid: 51a515a028b227047a58501a2bfdaa7d, type: 3}
+    - target: {fileID: 5157512593874867425, guid: c3e7cba1b5bdbaa42aea2dbfbae92aa7, type: 3}
+      propertyPath: wait_time
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5861721348933698179, guid: c3e7cba1b5bdbaa42aea2dbfbae92aa7, type: 3}
       propertyPath: endColor.a
       value: 1

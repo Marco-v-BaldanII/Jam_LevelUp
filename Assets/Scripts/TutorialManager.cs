@@ -237,6 +237,8 @@ public class TutorialManager : MonoBehaviour
             wolf_spawner.gameObject.SetActive(true);
             wolf_spawner.enraged_probability = 0;
             wolf_spawner.SewWolf();
+            wolf_spawner.SewWolf();
+            wolf_spawner.SewWolf();
         }
         if(index == 12 && cotton_mines.collider.enabled == false)
         {

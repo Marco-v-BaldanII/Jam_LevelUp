@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 
 
 public class ProgressBar : MonoBehaviour
@@ -14,7 +14,7 @@ public class ProgressBar : MonoBehaviour
 
     public float fillDuration = 6.0f;
     bool is_full = false;
-
+    [SerializeField] TextMeshProUGUI some_text;
     public MODE my_mode = MODE.NORMAL;
 
     private void Awake()
@@ -26,6 +26,11 @@ public class ProgressBar : MonoBehaviour
     void Start()
     {
         IncrementProgress(1);
+
+        if(some_text != null && GameManager.Instance.game_language == Language.ENGLISH)
+        {
+            some_text.text = "Level of Intelligence";
+        }
     }
 
     // Update is called once per frame

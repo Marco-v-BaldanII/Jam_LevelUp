@@ -34,7 +34,10 @@ public class Wolf_Spawner : MonoBehaviour
 
     public Collider2D collider;
 
+
     public MODE my_mode = MODE.NORMAL;
+    public AudioClip altered_wolf;
+    public AudioClip sewing;
     private AudioSource audio;
 
     public TextMeshProUGUI wolf_counter;
@@ -144,6 +147,7 @@ public class Wolf_Spawner : MonoBehaviour
         if (spawned_wolves > 4 &&  Random.Range(0,100)< enraged_probability)
         {
             w.my_mood = Wolf_Mood.ENRAGED;
+            if (audio != null) audio.clip = altered_wolf; audio.Play(); audio.clip = sewing; ;
             w.gameObject.layer = LayerMask.NameToLayer("EnragedWolf");
            
             Debug.Log("Generated enraged wolf");
@@ -168,7 +172,7 @@ public class Wolf_Spawner : MonoBehaviour
                 cotton_bar.Fill_With_Time(spawn_rate - 2);
                  yield return new WaitForSecondsRealtime(spawn_rate-2);
                   animator.SetTrigger("sew");
-                audio.Play();
+                if(audio != null) audio.Play();
                 yield return new WaitForSecondsRealtime(2);
             
                 SewWolf();

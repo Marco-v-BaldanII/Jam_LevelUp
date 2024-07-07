@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 using UnityEngine.SceneManagement;
 
 public enum INTELIGENCE_LEVEL
@@ -32,6 +34,11 @@ public class Wolf_City : wolf_task
     [SerializeField] TextMeshProUGUI silver_ages;
     [SerializeField] TextMeshProUGUI gold_ages;
 
+    public AudioClip cotton_noise;
+    public AudioClip age_up;
+
+    [SerializeField] AudioSource audio;
+
     public int num_wolves2;
 
     float timer = 0;
@@ -42,6 +49,7 @@ public class Wolf_City : wolf_task
         if (intelligence_bar == null)
         {
             GameObject obj = GameObject.Find("Intelligence_Bar");
+            audio = GetComponent<AudioSource>();
             intelligence_bar = obj.GetComponent<ProgressBar>();
         }
         StartCoroutine("BuildCity");
@@ -84,9 +92,21 @@ public class Wolf_City : wolf_task
         if (collision.gameObject.CompareTag("Wolf") == true )
         {
             Wolf_AI wolf = collision.GetComponent<Wolf_AI>();
-            if (wolf != null && wolf.my_state == Wolf_State.MINING ) // when the wolf is transporting cotton
+
+            bool exists = false;
+            foreach (Wolf_AI w in my_wolfs)
+            {
+                if (wolf == w)
+                {
+                    exists = true; break;
+                }
+            }
+
+            if (wolf != null && wolf.my_state == Wolf_State.MINING && ! exists) // when the wolf is transporting cotton
             {
                 num_cotton++;
+                audio.clip = cotton_noise;
+                audio.Play();
                 
                 current_wolf = wolf;
                 wolf.has_cotton = false;
@@ -171,25 +191,35 @@ public class Wolf_City : wolf_task
 
     }
 
+    void PlayAgeUp()
+    {
+        audio.clip = age_up;
+        audio.Play();
+        Debug.Log("Age_Up");
+        
+    }
+
     void HandleCity_Animaions()
     {
-        if (intelligence_bar.Get() > 266 && intelligence_level == INTELIGENCE_LEVEL.LOW)
+        if (intelligence_bar.Get() > 254 && intelligence_level == INTELIGENCE_LEVEL.LOW)
         {
+            PlayAgeUp();
             intelligence_level = INTELIGENCE_LEVEL.MID;
             wolf_spawner.Change_Wolf_Level(2);
         }
-        if (intelligence_bar.Get() > 533 && intelligence_level == INTELIGENCE_LEVEL.MID)
+        if (intelligence_bar.Get() > 537 && intelligence_level == INTELIGENCE_LEVEL.MID)
         {
+            PlayAgeUp();
             intelligence_level = INTELIGENCE_LEVEL.HIGH;
             wolf_spawner.Change_Wolf_Level(3);
         }
 
-        if (intelligence_bar.Get() < 266 && intelligence_level == INTELIGENCE_LEVEL.MID)
+        if (intelligence_bar.Get() < 254 && intelligence_level == INTELIGENCE_LEVEL.MID)
         {
             intelligence_level = INTELIGENCE_LEVEL.LOW;
             wolf_spawner.Change_Wolf_Level(1);
         }
-        if (intelligence_bar.Get() < 533 && intelligence_level == INTELIGENCE_LEVEL.HIGH)
+        if (intelligence_bar.Get() < 537 && intelligence_level == INTELIGENCE_LEVEL.HIGH)
         {
             intelligence_level = INTELIGENCE_LEVEL.MID;
             wolf_spawner.Change_Wolf_Level(2);

@@ -82,6 +82,8 @@ public class Wolf_AI : MonoBehaviour
     private float aimless_walk_time = 0.0f;
     public int level = 1;
 
+    public bool been_at_mine = false;
+
     public void Init()
     {
         rigid = GetComponent<Rigidbody2D>();

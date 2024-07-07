@@ -33,6 +33,7 @@ public class Wolf_Spawner : MonoBehaviour
     public Collider2D collider;
 
     public MODE my_mode = MODE.NORMAL;
+    private AudioSource audio;
 
     int max_spawn_rate;
 
@@ -41,6 +42,7 @@ public class Wolf_Spawner : MonoBehaviour
     {
         if(city == null) city = GameManager.Instance.city;
         animator = GetComponent<Animator>();
+        audio = GetComponent<AudioSource>();
         SewWolf();
         max_spawn_rate = spawn_rate;
 
@@ -158,6 +160,7 @@ public class Wolf_Spawner : MonoBehaviour
                 cotton_bar.Fill_With_Time(spawn_rate - 2);
                  yield return new WaitForSecondsRealtime(spawn_rate-2);
                   animator.SetTrigger("sew");
+                audio.Play();
                 yield return new WaitForSecondsRealtime(2);
             
                 SewWolf();

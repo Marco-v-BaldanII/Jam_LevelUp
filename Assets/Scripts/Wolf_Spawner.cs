@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.UI;
+using TMPro;
 
 public enum MODE
 {
@@ -35,6 +37,8 @@ public class Wolf_Spawner : MonoBehaviour
     public MODE my_mode = MODE.NORMAL;
     private AudioSource audio;
 
+    public TextMeshProUGUI wolf_counter;
+
     int max_spawn_rate;
 
     // Start is called before the first frame update
@@ -53,6 +57,8 @@ public class Wolf_Spawner : MonoBehaviour
         }
         occupied_buildings = new bool[3];
         collider = GetComponent<Collider2D>();
+
+        UpdateWolfCountText();
     }
 
     // Update is called once per frame
@@ -143,11 +149,13 @@ public class Wolf_Spawner : MonoBehaviour
             Debug.Log("Generated enraged wolf");
         }
         active_wolfs.Add(w);
+        UpdateWolfCountText();
     }
 
     public void RemoveWolves(Wolf_AI wolf)
     {
         active_wolfs.Remove(wolf);
+        UpdateWolfCountText();
     }
        
 
@@ -320,6 +328,14 @@ public class Wolf_Spawner : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(wait);
         occupied_buildings[index_building] = false;
+    }
+
+    private void UpdateWolfCountText() // Add this method to update the wolf count text
+    {
+        if (wolf_counter != null)
+        {
+            wolf_counter.text = active_wolfs.Count.ToString();
+        }
     }
 
 }

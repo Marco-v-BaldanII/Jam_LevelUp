@@ -2022,7 +2022,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 365231cb230218a49b1a92013c1505b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  warning: {fileID: 701429166}
+  warning: {fileID: 2086470767}
 --- !u!1001 &708814227
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4264,6 +4264,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 751778052367874020, guid: 446dfc0dcaf95924aa4f8f9442cf3937, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 42
+      objectReference: {fileID: 0}
     - target: {fileID: 2885061203157661999, guid: 446dfc0dcaf95924aa4f8f9442cf3937, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -4295,6 +4299,14 @@ PrefabInstance:
     - target: {fileID: 5067243251759627682, guid: 446dfc0dcaf95924aa4f8f9442cf3937, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107296284044386185, guid: 446dfc0dcaf95924aa4f8f9442cf3937, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 46.709
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107296284044386185, guid: 446dfc0dcaf95924aa4f8f9442cf3937, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 40.474
       objectReference: {fileID: 0}
     - target: {fileID: 5362055050530329533, guid: 446dfc0dcaf95924aa4f8f9442cf3937, type: 3}
       propertyPath: m_Value
